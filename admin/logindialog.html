@@ -1,0 +1,8 @@
+<form name="login" ng-submit="auth({username:username,password:password})" novalidate>
+    <fieldset>
+        <legend style="background: transparent">{{authmessage}}</legend>
+        <input type="text" ng-model="username" required placeholder="Nazwa użytkownika"/>
+        <input type="password" ng-model="password" required placeholder="Hasło"/>
+        <button type="submit" class="disabled" ng-class="{'disabled':login.$invalid}">Zaloguj</button>
+    </fieldset>
+</form>

@@ -1,0 +1,26 @@
+<div ng-controller="UsersController">
+        <form name="updateEntity_form" novalidate ng-submit="updateEntity()">
+    <fieldset>
+        <legend>{{strings.FORM.EDIT_ENTITY}}</legend>
+        <select ng-options="entity.name for entity in entities" ng-model="selectedEntity">
+            <option value="">{{strings.FORM.CHOOSE_ENTITY}}</option>
+        </select>
+        <div ng-show="editedEntity.id">
+            <input type="text" ng-model="editedEntity.username" placeholder="Nazwa użytkownika" required>
+            <input type="password" ng-model="editedEntity.password" placeholder="Hasło" required>
+            <input type="text" ng-model="editedEntity.name" placeholder="Imię i nazwisko" required>
+            <button type="submit" class="disabled" ng-class="{'disabled':updateEntity_form.$invalid}" ng-attr-title="{{updateEntity_form.$invalid?strings.FILL_ALL_FIELDS:''}}">{{strings.UPDATE_PLS}}</button>
+            <button class="delete" ng-click="deleteEntity()" ng-class="{'disabled':user.id==editedEntity.id}" ng-attr-title="{{user.id==editedEntity.id?strings.FORM.CANT_REMOVE_MYSELF:''}}">{{strings.DELETE_PLS}}</button>
+        </div>
+    </fieldset>
+    </form>
+<form ng-submit="createEntity()" name="createEntity_form" novalidate>
+    <fieldset>
+        <legend>{{strings.FORM.CREATE_ENTITY}}</legend>
+        <input type="text" ng-model="newEntity.username" placeholder="Nazwa użytkownika" required>
+        <input type="password" ng-model="newEntity.password" placeholder="Hasło" required>
+        <input type="text" ng-model="newEntity.name" placeholder="Imię i nazwisko" required>
+        <button type="submit" class="disabled" ng-class="{'disabled':createEntity_form.$invalid}">{{strings.CREATE_PLS}}</button>
+    </fieldset>
+</form>
+</div>

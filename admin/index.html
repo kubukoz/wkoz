@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="panel">
+<head>
+    <meta charset="UTF-8">
+    <title ng-bind="title.main + (title.sub.length>0?' - ' + title.sub:'')">WK - Panel Administratora</title><!--todo-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.13/angular-route.js"></script>
+    <script src="plugins/textAngular-sanitize.min.js"></script>
+    <script src="plugins/textAngular.min.js"></script>
+    <script src="plugins/angular-file-upload.min.js"></script>
+    <script src="js/ng-panel.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="../plugins/ngDialog/js/ngDialog.min.js"></script>
+    <link href="../plugins/ngDialog/css/ngDialog.min.css" rel="stylesheet"/>
+    <link href="../plugins/ngDialog/css/ngDialog-theme-default.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link href="styles/panel.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Varela&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no"/>
+</head>
+<body>
+<div class="site_wrapper" ng-show="user">
+    <div id="header">
+        <div class="col-xs-12 col-sm-6 columns title"><a href="#/"><i class="fa fa-home"></i> OSK Majchrzak - Panel Administratora</a></div>
+        <div class="col-xs-12 col-sm-4 columns userinfo">Zalogowano jako: <b>{{user.name}}&nbsp;</b>&nbsp;<i class="fa fa-user"></i></div>
+        <div class="col-xs-12 col-sm-2 columns logout"><a href="#/logout">Wyloguj</a></div>
+    </div>
+    <div id="mess" class="alert-box radius" message>{{message.text}}</div>
+    <div id="content" class="clearfix">
+        <nav class="col-xs-12 col-sm-3 columns">
+            <ul>
+                <li><a href="#/gallery">Galeria</a></li>
+                <li><a href="#/users">Użytkownicy</a></li>
+            </ul>
+        </nav>
+        <div class="col-xs-12 col-sm-9 columns" id="site" ng-view>
+        </div>
+    </div>
+    <div id="footer">&copy; 2014 Wykonanie: <a href="http://github.com/kubukoz"><b>Jakub&nbsp;Kozłowski</b>&nbsp;<i class="fa fa-github"></i></a></div>
+</div>
+</body>
+</html>

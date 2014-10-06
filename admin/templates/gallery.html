@@ -1,0 +1,68 @@
+<div ng-controller="GalleryController">
+    <form name="updateEntity_form" novalidate ng-submit="updateEntity()" ng-show="entities.length">
+        <fieldset>
+            <legend>{{strings.FORM.EDIT_ENTITY}}</legend>
+            <select ng-options="entity.name for entity in entities" ng-model="selectedEntity">
+                <option value="">{{strings.FORM.CHOOSE_ENTITY}}</option>
+            </select>
+
+            <div ng-show="editedEntity.id">
+                <input type="text" ng-model="editedEntity.name" placeholder="Nazwa zdjęcia" required>
+
+                <div ng-show="editedEntity.image.length">
+                    <img ng-src="../{{editedEntity.image}}" style="height:200px; width:auto; margin-bottom: 20px"/>
+                    <button class="delete" ng-click="removeImage()">Usuń zdjęcie</button>
+                </div>
+                <div ng-show="!eUploader.queue.length && !editedEntity.image.length" class="uploader">
+                    Zdjęcie: <input type="file" nv-file-select uploader="eUploader" style="width: auto" multiple/>
+                </div>
+                <div ng-if="eUploader.queue.length" style="margin-top: 20px">
+                    <div ng-thumb="{file: eUploader.queue[0]._file, height:200}"></div>
+                    <button ng-click="eUploader.queue = [];" style="display: inline-block" class="delete">Usuń zdjęcie
+                    </button>
+                </div>
+                <button type="submit" class="disabled"
+                        ng-class="{'disabled':updateEntity_form.$invalid || (!editedEntity.image.length && !eUploader.queue.length)}"
+                        ng-attr-title="{{updateEntity_form.$invalid||(!editedEntity.image.length && !eUploader.queue.length)?strings.FILL_ALL_FIELDS:''}}">
+                    {{strings.UPDATE_PLS}}
+                </button>
+                <button class="delete" ng-click="deleteEntity()">{{strings.DELETE_PLS}}</button>
+            </div>
+        </fieldset>
+    </form>
+    <form ng-submit="createEntity()" name="createEntity_form" novalidate>
+        <fieldset>
+            <legend>{{strings.FORM.CREATE_ENTITY}}</legend>
+            <input type="text" ng-model="newEntity.name" placeholder="Nazwa zdjęcia" required>
+
+            <div ng-show="!nUploader.queue.length" class="uploader">
+                Zdjęcie: <input type="file" nv-file-select uploader="nUploader" style="width: auto" multiple/>
+            </div>
+            <div ng-if="nUploader.queue.length" style="margin-top: 20px">
+                <div ng-thumb="{file: nUploader.queue[0]._file, height:200}"></div>
+                <button ng-click="nUploader.queue = [];" style="display: inline-block" class="delete">Usuń zdjęcie
+                </button>
+            </div>
+            <button type="submit" class="disabled"
+                    ng-class="{'disabled':createEntity_form.$invalid || uploading||!nUploader.queue.length}">
+                {{strings.CREATE_PLS}}
+            </button>
+        </fieldset>
+    </form>
+    <form novalidate ng-submit="" ng-show="entities.length">
+        <fieldset>
+            <legend>Zmień kolejność zdjęć</legend>
+            <table>
+                <tr ng-repeat="entity in entities">
+                    <td ng-bind="entity.name"></td>
+                    <td ng-if="$index==0" class="order"></td>
+                    <td class="order" ng-click="reorderEntity(entity, 1)" ng-if="$index != 0"><i
+                            class="fa fa-sort-up"></i></td>
+                    <td ng-if="$index==entites.length-1" class="order"></td>
+                    <td class="order" ng-click="reorderEntity(entity, -1)" ng-if="$index != entities.length-1"><i
+                            class="fa fa-sort-down"></i></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</div>

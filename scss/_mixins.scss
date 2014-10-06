@@ -1,0 +1,25 @@
+@mixin withPseudo{
+  &:before, &:after{
+    display: block;
+    content: '';
+  }
+}
+
+@mixin transitionAll($time){
+  -webkit-transition: $time;
+  -moz-transition: $time;
+  -ms-transition: $time;
+  -o-transition: $time;
+  transition: $time;
+}
+@mixin transform($property){
+  -moz-transform: $property;
+  -webkit-transform: $property;
+  transform: $property;
+}
+
+.ninesixzero{
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
