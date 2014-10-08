@@ -1,3 +1,0 @@
-A: --no-cache --update scss/$FileName$:styles/$FileNameWithoutExtension$.css
-W: $FileParentDir$
-O: $FileParentDir$/styles/$FileNameWithoutExtension$.css

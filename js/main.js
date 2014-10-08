@@ -64,3 +64,21 @@ app.directive("skrollrEnabled", function(){
         }
     }
 })
+app.directive("musicPlayer", function(){
+    return{
+        restrict: "AE",
+        link: function(scope,elem,attr){
+            scope.playing = true;
+            scope.currentSong = "Isn't she lovely";
+            scope.switchPlaying = function(){
+                scope.playing=!scope.playing;
+            }
+            scope.nextSong = function(){
+
+            }
+            scope.previousSong = function(){
+
+            }
+        }
+    }
+})
