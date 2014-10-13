@@ -23,11 +23,11 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <!--todo-->
-    <meta name="description" content="New App"/>
-    <meta property="og:title" content="New App"/>
+    <meta name="description" content="Standard Express"/>
+    <meta property="og:title" content="Standard Express"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="New App"/>
-    <meta property="og:image" content="http://example.com/images/og_image.png"/>
+    <meta property="og:site_name" content="Standard Express"/>
+    <meta property="og:image" content="http://standardexpress.pl/images/og_image.png"/>
     <meta property="og:description" content="New App Description"/>
 </head>
 <body skrollr-enabled>
@@ -322,17 +322,17 @@
     <div class="ninesixzero">
         <div class="section" id="now_playing">
             <span>Teraz grane:</span>
-            <b>{{currentSong}}</b>
+            <b>{{player.songs[player.selected].name}}</b>
         </div>
         <div class="section" id="controls">
-            <div class="control left" ng-click="previousSong()">
+            <div class="control left" ng-click="player.previousSong()">
                 <svg viewBox="0 0 40 40">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M20,0c11.046,0,20,8.954,20,20s-8.954,20-20,20S0,31.046,0,20
 	S8.954,0,20,0z M19.981,36.201c8.836,0,16-7.163,16-16c0-8.836-7.164-16-16-16s-16,7.164-16,16
 	C3.98,29.038,11.145,36.201,19.981,36.201z M17.75,13v14l-10.5-7L17.75,13z M29.75,27l-10.5-7l10.5-7V27z"/>
                 </svg>
             </div>
-            <div class="control playing" ng-click="switchPlaying()" ng-class="{'paused':playing<0}">
+            <div class="control playing" ng-click="player.switchPlaying()" ng-class="{'paused':!player.playing}">
                 <div class="play">
                     <svg viewBox="0 0 40 40">
                         <defs>
@@ -354,7 +354,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="control right" ng-click="nextSong()">
+            <div class="control right" ng-click="player.nextSong()">
                 <svg viewBox="0 0 40 40">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M20,40C8.954,40,0,31.046,0,20S8.954,0,20,0s20,8.954,20,20
 	S31.046,40,20,40z M20.019,3.799c-8.836,0-16,7.163-16,16c0,8.836,7.164,16,16,16s16-7.164,16-16
@@ -363,8 +363,8 @@
             </div>
         </div>
         <div class="section" id="volume">
-            <i class="fa fa-volume-up"></i>
-            <div class="volume_progressbar">vol</div>
+            <i class="fa" ng-class="{'fa-volume-off': player.volume<20, 'fa-volume-down':player.volume>=20 && player.volume<70, 'fa-volume-up': player.volume>=70}"></i>
+            <div class="progressbar"><div class="line"><div class="inside" ng-attr-style="width: {{player.volume}}%"></div> </div></div>
         </div>
     </div>
 </music-player>

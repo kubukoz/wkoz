@@ -555,7 +555,7 @@ music-player{
           bottom: 0;
           visibility: hidden;
         }
-        &.paused{
+        &:not(.paused){
           .play{
             visibility: hidden;
           }
@@ -570,6 +570,63 @@ music-player{
     display: flex;
     padding-right: 10px;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    i{
+      display: flex;
+      align-items: center;
+      font-size: 1.7em;
+      color: $blue;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+    .progressbar{
+      margin-left: 33px;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100px;
+      height: 100%;
+      .line{
+        height: 4px;
+        width: 100%;
+        resize: both;
+        background: #cccccc;
+        cursor: pointer;
+        .inside{
+          position: relative;
+          background: $blue;
+          height: 100%;
+          &:before {
+            display: block;
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            top: -6px;
+            right: -8px;
+            margin: auto;
+            width: 16px;
+            height: 16px;
+            background: $blue;
+          }
+          &:after {
+            display: block;
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            top: -1px;
+            right: -3px;
+            width: 6px;
+            height: 6px;
+            background: #cccccc;
+          }
+        }
+      }
+    }
   }
 }

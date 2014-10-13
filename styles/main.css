@@ -505,14 +505,65 @@ music-player {
           right: 0;
           bottom: 0;
           visibility: hidden; }
-        music-player #controls .control.playing.paused .play {
+        music-player #controls .control.playing:not(.paused) .play {
           visibility: hidden; }
-        music-player #controls .control.playing.paused .pause {
+        music-player #controls .control.playing:not(.paused) .pause {
           visibility: visible; }
   music-player #volume {
     display: flex;
     padding-right: 10px;
     align-items: center;
-    justify-content: flex-end; }
+    justify-content: center;
+    height: 100%;
+    overflow: auto;
+    position: relative; }
+    music-player #volume i {
+      display: flex;
+      align-items: center;
+      font-size: 1.7em;
+      color: #1e3f59;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0; }
+    music-player #volume .progressbar {
+      margin-left: 33px;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100px;
+      height: 100%; }
+      music-player #volume .progressbar .line {
+        height: 4px;
+        width: 100%;
+        resize: both;
+        background: #cccccc;
+        cursor: pointer; }
+        music-player #volume .progressbar .line .inside {
+          position: relative;
+          background: #1e3f59;
+          height: 100%; }
+          music-player #volume .progressbar .line .inside:before {
+            display: block;
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            top: -6px;
+            right: -8px;
+            margin: auto;
+            width: 16px;
+            height: 16px;
+            background: #1e3f59; }
+          music-player #volume .progressbar .line .inside:after {
+            display: block;
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            top: -1px;
+            right: -3px;
+            width: 6px;
+            height: 6px;
+            background: #cccccc; }
 
 /*# sourceMappingURL=main.css.map */
