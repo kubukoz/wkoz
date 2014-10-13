@@ -65,20 +65,21 @@ angular.module('ngScrollSpy', [])
       scope: true,
       link: function(scope, element, attrs) {
         angular.extend(config, scrollspyConfig.config);
-        var offset = parseInt(attrs.scrollspyOffset || config.offset);
+        var offset = (""+attrs.scrollspyOffset).split("|") || [config.offset];
+        offset = [+offset[0], +(offset.length<2?offset[0]:offset[1])]
         scope.checkActive = function() {
           scope.elementTop = element[0].offsetTop;
           scope.elementBottom = scope.elementTop + Math.max(element[0].scrollHeight, element[0].offsetHeight);
 
-          if((scope.elementTop - offset) < (PositionFactory.position.documentHeight - window.innerHeight)) {
-            if(scope.elementTop <= (PositionFactory.position.windowTop + offset)) {
+          if((scope.elementTop - offset[0]) < (PositionFactory.position.documentHeight - window.innerHeight)) {
+            if(scope.elementTop <= (PositionFactory.position.windowTop + offset[0])) {
               SpyFactory.addSpy(attrs.id);
             } else {
               SpyFactory.removeSpy(attrs.id);
             }
 
           } else {
-            if(PositionFactory.position.windowBottom > (scope.elementBottom - offset)) {
+            if(PositionFactory.position.windowBottom > (scope.elementBottom - offset[1])) {
               SpyFactory.addSpy(attrs.id);
             } else {
               SpyFactory.removeSpy(attrs.id);

@@ -26,6 +26,27 @@ h2.subheading{
   padding: 12px 62px 13px;
   text-align: center;
 }
+body .ngdialog.ngdialog-theme-default {
+  .ngdialog-content {
+    background: transparent !important;
+    height: 100%;
+    width: 80%;
+    max-width: 1000px;
+    .ngdialog-close{
+      display: none;
+    }
+    div{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 
 #header{
   position: fixed;
@@ -83,7 +104,7 @@ h2.subheading{
           font-family: $font-main;
           font-size: .875em;
           text-transform: uppercase;
-          font-weight: $regular;
+          font-weight: $bold;
           color: $blue;
           position: relative;
           &:before{
@@ -101,15 +122,15 @@ h2.subheading{
           }
         }
         &:not(.active):not(:hover){
+          a{
+            opacity: .5;
+          }
           a:before{
             @include transform(translateY(100%));
             opacity: 0;
           }
         }
         &.active, &:hover{
-          a{
-            color: $dark-brown;
-          }
         }
       }
     }
@@ -199,14 +220,30 @@ h2.subheading{
           display: inline-flex;
           align-items: center;
           color: #ffffff;
+          @include transitionAll(.1s);
           i{
             position: absolute;
             right: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             top: 0;
             width: 40px;
             height: 40px;
-            background: $blue;
-            opacity: .5;
+            background: rgba(30, 63, 89, 0.5);
+            @include transitionAll(.1s);
+            svg{
+              width: 18px;
+              height: 18px;
+              fill: white;
+              @include transitionAll(.1s);
+            }
+          }
+          &:hover{
+            background: $dark-brown;
+            i{
+              background: rgba(62, 39, 35, 0.5);
+            }
           }
         }
       }
@@ -337,6 +374,11 @@ h2.subheading{
       }
     }
   }
+}
+#music{
+  min-height: 500px;
+  overflow: auto;
+
 }
 #gallery{
   overflow: auto;
@@ -539,6 +581,7 @@ music-player{
     width: 160px;
     justify-content: space-between;
     .control{
+      cursor: pointer;
       width: 40px;
       height: 40px;
       background: #ffffff;
@@ -572,7 +615,7 @@ music-player{
     align-items: center;
     justify-content: center;
     height: 100%;
-    overflow: auto;
+    overflow: visible;
     position: relative;
     i{
       display: flex;
@@ -585,6 +628,7 @@ music-player{
       bottom: 0;
     }
     .progressbar{
+      cursor: pointer;
       margin-left: 33px;
       z-index: 99999;
       display: flex;
@@ -592,13 +636,15 @@ music-player{
       justify-content: flex-end;
       width: 100px;
       height: 100%;
+      overflow: visible;
       .line{
         height: 4px;
         width: 100%;
-        resize: both;
         background: #cccccc;
         cursor: pointer;
+        overflow: visible;
         .inside{
+          overflow: visible;
           position: relative;
           background: $blue;
           height: 100%;
@@ -607,12 +653,17 @@ music-player{
             content: '';
             position: absolute;
             border-radius: 50%;
-            top: -6px;
-            right: -8px;
-            margin: auto;
-            width: 16px;
-            height: 16px;
+            top: -10px;
+            right: -12px;
+            width: 24px;
+            height: 24px;
             background: $blue;
+            @include transitionAll(.1s);
+            @include transform(scale(0.67));
+          }
+          &:hover:before, &.clicked:before{
+            opacity: .5;
+            @include transform(scale(1))
           }
           &:after {
             display: block;

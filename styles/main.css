@@ -9,23 +9,6 @@ a {
 @media screen and (min-width: 400px) {
   .xxs-only {
     display: none; } }
-body .ngdialog.ngdialog-theme-default .ngdialog-content {
-  background: transparent !important;
-  height: 100%;
-  width: 80%;
-  max-width: 1000px; }
-  body .ngdialog.ngdialog-theme-default .ngdialog-content .ngdialog-close {
-    display: none; }
-  body .ngdialog.ngdialog-theme-default .ngdialog-content div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 100%;
-    height: 100%; }
-
 h1.heading {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -43,6 +26,23 @@ h2.subheading {
   text-transform: uppercase;
   padding: 12px 62px 13px;
   text-align: center; }
+
+body .ngdialog.ngdialog-theme-default .ngdialog-content {
+  background: transparent !important;
+  height: 100%;
+  width: 80%;
+  max-width: 1000px; }
+  body .ngdialog.ngdialog-theme-default .ngdialog-content .ngdialog-close {
+    display: none; }
+  body .ngdialog.ngdialog-theme-default .ngdialog-content div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%; }
 
 #header {
   position: fixed;
@@ -100,7 +100,7 @@ h2.subheading {
           font-family: "Open Sans", sans-serif;
           font-size: .875em;
           text-transform: uppercase;
-          font-weight: 400;
+          font-weight: 700;
           color: #1e3f59;
           position: relative; }
           #header nav ul li a:before {
@@ -119,13 +119,13 @@ h2.subheading {
             -ms-transition: 0.2s;
             -o-transition: 0.2s;
             transition: 0.2s; }
+        #header nav ul li:not(.active):not(:hover) a {
+          opacity: .5; }
         #header nav ul li:not(.active):not(:hover) a:before {
           -moz-transform: translateY(100%);
           -webkit-transform: translateY(100%);
           transform: translateY(100%);
           opacity: 0; }
-        #header nav ul li.active a, #header nav ul li:hover a {
-          color: #3e2723; }
 
 #about {
   margin-top: 120px;
@@ -196,15 +196,40 @@ h2.subheading {
       background: #1e3f59;
       display: inline-flex;
       align-items: center;
-      color: #ffffff; }
+      color: #ffffff;
+      -webkit-transition: 0.1s;
+      -moz-transition: 0.1s;
+      -ms-transition: 0.1s;
+      -o-transition: 0.1s;
+      transition: 0.1s; }
       #repertoire .inside .block .text a i {
         position: absolute;
         right: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         top: 0;
         width: 40px;
         height: 40px;
-        background: #1e3f59;
-        opacity: .5; }
+        background: rgba(30, 63, 89, 0.5);
+        -webkit-transition: 0.1s;
+        -moz-transition: 0.1s;
+        -ms-transition: 0.1s;
+        -o-transition: 0.1s;
+        transition: 0.1s; }
+        #repertoire .inside .block .text a i svg {
+          width: 18px;
+          height: 18px;
+          fill: white;
+          -webkit-transition: 0.1s;
+          -moz-transition: 0.1s;
+          -ms-transition: 0.1s;
+          -o-transition: 0.1s;
+          transition: 0.1s; }
+      #repertoire .inside .block .text a:hover {
+        background: #3e2723; }
+        #repertoire .inside .block .text a:hover i {
+          background: rgba(62, 39, 35, 0.5); }
   #repertoire .inside .block hr {
     margin: -2px 0 0;
     border: 0;
@@ -306,6 +331,10 @@ h2.subheading {
           opacity: .5; }
       #locations .inside ul li:not(:last-of-type) {
         margin-bottom: 7px; }
+
+#music {
+  min-height: 500px;
+  overflow: auto; }
 
 #gallery {
   overflow: auto; }
@@ -491,6 +520,7 @@ music-player {
     width: 160px;
     justify-content: space-between; }
     music-player #controls .control {
+      cursor: pointer;
       width: 40px;
       height: 40px;
       background: #ffffff; }
@@ -515,7 +545,7 @@ music-player {
     align-items: center;
     justify-content: center;
     height: 100%;
-    overflow: auto;
+    overflow: visible;
     position: relative; }
     music-player #volume i {
       display: flex;
@@ -527,20 +557,23 @@ music-player {
       left: 0;
       bottom: 0; }
     music-player #volume .progressbar {
+      cursor: pointer;
       margin-left: 33px;
       z-index: 99999;
       display: flex;
       align-items: center;
       justify-content: flex-end;
       width: 100px;
-      height: 100%; }
+      height: 100%;
+      overflow: visible; }
       music-player #volume .progressbar .line {
         height: 4px;
         width: 100%;
-        resize: both;
         background: #cccccc;
-        cursor: pointer; }
+        cursor: pointer;
+        overflow: visible; }
         music-player #volume .progressbar .line .inside {
+          overflow: visible;
           position: relative;
           background: #1e3f59;
           height: 100%; }
@@ -549,12 +582,24 @@ music-player {
             content: '';
             position: absolute;
             border-radius: 50%;
-            top: -6px;
-            right: -8px;
-            margin: auto;
-            width: 16px;
-            height: 16px;
-            background: #1e3f59; }
+            top: -10px;
+            right: -12px;
+            width: 24px;
+            height: 24px;
+            background: #1e3f59;
+            -webkit-transition: 0.1s;
+            -moz-transition: 0.1s;
+            -ms-transition: 0.1s;
+            -o-transition: 0.1s;
+            transition: 0.1s;
+            -moz-transform: scale(0.67);
+            -webkit-transform: scale(0.67);
+            transform: scale(0.67); }
+          music-player #volume .progressbar .line .inside:hover:before, music-player #volume .progressbar .line .inside.clicked:before {
+            opacity: .5;
+            -moz-transform: scale(1);
+            -webkit-transform: scale(1);
+            transform: scale(1); }
           music-player #volume .progressbar .line .inside:after {
             display: block;
             content: '';
