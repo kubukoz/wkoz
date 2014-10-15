@@ -155,7 +155,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         height: 2px;
         background: rgba(255, 255, 255, 0.1); }
       #about #about_inside .text p {
-        font-size: .875em;
+        font-size: .975em;
         line-height: 1.8em;
         font-family: "Open Sans", sans-serif;
         font-weight: 400; }
@@ -281,7 +281,8 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       text-align: center; }
 
 #locations {
-  overflow: auto; }
+  overflow: auto;
+  padding-bottom: 61px; }
   #locations .inside h1 {
     margin-top: 47px; }
   #locations .inside hr {
@@ -333,14 +334,83 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         margin-bottom: 7px; }
 
 #music {
-  min-height: 500px;
-  overflow: auto; }
+  overflow: auto;
+  padding-bottom: 28px;
+  color: #ffffff;
+  background: url("../images/backgrounds/music.jpg") no-repeat center/cover; }
+  #music h1 {
+    margin-top: 46px; }
+  #music .column {
+    padding: 0;
+    margin-top: 28px; }
+    #music .column .block {
+      overflow: auto; }
+      #music .column .block h2 {
+        margin-top: 0;
+        text-align: center;
+        font-size: 2.1em;
+        text-transform: uppercase;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        position: relative; }
+        #music .column .block h2:after {
+          display: block;
+          margin-top: 14px;
+          content: '';
+          background: #ffffff;
+          opacity: .2;
+          height: 2px; }
+      #music .column .block ul {
+        margin-top: 30px;
+        margin-bottom: 44px; }
+        #music .column .block ul li {
+          padding-left: 67px;
+          padding-right: 70px;
+          text-indent: -67px;
+          position: relative;
+          cursor: pointer;
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          font-size: 1.71em; }
+          #music .column .block ul li.playing .button .play, #music .column .block ul li:not(.playing) .button .pause {
+            display: none; }
+          #music .column .block ul li .button {
+            position: relative;
+            margin-left: 20px;
+            margin-right: 27px;
+            top: 2px;
+            -webkit-transition: 0.1s;
+            -moz-transition: 0.1s;
+            -ms-transition: 0.1s;
+            -o-transition: 0.1s;
+            transition: 0.1s; }
+            #music .column .block ul li .button svg {
+              width: 20px;
+              fill: white; }
+          #music .column .block ul li .length {
+            text-indent: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            opacity: .5; }
+          #music .column .block ul li:not(:hover) .button {
+            opacity: .5; }
+          #music .column .block ul li:not(:last-of-type) {
+            margin-bottom: 2px; }
+    @media screen and (min-width: 768px) {
+      #music .column:nth-of-type(1) {
+        padding-right: 20px; }
+      #music .column:nth-of-type(2) {
+        padding-left: 20px; } }
 
 #gallery {
   overflow: auto; }
   #gallery .ninesixzero {
     padding-top: 67px;
-    padding-bottom: 80px; }
+    padding-bottom: 80px;
+    overflow: hidden; }
     #gallery .ninesixzero h1 {
       color: #3e2723;
       margin-bottom: 23px; }
@@ -376,13 +446,16 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
           fill: #3e2723; }
         #gallery .ninesixzero .wrapper .arrow:not(:hover) {
           opacity: .5; }
-      #gallery .ninesixzero .wrapper .items {
-        max-width: 800px;
-        margin: 0 auto;
+      #gallery .ninesixzero .wrapper .slide {
+        width: 100%;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between; }
-        #gallery .ninesixzero .wrapper .items .item {
+        justify-content: space-between;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s; }
+        #gallery .ninesixzero .wrapper .slide .item {
           cursor: pointer;
           display: inline-block;
           -webkit-transition: 0.2s;
@@ -391,11 +464,31 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
           -o-transition: 0.2s;
           transition: 0.2s;
           width: 27.5%; }
-          #gallery .ninesixzero .wrapper .items .item .image {
+          #gallery .ninesixzero .wrapper .slide .item .image {
             background: no-repeat center / cover;
             width: 100%;
             height: 0;
             padding-bottom: 100%; }
+      #gallery .ninesixzero .wrapper .slides {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative; }
+        #gallery .ninesixzero .wrapper .slides .slide.unselected.left {
+          -moz-transform: translateX(-100%);
+          -webkit-transform: translateX(-100%);
+          transform: translateX(-100%); }
+        #gallery .ninesixzero .wrapper .slides .slide.unselected.right {
+          -moz-transform: translateX(100%);
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%); }
+        #gallery .ninesixzero .wrapper .slides .slide:not(:first-of-type) {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0; }
 
 #contact {
   overflow: auto;
@@ -466,7 +559,37 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             fill: #ebebeb; }
 
 footer {
-  margin-bottom: 60px; }
+  overflow: auto;
+  margin-bottom: 60px;
+  background: #1e3f59;
+  color: #ffffff;
+  padding: 0; }
+  footer .ninesixzero {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    footer .ninesixzero h2 {
+      font-size: 1em;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 400;
+      margin-top: 0;
+      margin-bottom: 0; }
+      footer .ninesixzero h2 b, footer .ninesixzero h2 a {
+        font-weight: 700;
+        color: inherit; }
+      footer .ninesixzero h2:not(:last-of-type) {
+        margin-bottom: 9px; }
+    footer .ninesixzero .copyright, footer .ninesixzero .logo, footer .ninesixzero .authors {
+      padding-top: 20px;
+      padding-bottom: 20px; }
+    footer .ninesixzero .logo svg {
+      width: 194px;
+      fill: #ffffff; }
+    footer .ninesixzero .authors {
+      text-align: right; }
 
 music-player {
   position: fixed;

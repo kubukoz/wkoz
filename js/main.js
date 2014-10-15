@@ -42,6 +42,15 @@ app.controller("NavController", function($scope, $window){
         }
     });
 })
+app.controller("GalleryController", function ($scope) {
+    var g = $scope.gallery = {selected: 0, size: 3};
+    g.next = function(){
+        g.selected+=((g.selected<g.size-1)?1:-g.selected);
+    }
+    g.previous = function(){
+        g.selected-=(g.selected>0?1:(-g.size+1));
+    }
+})
 app.directive("galleryModal", function(ngDialog){
     return {
         scope: {href: "="},
@@ -57,9 +66,9 @@ app.directive("galleryModal", function(ngDialog){
 })
 app.directive("skrollrEnabled", function(){
     return{
-        link: function(){
+        link: function(scope){
             if(!(/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/).test(navigator.userAgent.toLowerCase() || navigator.vendor.toLowerCase() || window.opera.toLowerCase())){
-                var s = skrollr.init({smoothScrollingDuration:1, forceHeight: false});
+                scope.$root.skrollr = skrollr.init({smoothScrollingDuration:1, forceHeight: false});
             }
         }
     }
@@ -68,17 +77,16 @@ app.directive("musicPlayer", function(){
     return{
         restrict: "AE",
         link: function(scope,elem){
-            var p = scope.player = { playing: false, selected: 0, volume: 40, audio: new Audio()};
-            p.songs = [
-                {name: "Get Lucky", file: "dp.mp3"},
+            var p = scope.$root.player = scope.player = { playing: false, selected: 0, volume: 40, audio: new Audio()};
+            p.songs = scope.$root.songs = [
                 {name: "God Is Dead?", file: "bs.mp3"},
-                {name: "Feeling Good", file: "mb.mp3"},
-                {name: "God Is Dead? jeszcze raz", file: "bs.mp3"}
+                {name: "Get Lucky", file: "dp.mp3"},
+                {name: "Feeling Good", file: "mb.mp3"}
             ];
             p.audio.volume = p.volume/100;
             p.audio.onended = function(){scope.$apply(function(){p.nextSong()})};
             scope.$watch(function(){return p.volume}, function(v){if(p.audio)p.audio.volume = v/100});
-                                p.audio.src = "music/"+p.songs[p.selected].file;
+            p.audio.src = "music/"+p.songs[p.selected].file;
             p.updatePlaying = function(pl){
                 p.playing=pl;
                 if(pl){
@@ -121,10 +129,17 @@ app.directive("musicPlayer", function(){
                     scope.vol.clicked=false;
                 })
             }
-            scrollbar.onmousemove = function(e){
+            scrollbar.ontouchmove = scrollbar.onmousemove = function(e){
                 if(scope.vol.clicked){
                     e.preventDefault();
-                    var vol = Math.round(100*Math.min(Math.max((e.offsetX || (e.clientX-scrollbar.getBoundingClientRect().left) || 0), 0)/ scrollbar.offsetWidth, 1));
+                    vol = Math.round(100*Math.min(Math.max((e.offsetX || (e.clientX-scrollbar.getBoundingClientRect().left) || 0), 0)/ scrollbar.offsetWidth, 1));
+                    scope.$apply(function(){
+                        p.volume = vol;
+                    })
+                }
+                else if(e.type == "touchmove"){
+                    e.preventDefault();
+                    vol = Math.round(100*Math.min(Math.max(((e.changedTouches[0].clientX-scrollbar.getBoundingClientRect().left) || 0), 0)/ scrollbar.offsetWidth, 1));
                     scope.$apply(function(){
                         p.volume = vol;
                     })
@@ -156,15 +171,14 @@ app.directive("musicPlayer", function(){
             }
 
             scope.$on("musicRequested", function(obj, val){
-                for(var i = 0; i < p.songs.length; i++){
-                    if(p.songs[i].file == val){
-                        scope.$apply(function(){
-                            p.selected = i;
-                            p.updatePlaying(true);
-                        });
-                        break;
+                scope.$apply(function () {
+                    if(!(p.playing && p.selected == val.id)){
+                        p.selected = val.id;
+                        p.updatePlaying(true);
+                    }else{
+                        p.updatePlaying(false);
                     }
-                }
+                })
             })
         }
     }
@@ -176,7 +190,7 @@ app.directive("musicPlay", function(){
         },
         link: function(scope,elem){
             elem[0].onclick = function(){
-                scope.$root.$broadcast("musicRequested", scope.musicPlay);
+                scope.$root.$broadcast("musicRequested", {id:+scope.musicPlay});
             }
         }
     }

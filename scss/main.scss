@@ -169,7 +169,7 @@ body .ngdialog.ngdialog-theme-default {
         background: rgba(255, 255, 255, .1);
       }
       p{
-        font-size: .875em;
+        font-size: .975em;
         line-height: 1.8em;
         font-family: $font-main;
         font-weight: $regular;
@@ -315,6 +315,7 @@ body .ngdialog.ngdialog-theme-default {
 }
 #locations{
   overflow: auto;
+  padding-bottom: 61px;
   .inside{
     h1{
       margin-top: 47px;
@@ -376,15 +377,97 @@ body .ngdialog.ngdialog-theme-default {
   }
 }
 #music{
-  min-height: 500px;
   overflow: auto;
-
+  padding-bottom: 28px;
+  color: #ffffff;
+  background: url("../images/backgrounds/music.jpg") no-repeat center / cover;
+  h1{
+    margin-top: 46px;
+  }
+  .column{
+    padding: 0;
+    margin-top: 28px;
+    .block{
+      overflow: auto;
+      h2{
+        margin-top: 0;
+        text-align: center;
+        font-size: 2.1em;
+        text-transform: uppercase;
+        font-family: $font-headers;
+        font-weight: $light;
+        position: relative;
+        &:after{
+          display: block;
+          margin-top: 14px;
+          content: '';
+          background: #ffffff;
+          opacity: .2;
+          height: 2px;
+        }
+      }
+      ul{
+        margin-top: 30px;
+        margin-bottom: 44px;
+        li{
+          padding-left: 67px;
+          padding-right: 70px;
+          text-indent: -67px;
+          position: relative;
+          cursor: pointer;
+          font-family: $font-headers;
+          font-weight: $light;
+          font-size: 1.71em;
+          &.playing .button .play, &:not(.playing) .button .pause{
+            display: none;
+          }
+          .button{
+            position: relative;
+            margin-left: 20px;
+            margin-right: 27px;
+            top: 2px;
+            @include transitionAll(.1s);
+            svg{
+              width: 20px;
+              fill: white;
+            }
+          }
+          .length{
+            text-indent: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            opacity: .5;
+          }
+          &:not(:hover){
+            .button{
+              opacity: .5;
+            }
+          }
+          &:not(:last-of-type){
+            margin-bottom: 2px;
+          }
+        }
+      }
+    }
+    @media screen and (min-width: 768px){
+      &:nth-of-type(1){
+        padding-right: 20px;
+      }
+      &:nth-of-type(2){
+        padding-left: 20px;
+      }
+    }
+  }
 }
 #gallery{
   overflow: auto;
   .ninesixzero{
     padding-top: 67px;
     padding-bottom: 80px;
+    overflow: hidden;
     h1{
       color: $dark-brown;
       margin-bottom: 23px;
@@ -418,23 +501,44 @@ body .ngdialog.ngdialog-theme-default {
         height: 33px;
         width: 21px;
       }
-      .items{
-        max-width: 800px;
-        margin: 0 auto;
+      .slide {
+        width: 100%;
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
-        .item{
+        .item {
           cursor: pointer;
           display: inline-block;
           @include transitionAll(.2s);
           width: 27.5%;
-          .image{
+          .image {
             background: no-repeat center / cover;
             width: 100%;
             height: 0;
             padding-bottom: 100%;
           }
+        }
+        @include transitionAll(.3s);
+      }
+      .slides{
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        .slide.unselected{
+          &.left{
+            @include transform(translateX(-100%));
+          }
+          &.right{
+            @include transform(translateX(100%));
+          }
+        }
+        .slide:not(:first-of-type){
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
         }
       }
     }
@@ -521,7 +625,46 @@ body .ngdialog.ngdialog-theme-default {
   }
 }
 footer{
+  overflow: auto;
   margin-bottom: 60px;
+  background: $blue;
+  color: #ffffff;
+  padding: 0;
+    .ninesixzero{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2{
+        font-size: 1em;
+        font-family: $font-main;
+        font-weight: $regular;
+        margin-top: 0;
+        margin-bottom: 0;
+        b, a{
+          font-weight: $bold;
+          color: inherit;
+        }
+        &:not(:last-of-type){
+          margin-bottom: 9px;
+        }
+      }
+      .copyright, .logo, .authors{
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .logo{
+        svg{
+          width: 194px;
+          fill: #ffffff;
+        }
+      }
+      .authors{
+        text-align: right;
+      }
+  }
 }
 music-player{
   position: fixed;
