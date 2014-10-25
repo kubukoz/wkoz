@@ -81,63 +81,189 @@ body .ngdialog.ngdialog-theme-default {
       background: $blue;
     }
   }
-  nav{
-    display: inline-flex;
-    align-self: stretch;
-    flex-grow: 1;
-    justify-content: center;
-    ul{
-      margin: 0;
+  @media screen and (min-width: 1201px){
+    nav{
+      display: inline-flex;
       align-self: stretch;
-      display: flex;
-      flex-direction: row;
-      li{
+      flex-grow: 1;
+      justify-content: center;
+      ul{
+        margin: 0;
         align-self: stretch;
         display: flex;
-        align-items: stretch;
-        a{
-          @include transitionAll(.2s);
-          padding-left: 18px;
-          padding-right: 18px;
+        flex-direction: row;
+        li{
+          align-self: stretch;
           display: flex;
-          align-items: center;
-          font-family: $font-main;
-          font-size: .875em;
-          text-transform: uppercase;
-          font-weight: $bold;
+          align-items: stretch;
+          a{
+            @include transitionAll(.2s);
+            padding-left: 18px;
+            padding-right: 18px;
+            display: flex;
+            align-items: center;
+            font-family: $font-main;
+            font-size: .875em;
+            text-transform: uppercase;
+            font-weight: $bold;
+            color: $blue;
+            position: relative;
+            &:before{
+              content: '';
+              display: block;
+              position: absolute;
+              bottom: 24px;
+              left: 0;
+              right: 0;
+              background: url("../images/icons/menu_arrow.svg") no-repeat center / contain;
+              width: 11px;
+              height: 9px;
+              margin: auto;
+              @include transitionAll(.2s);
+            }
+          }
+          &:not(.active):not(:hover){
+            a{
+              opacity: .5;
+            }
+            a:before{
+              @include transform(translateY(100%));
+              opacity: 0;
+            }
+          }
+        }
+      }
+      #drawer{
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: 1200px){
+    height: 80px;
+    .ninesixzero{
+      max-width: inherit;
+    }
+    display: flex;
+    align-items: center;
+    background: $blue;
+    #logo_main{
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      padding: 0 0 0 20px;
+      &:after{
+        display: none;
+      }
+      svg{
+        width: 134px;
+      }
+    }
+    .inside{
+      #nav{
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+    ul{
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 50px;
+      overflow: auto;
+      @include transitionAll(.3s ease-out);
+      li{
+        background: #ffffff;
+        display: block;
+        position: relative;
+        &:last-of-type:before{
+          z-index: -1;
+          display: block;
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
+          -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
+        }
+        @include transitionAll(.1s);
+        &:not(:last-of-type) a:after{
+          display: block;
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 20px;
+          right: 20px;
+          z-index: 2;
+          background: $blue;
+          height: 1px;
+          opacity: .2;
+        }
+        a{
+          display: block;
+          padding: 21px 20px 19px 20px;
+          font-family: $font-headers;
+          font-weight: $light;
+          font-size: 1.15em;
           color: $blue;
           position: relative;
-          &:before{
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: 24px;
-            left: 0;
-            right: 0;
-            background: url("../images/icons/menu_arrow.svg") no-repeat center / contain;
-            width: 11px;
-            height: 9px;
-            margin: auto;
-            @include transitionAll(.2s);
-          }
+          @include transitionAll(.1s);
         }
-        &:not(.active):not(:hover){
+        &.active{
+          background: $blue;
           a{
-            opacity: .5;
-          }
-          a:before{
-            @include transform(translateY(100%));
-            opacity: 0;
+            color: #ffffff;
+            &:after{
+              display: none;
+            }
           }
         }
-        &.active, &:hover{
+      }
+      &:not(.active){
+        @include transform(translateX(100%));
+      }
+    }
+    #drawer{
+      position: absolute;
+      right: 15px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      padding-left: 5px;
+      padding-right: 5px;
+      height: 42px;
+      @include transitionAll(.2s);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 42px;
+      .line{
+        @include transitionAll(.2s);
+        display: block;
+        flex-grow: 1;
+        background: #ffffff;
+        height: 2px;
+        &:not(:last-of-type){
+          margin-bottom: 8px;
+        }
+      }
+      &:hover, &.active{
+        background: #ffffff;
+        .line{
+          background: $blue;
         }
       }
     }
   }
 }
 #about{
-  margin-top: 120px;
   background: url("../images/backgrounds/bass.jpg") no-repeat center / cover $dark-brown;
   #about_inside{
     padding-top: 100px;
@@ -175,6 +301,12 @@ body .ngdialog.ngdialog-theme-default {
         font-weight: $regular;
       }
     }
+  }
+  @media screen and (min-width: 1201px){
+    margin-top: 120px;
+  }
+  @media screen and (max-width:1200px){
+    margin-top: 80px;
   }
 }
 #repertoire{
@@ -533,6 +665,9 @@ body .ngdialog.ngdialog-theme-default {
             @include transform(translateX(100%));
           }
         }
+        .slide:first-of-type{
+          position: relative;
+        }
         .slide:not(:first-of-type){
           position: absolute;
           top: 0;
@@ -632,7 +767,7 @@ footer{
   padding: 0;
     .ninesixzero{
       padding-top: 20px;
-      padding-bottom: 20px;
+      padding-bottom: 20pxz;
       overflow: auto;
       display: flex;
       align-items: center;

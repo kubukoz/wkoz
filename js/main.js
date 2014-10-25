@@ -1,11 +1,16 @@
 /**
  * Created by kubuk_000 on 2014-10-06.
- * todo data
  */
-app = angular.module("wKoz"/*todo*/, ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
-app.run(function ($rootScope) {
-    $rootScope.host = "http://localhost";
-//    $rootScope.host = "http://wlodekkozlowski.pl"; //todo
+app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
+app.run(function ($rootScope, skrollrService, $window) {
+    $rootScope.host = "http://"+$window.location.host+"/api";
+    skrollrService.start($rootScope);
+    $rootScope.duOffset = 120;
+})
+app.config(function(scrollspyConfigProvider){
+    scrollspyConfigProvider.config = {
+        offset: "120|60"
+    }
 })
 app.directive("sticker", function($timeout, SpyFactory){
     return{
@@ -26,6 +31,7 @@ app.directive("sticker", function($timeout, SpyFactory){
     }
 })
 app.controller("NavController", function($scope, $window){
+    //todo drawer icon
     $scope.nav = {visible:false};
     $scope.toggleNav = function () {
         $scope.nav.visible = !$scope.nav.visible;
@@ -36,11 +42,19 @@ app.controller("NavController", function($scope, $window){
     $scope.hideNav = function(){
         $scope.nav.visible = false;
     }
-    angular.element($window).bind('resize', function(){
-        if(this.innerWidth>1000){
-            $scope.hideNav();
+    angular.element($window).bind("resize", function(){
+        if(this.innerWidth>1200){
+            $scope.$apply(function(){
+                $scope.hideNav();
+                if($scope.$root.isSmall) $scope.$root.isSmall = undefined;
+            })
         }
+        else if(!$scope.$root.isSmall) $scope.$root.isSmall = true;
+        $scope.$root.duOffset = !$scope.$root.isSmall?120:80;
     });
+    $scope.$root.$on("navCloseRequested", function(){
+        $scope.hideNav();
+    })
 })
 app.controller("GalleryController", function ($scope) {
     var g = $scope.gallery = {selected: 0, size: 3};
@@ -64,11 +78,18 @@ app.directive("galleryModal", function(ngDialog){
         }
     }
 })
-app.directive("skrollrEnabled", function(){
+app.service("skrollrService", function(){
     return{
-        link: function(scope){
+        start: function(scope){
             if(!(/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/).test(navigator.userAgent.toLowerCase() || navigator.vendor.toLowerCase() || window.opera.toLowerCase())){
-                scope.$root.skrollr = skrollr.init({smoothScrollingDuration:1, forceHeight: false});
+                scope.$root.skrollr = skrollr.init({smoothScrollingDuration:1, forceHeight: false, constants: {
+                    topbar: function(){
+                        return scope.$root.isSmall?80:120;
+                    },
+                    bottombar: function(){
+                        return 60;
+                    }
+                }});
             }
         }
     }
@@ -191,6 +212,15 @@ app.directive("musicPlay", function(){
         link: function(scope,elem){
             elem[0].onclick = function(){
                 scope.$root.$broadcast("musicRequested", {id:+scope.musicPlay});
+            }
+        }
+    }
+})
+app.directive("clickableHidenav", function(){
+    return{
+        link: function(scope,elem){
+            elem[0].onclick = function(){
+                scope.$root.$broadcast("navCloseRequested");
             }
         }
     }

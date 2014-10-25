@@ -3,7 +3,9 @@
     <option name="myName" value="Project Default" />
     <option name="myLocal" value="false" />
     <inspection_tool class="AutoCloseableResource" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="ChannelResource" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="ChannelResource" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
     <inspection_tool class="ClassLoaderInstantiation" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ClassWithTooManyDependencies" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="limit" value="10" />
@@ -37,7 +39,9 @@
     <inspection_tool class="DeserializableClassInSecureContext" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="DesignForExtension" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="DriverManagerGetConnection" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="HibernateResource" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="HibernateResource" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
     <inspection_tool class="HtmlNonExistentInternetResource" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
@@ -49,11 +53,18 @@
       </option>
       <option name="myCustomValuesEnabled" value="true" />
     </inspection_tool>
-    <inspection_tool class="IOResource" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="IOResource" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredTypesString" value="java.io.ByteArrayOutputStream,java.io.ByteArrayInputStream,java.io.StringBufferInputStream,java.io.CharArrayWriter,java.io.CharArrayReader,java.io.StringWriter,java.io.StringReader" />
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
     <inspection_tool class="JDBCExecuteWithNonConstantString" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JDBCPrepareStatementWithNonConstantString" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="JDBCResource" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="JNDIResource" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JDBCResource" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
+    <inspection_tool class="JNDIResource" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
     <inspection_tool class="LoadLibraryWithNonConstantString" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NonFinalClone" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NonStaticInnerClassInSecureContext" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -74,8 +85,12 @@
     </inspection_tool>
     <inspection_tool class="RuntimeExecWithNonConstantString" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SerializableClassInSecureContext" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="SocketResource" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="StaticCollection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="SocketResource" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
+    <inspection_tool class="StaticCollection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="m_ignoreWeakCollections" value="false" />
+    </inspection_tool>
     <inspection_tool class="StringBufferField" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SystemGC" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SystemProperties" enabled="true" level="WARNING" enabled_by_default="true" />

@@ -29,10 +29,10 @@
     <meta property="og:image" content="http://standardexpress.pl/images/og_image.png"/>
     <meta property="og:description" content="Standard Express to grupa muzyków, zajmujących się jazzem, o zmiennym składzie."/><!--todo-->
 </head>
-<body skrollr-enabled>
+<body>
 <header id="header" scrollspy-broadcast>
     <div class="inside ninesixzero clearfix">
-        <a href="#about" du-smooth-scroll offset="120"><div id="logo_main">
+        <a href="#about" du-smooth-scroll offset="{{duOffset}}"><div id="logo_main" clickable-hidenav>
             <svg viewBox="0 0 386.823 144.517">
             <defs>
             <g id="logo_svg">
@@ -170,20 +170,25 @@
             <use xlink:href="#logo_svg"></use>
     </svg>
         </div></a>
-        <nav>
-            <ul>
-                <li scrollspy-listen="header|about"><a href="#about" du-smooth-scroll offset="120">O mnie</a></li>
-                <li scrollspy-listen="repertoire"><a href="#repertoire" du-smooth-scroll offset="120">Repertuar</a></li>
-                <li scrollspy-listen="about_se|locations"><a href="#about_se" du-smooth-scroll offset="120">O Standard Express</a></li>
-                <li scrollspy-listen="music"><a href="#music" du-smooth-scroll offset="120">Muzyka</a></li>
-                <li scrollspy-listen="gallery"><a href="#gallery" du-smooth-scroll offset="120">Galeria</a></li>
-                <li scrollspy-listen="contact|footer"><a href="#contact" du-smooth-scroll offset="120">Kontakt</a></li>
+        <nav id="nav" ng-controller="NavController">
+            <ul ng-class="{'active':nav.visible}" ng-click="hideNav()">
+                <li scrollspy-listen="header|about"><a href="#about" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">O mnie</a></li>
+                <li scrollspy-listen="repertoire"><a href="#repertoire" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Repertuar</a></li>
+                <li scrollspy-listen="about_se|locations"><a href="#about_se" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">O Standard Express</a></li>
+                <li scrollspy-listen="music"><a href="#music" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Muzyka</a></li>
+                <li scrollspy-listen="gallery"><a href="#gallery" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Galeria</a></li>
+                <li scrollspy-listen="contact|footer"><a href="#contact" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Kontakt</a></li>
             </ul>
+            <div id="drawer" ng-click="toggleNav()" ng-class="{'active':nav.visible}">
+                <div class="lines">
+                    <div ng-repeat="x in [0,1,2]" class="line"></div>
+                </div>
+            </div>
         </nav>
     </div>
 </header>
-<div id="about" data-120-top-bottom="background-position: 0 0%" scrollspy-broadcast scrollspy-offset="120|60"
-        data-60-bottom-top="background-position: 0 100%" class="clearfix">
+<div id="about" data-_topbar-top-bottom="background-position: 0 0%" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60"
+        data-_bottombar-bottom-top="background-position: 0 100%" class="clearfix">
     <div id="about_inside" class="ninesixzero clearfix">
         <div class="image col-xs-12 col-sm-4"><div class="inside"></div> </div>
         <div class="text col-xs-12 col-sm-8">
@@ -196,7 +201,7 @@
         </div>
     </div>
 </div>
-<div id="repertoire" scrollspy-broadcast scrollspy-offset="120|60">
+<div id="repertoire" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
     <div class="ninesixzero inside clearfix">
         <h1 class="heading">Repertuar</h1>
         <div class="block">
@@ -218,12 +223,12 @@
             <hr/>
             <div class="columns">
                 <div class="col-xs-12 col-sm-6 text"> W okresie światecznym gramy także&nbsp;kolędy <b>klasycznie&nbsp;i&nbsp;"na jazzowo".</b></div>
-                <div class="col-xs-12 col-sm-6 text"><a href="#music" du-smooth-scroll offset="120" music-play="0"><i><svg viewBox="0 0 40 40"><use xlink:href="#play_button"></use></svg></i>Kolęda polska</a></div>
+                <div class="col-xs-12 col-sm-6 text"><a href="#music" du-smooth-scroll offset="{{duOffset}}" music-play="0"><i><svg viewBox="0 0 40 40"><use xlink:href="#play_button"></use></svg></i>Kolęda polska</a></div>
             </div>
         </div>
     </div>
 </div>
-<div id="about_se" scrollspy-broadcast scrollspy-offset="120|60">
+<div id="about_se" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
     <div class="inside ninesixzero clearfix">
         <h1 class="heading">O Standard Express</h1>
         <div class="col-xs-12 col-sm-4 sax">
@@ -258,7 +263,7 @@
             wielu innych.</p>
     </div>
 </div>
-<div id="locations" scrollspy-broadcast scrollspy-offset="120|60">
+<div id="locations" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
     <div class="inside ninesixzero clearfix"><h1 class="heading">Miejsca</h1>
         <hr/>
         <p>Mieliśmy przyjemność grać na imprezach takich jak:</p>
@@ -273,8 +278,8 @@
         <p>Można nas także posłuchać w klubach jazzowych, pubach, restauracjach. Działamy na terenie całego kraju.
             Oferujemy ponadto pomoc w reklamie imprezy (plakaty, ulotki, media).</p></div>
 </div>
-<div id="music" scrollspy-broadcast scrollspy-offset="120|60" data-60-bottom-top="background-position: 0 100%"
-        data-120-top-bottom="background-position: 0 0%">
+<div id="music" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" data-_bottombar-bottom-top="background-position: 0 100%"
+        data-_topbar-top-bottom="background-position: 0 0%">
     <div class="ninesixzero">
         <h1 class="heading">Muzyka</h1>
         <div class="col-xs-12 col-sm-6 column">
@@ -328,7 +333,7 @@
         </div>
     </div>
 </div>
-<div id="gallery" scrollspy-broadcast scrollspy-offset="120|60" ng-controller="GalleryController">
+<div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController">
     <div class="ninesixzero">
         <h1 class="heading">Galeria</h1>
         <div class="wrapper">
@@ -364,7 +369,7 @@
         </div>
     </div>
 </div>
-<div id="contact" scrollspy-broadcast scrollspy-offset="120|60">
+<div id="contact" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
     <div class="inside ninesixzero">
         <div class="col-xs-12 col-sm-6 tag"><h1 class="heading">Kontakt</h1></div>
         <div class="col-xs-12 col-sm-6 data">
@@ -382,7 +387,7 @@
         </div>
     </div>
 </div>
-<footer scrollspy-broadcast id="footer" scrollspy-offset="120|60">
+<footer scrollspy-broadcast id="footer" clickable-hidenav scrollspy-offset="auto|60">
     <div class="ninesixzero">
         <div class="copyright">
             <h2>Copyright &copy; 2014</h2>

@@ -65,7 +65,8 @@ angular.module('ngScrollSpy', [])
       scope: true,
       link: function(scope, element, attrs) {
         angular.extend(config, scrollspyConfig.config);
-        var offset = (""+attrs.scrollspyOffset).split("|") || [config.offset];
+        var offset = (""+attrs.scrollspyOffset).split("|") || config.offset.split("|");
+        if(offset[0]=="auto") offset[0] = config.offset.split("|")[0];
         offset = [+offset[0], +(offset.length<2?offset[0]:offset[1])]
         scope.checkActive = function() {
           scope.elementTop = element[0].offsetTop;
