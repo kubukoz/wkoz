@@ -31,7 +31,7 @@ app.directive("sticker", function($timeout, SpyFactory){
     }
 })
 app.controller("NavController", function($scope, $window){
-    //todo drawer icon
+    app.scope = $scope;
     $scope.nav = {visible:false};
     $scope.toggleNav = function () {
         $scope.nav.visible = !$scope.nav.visible;
@@ -43,7 +43,7 @@ app.controller("NavController", function($scope, $window){
         $scope.nav.visible = false;
     }
     angular.element($window).bind("resize", function(){
-        if(this.innerWidth>1200){
+        if(this.innerWidth>980){
             $scope.$apply(function(){
                 $scope.hideNav();
                 if($scope.$root.isSmall) $scope.$root.isSmall = undefined;
@@ -153,8 +153,7 @@ app.directive("musicPlayer", function(){
             scrollbar.ontouchmove = scrollbar.onmousemove = function(e){
                 if(scope.vol.clicked){
                     e.preventDefault();
-                    vol = Math.round(100*Math.min(Math.max((e.offsetX || (e.clientX-scrollbar.getBoundingClientRect().left) || 0), 0)/ scrollbar.offsetWidth, 1));
-                    scope.$apply(function(){
+                    vol = Math.round(100*Math.min(Math.max((e.offsetX || (e.clientX-scrollbar.getBoundingClientRect().left) || 0), 0)/ scrollbar.offsetWidth, 1));   scope.$apply(function(){
                         p.volume = vol;
                     })
                 }

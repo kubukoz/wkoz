@@ -51,9 +51,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
   left: 0;
   right: 0;
   z-index: 2;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25); }
+  -webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25); }
   #header .inside {
     display: flex; }
   #header #logo_main {
@@ -73,7 +73,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       right: 0;
       height: 20px;
       background: #1e3f59; }
-  @media screen and (min-width: 1201px) {
+  @media screen and (min-width: 981px) {
     #header nav {
       display: inline-flex;
       align-self: stretch;
@@ -129,7 +129,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             opacity: 0; }
       #header nav #drawer {
         display: none; } }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 980px) {
     #header {
       height: 80px;
       display: flex;
@@ -183,9 +183,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             bottom: 0;
             left: 0;
             right: 0;
-            -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
-            -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
-            box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25); }
+            -webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25); }
           #header ul li:not(:last-of-type) a:after {
             display: block;
             content: '';
@@ -266,9 +266,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       background: url("../images/icons/wlod.jpg") no-repeat center/contain;
       width: 140px;
       height: 140px;
-      -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
-      -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
-      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5); }
+      -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5); }
     #about #about_inside .text {
       color: #ffffff; }
       #about #about_inside .text h1 {
@@ -286,10 +286,10 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         line-height: 1.8em;
         font-family: "Open Sans", sans-serif;
         font-weight: 400; }
-  @media screen and (min-width: 1201px) {
+  @media screen and (min-width: 981px) {
     #about {
       margin-top: 120px; } }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 980px) {
     #about {
       margin-top: 80px; } }
 
@@ -302,7 +302,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
   #repertoire .inside .block h2 {
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     background: #3e2723;
     color: #ffffff; }
   #repertoire .inside .block .columns {
@@ -701,7 +701,7 @@ footer {
   padding: 0; }
   footer .ninesixzero {
     padding-top: 20px;
-    padding-bottom: 20pxz;
+    padding-bottom: 20px;
     overflow: auto;
     display: flex;
     align-items: center;
@@ -868,5 +868,28 @@ music-player {
             width: 6px;
             height: 6px;
             background: #cccccc; }
+  @media screen and (max-width: 520px) {
+    music-player #now_playing span {
+      font-size: 1.2em; }
+    music-player #now_playing b {
+      font-size: 1.2em; }
+    music-player #controls {
+      width: 110px; }
+      music-player #controls .control {
+        width: 30px;
+        height: 30px; }
+    music-player #volume i {
+      font-size: 1.3em; }
+    music-player #volume .progressbar {
+      margin-left: 18px;
+      width: 80px; } }
+  @media screen and (max-width: 400px) {
+    music-player #now_playing span {
+      font-size: 1em; }
+    music-player #now_playing b {
+      font-size: 1em; } }
+  @media screen and (max-width: 350px) {
+    music-player #volume .progressbar {
+      width: 50px; } }
 
 /*# sourceMappingURL=main.css.map */
