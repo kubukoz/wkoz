@@ -96,7 +96,7 @@ app.service("skrollrService", function(){
 })
 app.directive("musicPlayer", function(){
     return{
-        restrict: "AE",
+        restrict: "E",
         link: function(scope,elem){
             var p = scope.$root.player = scope.player = { playing: false, selected: 0, volume: 40, audio: new Audio()};
             p.songs = scope.$root.songs = [
@@ -189,7 +189,6 @@ app.directive("musicPlayer", function(){
                     }
                 });
             }
-
             scope.$on("musicRequested", function(obj, val){
                 scope.$apply(function () {
                     if(!(p.playing && p.selected == val.id)){
