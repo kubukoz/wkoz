@@ -17,6 +17,9 @@ h1.heading {
   line-height: 1.3em;
   text-transform: uppercase;
   text-align: center; }
+  @media screen and (max-width: 460px) {
+    h1.heading {
+      font-size: 2em; } }
 
 h2.subheading {
   display: inline-block;
@@ -286,6 +289,17 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         line-height: 1.8em;
         font-family: "Open Sans", sans-serif;
         font-weight: 400; }
+    @media screen and (max-width: 768px) {
+      #about #about_inside {
+        padding-top: 50px;
+        padding-bottom: 50px; }
+        #about #about_inside .image {
+          margin-bottom: 40px; }
+        #about #about_inside .text h1 {
+          font-size: 2em;
+          text-align: center; }
+        #about #about_inside .text p {
+          text-align: justify; } }
   @media screen and (min-width: 981px) {
     #about {
       margin-top: 120px; } }
@@ -369,6 +383,21 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
     height: 2px;
     background: #1e3f59;
     opacity: .2; }
+@media screen and (max-width: 768px) {
+  #repertoire .inside .block {
+    display: flex;
+    flex-direction: column; }
+    #repertoire .inside .block h2 {
+      width: 50%;
+      margin: 0 auto;
+      padding: 12px 0 13px; }
+    #repertoire .inside .block .text {
+      text-align: justify; } }
+@media screen and (max-width: 460px) {
+  #repertoire .inside .block h2 {
+    width: 90%; }
+  #repertoire .inside .block .text {
+    font-size: 1em; } }
 
 #about_se {
   background: #1e3f59;
