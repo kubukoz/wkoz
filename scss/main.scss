@@ -408,6 +408,7 @@ body .ngdialog.ngdialog-theme-default {
   }
   @media screen and (max-width: 768px){
     .inside{
+      padding-bottom: 10px;
       .block {
         display: flex;
         flex-direction: column;
@@ -418,6 +419,14 @@ body .ngdialog.ngdialog-theme-default {
         }
         .text{
           text-align: justify;
+          a{
+            padding: 0 42px 0 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin: 20px auto 0;
+            width: 80%;
+          }
         }
       }
     }
@@ -488,7 +497,36 @@ body .ngdialog.ngdialog-theme-default {
         text-align: center;
       }
     }
-
+  }
+  @media screen and (max-width: 768px){
+    .inside{
+      .sax{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:90%;
+        margin: 0 auto;
+      }
+      .right{
+        margin-top: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+          width: 100%;
+        }
+      }
+      hr{
+        margin-top: 23px;
+      }
+      .text{
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: justify;
+      }
+    }
   }
 }
 #locations{
@@ -615,7 +653,7 @@ body .ngdialog.ngdialog-theme-default {
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 0;
+            right: 20px;
             margin: auto;
             opacity: .5;
           }
@@ -630,7 +668,7 @@ body .ngdialog.ngdialog-theme-default {
         }
       }
     }
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 992px){
       &:nth-of-type(1){
         padding-right: 20px;
       }
@@ -643,8 +681,7 @@ body .ngdialog.ngdialog-theme-default {
 #gallery{
   overflow: auto;
   .ninesixzero{
-    padding-top: 67px;
-    padding-bottom: 80px;
+    padding: 67px 0 80px 0;
     overflow: hidden;
     h1{
       color: $dark-brown;
@@ -653,11 +690,10 @@ body .ngdialog.ngdialog-theme-default {
     .wrapper{
       position: relative;
       width: 100%;
-      @include withPseudo;
-      .left{
+      .arrow.left{
         left: 0;
       }
-      .right{
+      .arrow.right{
         @include transform(scaleX(-1));
         right: 0;
       }
@@ -673,6 +709,7 @@ body .ngdialog.ngdialog-theme-default {
         display: block;
         content: '';
         position: absolute;
+        z-index: 1;
         top: 0;
         bottom: 0;
         margin: auto;
@@ -695,11 +732,21 @@ body .ngdialog.ngdialog-theme-default {
             padding-bottom: 100%;
           }
         }
+        @media screen and (max-width: 580px){
+          flex-direction: column;
+          align-items: center;
+          .item{
+            width: 90%;
+            &:not(:last-of-type){
+              margin-bottom: 20px;
+            }
+          }
+        }
         @include transitionAll(.3s);
-      }
+        }
       .slides{
         max-width: 800px;
-        width: 100%;
+        width: 90%;
         margin: 0 auto;
         overflow: hidden;
         position: relative;
@@ -728,9 +775,9 @@ body .ngdialog.ngdialog-theme-default {
 #contact{
   overflow: auto;
   background: $gray-light;
-  padding-top: 29px;
-  padding-bottom: 32px;
   .inside{
+    max-width: 980px;
+    padding: 29px 10px 32px 10px;
     display: flex;
     align-items: center;
     .tag{
@@ -804,6 +851,32 @@ body .ngdialog.ngdialog-theme-default {
       }
     }
   }
+  @media screen and (max-width: 768px){
+    .inside{
+      flex-direction: column;
+      .tag{
+        h1{
+          text-align: center;
+        }
+      }
+      .data{
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        .left{
+          margin-top: 20px;
+          margin-bottom: 20px;
+          text-align: left;
+          &:before{
+            display: none;
+          }
+        }
+        .right{
+          padding-left: 0;
+        }
+      }
+    }
+  }
 }
 footer{
   overflow: auto;
@@ -811,40 +884,48 @@ footer{
   background: $blue;
   color: #ffffff;
   padding: 0;
-    .ninesixzero{
+  .ninesixzero {
+    max-width: 980px;
+    padding: 20px 10px;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      font-size: 1em;
+      font-family: $font-main;
+      font-weight: $regular;
+      margin-top: 0;
+      margin-bottom: 0;
+      b, a {
+        font-weight: $bold;
+        color: inherit;
+      }
+      &:not(:last-of-type) {
+        margin-bottom: 9px;
+      }
+    }
+    .copyright, .logo, .authors {
       padding-top: 20px;
       padding-bottom: 20px;
-      overflow: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      h2{
-        font-size: 1em;
-        font-family: $font-main;
-        font-weight: $regular;
-        margin-top: 0;
-        margin-bottom: 0;
-        b, a{
-          font-weight: $bold;
-          color: inherit;
-        }
-        &:not(:last-of-type){
-          margin-bottom: 9px;
-        }
+    }
+    .logo {
+      svg {
+        width: 194px;
+        fill: #ffffff;
       }
+    }
+    .authors {
+      text-align: right;
+    }
+  }
+  @media screen and (max-width: 768px){
+    .ninesixzero{
+      flex-direction: column;
       .copyright, .logo, .authors{
-        padding-top: 20px;
-        padding-bottom: 20px;
+        text-align: center;
       }
-      .logo{
-        svg{
-          width: 194px;
-          fill: #ffffff;
-        }
-      }
-      .authors{
-        text-align: right;
-      }
+    }
   }
 }
 music-player{

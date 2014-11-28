@@ -384,15 +384,24 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
     background: #1e3f59;
     opacity: .2; }
 @media screen and (max-width: 768px) {
-  #repertoire .inside .block {
-    display: flex;
-    flex-direction: column; }
-    #repertoire .inside .block h2 {
-      width: 50%;
-      margin: 0 auto;
-      padding: 12px 0 13px; }
-    #repertoire .inside .block .text {
-      text-align: justify; } }
+  #repertoire .inside {
+    padding-bottom: 10px; }
+    #repertoire .inside .block {
+      display: flex;
+      flex-direction: column; }
+      #repertoire .inside .block h2 {
+        width: 50%;
+        margin: 0 auto;
+        padding: 12px 0 13px; }
+      #repertoire .inside .block .text {
+        text-align: justify; }
+        #repertoire .inside .block .text a {
+          padding: 0 42px 0 0;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          margin: 20px auto 0;
+          width: 80%; } }
 @media screen and (max-width: 460px) {
   #repertoire .inside .block h2 {
     width: 90%; }
@@ -441,6 +450,28 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       margin-bottom: 26px; }
     #about_se .inside p.text {
       text-align: center; }
+  @media screen and (max-width: 768px) {
+    #about_se .inside .sax {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      margin: 0 auto; }
+    #about_se .inside .right {
+      margin-top: 50px;
+      padding-left: 20px;
+      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      #about_se .inside .right h2 {
+        width: 100%; }
+    #about_se .inside hr {
+      margin-top: 23px; }
+    #about_se .inside .text {
+      padding-left: 20px;
+      padding-right: 20px;
+      text-align: justify; } }
 
 #locations {
   overflow: auto;
@@ -554,14 +585,14 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 0;
+            right: 20px;
             margin: auto;
             opacity: .5; }
           #music .column .block ul li:not(:hover) .button {
             opacity: .5; }
           #music .column .block ul li:not(:last-of-type) {
             margin-bottom: 2px; }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 992px) {
       #music .column:nth-of-type(1) {
         padding-right: 20px; }
       #music .column:nth-of-type(2) {
@@ -570,8 +601,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
 #gallery {
   overflow: auto; }
   #gallery .ninesixzero {
-    padding-top: 67px;
-    padding-bottom: 80px;
+    padding: 67px 0 80px 0;
     overflow: hidden; }
     #gallery .ninesixzero h1 {
       color: #3e2723;
@@ -579,12 +609,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
     #gallery .ninesixzero .wrapper {
       position: relative;
       width: 100%; }
-      #gallery .ninesixzero .wrapper:before, #gallery .ninesixzero .wrapper:after {
-        display: block;
-        content: ''; }
-      #gallery .ninesixzero .wrapper .left {
+      #gallery .ninesixzero .wrapper .arrow.left {
         left: 0; }
-      #gallery .ninesixzero .wrapper .right {
+      #gallery .ninesixzero .wrapper .arrow.right {
         -moz-transform: scaleX(-1);
         -webkit-transform: scaleX(-1);
         transform: scaleX(-1);
@@ -599,6 +626,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         display: block;
         content: '';
         position: absolute;
+        z-index: 1;
         top: 0;
         bottom: 0;
         margin: auto;
@@ -631,9 +659,17 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             width: 100%;
             height: 0;
             padding-bottom: 100%; }
+        @media screen and (max-width: 580px) {
+          #gallery .ninesixzero .wrapper .slide {
+            flex-direction: column;
+            align-items: center; }
+            #gallery .ninesixzero .wrapper .slide .item {
+              width: 90%; }
+              #gallery .ninesixzero .wrapper .slide .item:not(:last-of-type) {
+                margin-bottom: 20px; } }
       #gallery .ninesixzero .wrapper .slides {
         max-width: 800px;
-        width: 100%;
+        width: 90%;
         margin: 0 auto;
         overflow: hidden;
         position: relative; }
@@ -656,10 +692,10 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
 
 #contact {
   overflow: auto;
-  background: #ebebeb;
-  padding-top: 29px;
-  padding-bottom: 32px; }
+  background: #ebebeb; }
   #contact .inside {
+    max-width: 980px;
+    padding: 29px 10px 32px 10px;
     display: flex;
     align-items: center; }
     #contact .inside .tag {
@@ -721,6 +757,23 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
           #contact .inside .data .right .fb:hover svg {
             background: #1e3f59;
             fill: #ebebeb; }
+  @media screen and (max-width: 768px) {
+    #contact .inside {
+      flex-direction: column; }
+      #contact .inside .tag h1 {
+        text-align: center; }
+      #contact .inside .data {
+        justify-content: center;
+        flex-direction: column;
+        text-align: center; }
+        #contact .inside .data .left {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          text-align: left; }
+          #contact .inside .data .left:before {
+            display: none; }
+        #contact .inside .data .right {
+          padding-left: 0; } }
 
 footer {
   overflow: auto;
@@ -729,8 +782,8 @@ footer {
   color: #ffffff;
   padding: 0; }
   footer .ninesixzero {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    max-width: 980px;
+    padding: 20px 10px;
     overflow: auto;
     display: flex;
     align-items: center;
@@ -754,6 +807,11 @@ footer {
       fill: #ffffff; }
     footer .ninesixzero .authors {
       text-align: right; }
+  @media screen and (max-width: 768px) {
+    footer .ninesixzero {
+      flex-direction: column; }
+      footer .ninesixzero .copyright, footer .ninesixzero .logo, footer .ninesixzero .authors {
+        text-align: center; } }
 
 music-player {
   position: fixed;
