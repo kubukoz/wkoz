@@ -12,7 +12,7 @@ $x = $dbh->quickQuery("select * from gallery where id=? limit 1", array($form['i
 if($x->rowCount() < 1) exitMessage($CODES['ENTITY_NOTFOUND']);
 $image = $x->fetch(PDO::FETCH_ASSOC);
 removeImage($image['image']);
-$order = $x['ordr'];
+$order = $image['ordr'];
 $dbh->quickQuery("delete from gallery where id=? limit 1", array($form['id']));
 $dbh->quickQuery("update gallery set ordr=ordr-1 where ordr>?", array($order));
 echo json_encode(array("message"=>$CODES['ENTITY_DELETED']));

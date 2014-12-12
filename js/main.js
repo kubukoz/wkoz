@@ -202,6 +202,7 @@ app.directive("musicPlayer", function(){
         }
     }
 })
+a
 app.directive("musicPlay", function(){
     return{
         scope: {
@@ -223,3 +224,8 @@ app.directive("clickableHidenav", function(){
         }
     }
 })
+/*gdzieś trzeba, więc piszę tutaj
+* todo panel do muzyki. Podział na kategorie, reorganizacja kategorii+piosenek
+* todo favicon
+* chyba wszycho
+* */
