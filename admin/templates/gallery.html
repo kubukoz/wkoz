@@ -11,7 +11,7 @@
 
                 <div ng-show="editedEntity.image.length">
                     <img ng-src="../{{editedEntity.image}}" style="height:200px; width:auto; margin-bottom: 20px"/>
-                    <button class="delete" ng-click="removeImage()">Usuń zdjęcie</button>
+                    <button class="delete" ng-click="removeImage()">Usuń zdjęcie (zmiana zapisuje się po wgraniu nowego)</button>
                 </div>
                 <div ng-show="!eUploader.queue.length && !editedEntity.image.length" class="uploader">
                     Zdjęcie: <input type="file" nv-file-select uploader="eUploader" style="width: auto" multiple/>

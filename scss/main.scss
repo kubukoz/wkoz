@@ -668,6 +668,15 @@ body .ngdialog.ngdialog-theme-default {
         }
       }
     }
+    @media screen and (max-width: 500px) {
+      .block{
+        ul{
+          li{
+            font-size: 1.3em !important;
+          }
+        }
+      }
+    }
     @media screen and (min-width: 992px){
       &:nth-of-type(1){
         padding-right: 20px;
@@ -698,6 +707,7 @@ body .ngdialog.ngdialog-theme-default {
         right: 0;
       }
       .arrow{
+        overflow: hidden;
         svg{
           fill: $dark-brown;
         }

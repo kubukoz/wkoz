@@ -592,6 +592,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             opacity: .5; }
           #music .column .block ul li:not(:last-of-type) {
             margin-bottom: 2px; }
+    @media screen and (max-width: 500px) {
+      #music .column .block ul li {
+        font-size: 1.3em !important; } }
     @media screen and (min-width: 992px) {
       #music .column:nth-of-type(1) {
         padding-right: 20px; }
@@ -617,6 +620,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         transform: scaleX(-1);
         right: 0; }
       #gallery .ninesixzero .wrapper .arrow {
+        overflow: hidden;
         cursor: pointer;
         -webkit-transition: 0.2s;
         -moz-transition: 0.2s;

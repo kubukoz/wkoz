@@ -347,20 +347,8 @@
                 <svg><use xlink:href="#arrow"></use></svg>
             </div>
             <div class="slides">
-                <div class="slide" ng-class="{'unselected':gallery.selected!=0, 'left':gallery.selected>0}">
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                </div>
-                <div class="slide unselected right" ng-class="{'unselected':gallery.selected!=1, 'left':gallery.selected>1, 'right':gallery.selected<1}">
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                </div>
-                <div class="slide unselected right" ng-class="{'unselected':gallery.selected!=2, 'left':gallery.selected>2, 'right':gallery.selected<2}">
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
-                    <div class="item"> <div class="image" style="background-image: url('http://placehold.it/800x600')" gallery-modal href="'http://placehold.it/800x600'"></div> </div>
+                <div ng-repeat="row in galrows" class="slide" ng-class="{'unselected':gallery.selected!=$index, 'left':gallery.selected>$index, 'right':gallery.selected<$index}">
+                    <div class="item" ng-repeat="item in row"><div class="image" ng-style="{'background-image': 'url('+item.image+')'}" gallery-modal ng-href="{{item.image}}"></div></div>
                 </div>
             </div>
         </div>

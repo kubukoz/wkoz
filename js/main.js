@@ -3,11 +3,12 @@
  */
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, skrollrService, $window) {
-    $rootScope.host = "http://"+$window.location.host+"/api";
+    $rootScope.host = "http://"+$window.location.hostname+"/api";
     skrollrService.start($rootScope);
     $rootScope.duOffset = 120;
 })
-app.config(function(scrollspyConfigProvider){
+app.config(function(scrollspyConfigProvider, $httpProvider){
+    $httpProvider.defaults.withCredentials = true;
     scrollspyConfigProvider.config = {
         offset: "120|60"
     }
@@ -56,14 +57,23 @@ app.controller("NavController", function($scope, $window){
         $scope.hideNav();
     })
 })
-app.controller("GalleryController", function ($scope) {
-    var g = $scope.gallery = {selected: 0, size: 3};
+app.controller("GalleryController", function ($scope, $http) {
+    var g = $scope.gallery = {selected: 0, size: 0};
     g.next = function(){
         g.selected+=((g.selected<g.size-1)?1:-g.selected);
     }
     g.previous = function(){
         g.selected-=(g.selected>0?1:(-g.size+1));
     }
+    $http.get($scope.host+"/get_all.php").then(function(result){
+        $scope.galrows = [];
+        var currRow = [];
+        for (var i = 0; i < result.data.gallery.length; i++) {
+            currRow.push(result.data.gallery[i]);
+            if(currRow.length == 3 || i == result.data.gallery.length-1){$scope.galrows.push(currRow); currRow = []}
+        }
+        g.size = $scope.galrows.length;
+    })
 })
 app.directive("galleryModal", function(ngDialog){
     return {
@@ -202,7 +212,6 @@ app.directive("musicPlayer", function(){
         }
     }
 })
-a
 app.directive("musicPlay", function(){
     return{
         scope: {
@@ -227,5 +236,6 @@ app.directive("clickableHidenav", function(){
 /*gdzieś trzeba, więc piszę tutaj
 * todo panel do muzyki. Podział na kategorie, reorganizacja kategorii+piosenek
 * todo favicon
+* todo korzystanie z api, dostosowanie niedokończonego playera
 * chyba wszycho
 * */
