@@ -3,7 +3,7 @@
  */
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, skrollrService, $window) {
-    $rootScope.host = "http://"+$window.location.hostname+"/api";
+    $rootScope.host = "http://"+$window.location.hostname+":8080/api";
     skrollrService.start($rootScope);
     $rootScope.duOffset = 120;
 })

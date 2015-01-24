@@ -110,9 +110,9 @@ header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
 
-$dbname = getMode()==0?"wkoz":""; //todo
-$host = "localhost";
-$user = getMode()==0?"root":""; $pass = getMode()==0?"root":"";
+$dbname = getMode()==0?"wkoz":"";
+$host = "localhost:3306";
+$user = getMode()==0?"root":""; $pass = getMode()==0?"":"";
 try{
     $dbh = new SimplePDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $dbh->query("SET NAMES utf8");

@@ -6,7 +6,7 @@ app.run(function($rootScope, $http, ngDialog, authService){
     var dialogVisible = false;
     $rootScope.message = {text:""};
     $rootScope.authmessage = "Zaloguj się";
-    $rootScope.host = "http://localhost";
+    $rootScope.host = "http://localhost:8080";
 //    $rootScope.host = "http://wlodekkozlowski.pl"; //todo
     $rootScope.apiHost = $rootScope.host+"/admin/api";
     $rootScope.title = {main: "WK Panel"/*todo*/, sub: ""};
