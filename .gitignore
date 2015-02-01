@@ -2,3 +2,4 @@
 .idea/dataSources.*
 music/*
 */.DS_Store
+bower_components/

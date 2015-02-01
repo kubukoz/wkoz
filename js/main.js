@@ -2,9 +2,8 @@
  * Created by kubuk_000 on 2014-10-06.
  */
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
-app.run(function ($rootScope, skrollrService, $window) {
+app.run(function ($rootScope, $window) {
     $rootScope.host = "http://"+$window.location.hostname+":8080/api";
-    skrollrService.start($rootScope);
     $rootScope.duOffset = 120;
 })
 app.config(function(scrollspyConfigProvider, $httpProvider){
@@ -85,22 +84,6 @@ app.directive("galleryModal", function(ngDialog){
                     ngDialog.open({plain: true, template: "<div style='background: url({{attr.href}}) no-repeat center / contain'></div>", scope: scope});
                 }
             })
-        }
-    }
-})
-app.service("skrollrService", function(){
-    return{
-        start: function(scope){
-            if(!(/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/).test(navigator.userAgent.toLowerCase() || navigator.vendor.toLowerCase() || window.opera.toLowerCase())){
-                scope.$root.skrollr = skrollr.init({smoothScrollingDuration:1, forceHeight: false, constants: {
-                    topbar: function(){
-                        return scope.$root.isSmall?80:120;
-                    },
-                    bottombar: function(){
-                        return 60;
-                    }
-                }});
-            }
         }
     }
 })

@@ -117,6 +117,41 @@ a{
           bottom: 3px;
         }
       }
+      &.delete{
+        i{
+          color: $red;
+        }
+        &:hover{
+          background: $red;
+
+          i{
+            color: #FFF;
+          }
+        }
+      }
+    }
+  }
+}
+tr{
+  td{
+    input{
+      margin: 0 !important;
+    }
+    button{
+      margin: 0;
+    }
+    &.add{
+      @include transitionAll(.2s);
+      text-align: center;
+      i{
+        color: $green;
+      }
+      &:hover{
+        background: $green;
+        i{
+          color: #ffffff;
+        }
+      }
     }
   }
 }

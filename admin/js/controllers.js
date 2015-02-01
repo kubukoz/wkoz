@@ -251,6 +251,56 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
 
     $scope.getEntities();
 });
+app.controller("MusicController", function($scope, entityService, FileUploader, $http){
+    $scope.title.sub = "Muzyka";
+    entityService.scope = $scope;
+    var strings = $scope.$root.strings = {
+        TYPE: "music",
+        FORM: {
+            CREATE_ENTITY: "Dodaj kategorię"
+        },
+        CREATED: "Dodano kategorię.",
+        DELETED: "Usunięto kategorię.",
+        UPDATED: "Zaktualizowano kategorię.",
+        REORDERED: "Przeniesiono kategorię.",
+        DELETE_QUESTION: "Czy aby na pewno chcesz usunąć tę kategorię wraz ze wszystkimi utworami w niej?",
+
+        INVALID: "Nie wypełniono wszystkich pól. Spróbuj ponownie.",
+        ERROR: "Wystąpił błąd. Spróbuj ponownie.",
+        FILL_ALL_FIELDS: "Wypełnij wszystkie pola.",
+        CREATE_PLS: "Dodaj",
+        UPDATE_PLS: "Aktualizuj",
+        DELETE_PLS: "Usuń"
+    };
+    $scope.categories = [];
+    $scope.auth();
+    $scope.newCategory = {};
+    $scope.createCategory = function(){
+        if($scope.createCategory_form.$valid){
+            entityService.createEntity(strings.TYPE+"/cats", $scope.newCategory, function(data, code){
+                switch(code) {
+                    case entityService.codes.ENTITY_CREATED:
+                        $scope.message.text = strings.CREATED;
+                        $scope.newCategory = {};
+                        $scope.getEntities();
+                        break;
+                    case entityService.codes.ENTITY_INVALID:
+                        $scope.message.text = strings.INVALID;
+                        break;
+                    default:
+                        $scope.message.text = strings.ERROR;
+                        break;
+                }
+            })
+        }
+    }
+    $scope.getEntities = function(){
+        entityService.getEntities(strings.TYPE+"/cats", function(data){
+            $scope.categories = data;
+        })
+    }
+    $scope.getEntities();
+});
 app.service("entityService", function($rootScope, $http){
     scope = null;
     codes = {ENTITY_CREATED: 1,

@@ -68,6 +68,9 @@ app.config(function($routeProvider, $httpProvider){
         .when("/gallery", {
             templateUrl: "templates/gallery.html"
         })
+        .when("/music", {
+            templateUrl: "templates/music.html"
+        })
         .otherwise({
             redirectTo: "/"
         })

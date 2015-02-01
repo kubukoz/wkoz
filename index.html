@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <!--suppress XmlUnboundNsPrefix -->
+<!DOCTYPE html>
 <html ng-app="wKoz" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link href="plugins/reset.css" rel="stylesheet"/>
     <link href="styles/main.css" rel="stylesheet"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.13/angular-route.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="plugins/ng-ScrollSpy.js"></script>
     <script src="plugins/angular-scroll.min.js"></script>
     <script src="plugins/ngDialog/js/ngDialog.min.js"></script>
     <link rel="icon" href="images/favicon.ico"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="plugins/ngDialog/css/ngDialog-theme-default.css"/>
     <link rel="stylesheet" href="plugins/ngDialog/css/ngDialog.min.css"/>
     <link href='https://fonts.googleapis.com/css?family=Open Sans:300,400,700|Roboto:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
@@ -28,9 +28,9 @@
     <meta property="og:description" content="Standard Express to grupa muzyków zajmujących się jazzem, o zmiennym składzie."/><!--todo-->
 </head>
 <body>
-<header id="header" scrollspy-broadcast>
+<header id="header" scrollspy-broadcast scrollspy-offset="auto">
     <div class="inside ninesixzero clearfix">
-        <a href="#about" du-smooth-scroll offset="{{duOffset}}"><div id="logo_main" clickable-hidenav>
+        <a href="#about" du-smooth-scroll offset="{{duOffset}}"><div id="logo_main">
             <svg viewBox="0 0 386.823 144.517">
             <defs>
                 <g id="logo_svg">
@@ -185,8 +185,7 @@
         </nav>
     </div>
 </header>
-<div id="about" data-_topbar-top-bottom="background-position: 0 0%" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60"
-        data-_bottombar-bottom-top="background-position: 0 100%" class="clearfix">
+<div id="about" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" class="clearfix">
     <div id="about_inside" class="ninesixzero clearfix">
         <div class="image col-xs-12 col-sm-4"><div class="inside"></div> </div>
         <div class="text col-xs-12 col-sm-8">
@@ -330,7 +329,7 @@
         </div>
     </div>
 </div>
-<div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController" ng-show="gallery.size>0">
+<div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController">
     <div class="ninesixzero">
         <h1 class="heading">Galeria</h1>
         <div class="wrapper">
@@ -440,5 +439,4 @@
 </music-player>
 </body>
 <script src="js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.26/skrollr.min.js"></script>
 </html>
