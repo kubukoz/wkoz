@@ -28,7 +28,6 @@ app.controller("UsersController", function($scope, entityService, authService){
         DELETE_PLS: "Usuń"
     };
     $scope.entities = [];
-    $scope.auth();
     $scope.newEntity = {};
     $scope.editedEntity = {};
     $scope.$watch("selectedEntity", function(){
@@ -102,8 +101,9 @@ app.controller("UsersController", function($scope, entityService, authService){
             $scope.entities = data;
         })
     }
-
-    $scope.getEntities();
+    $scope.auth(undefined, function callback(){
+        $scope.getEntities();
+    });
 });
 app.controller("GalleryController", function($scope, entityService, FileUploader, $http){
     $scope.title.sub = "Galeria";
@@ -130,7 +130,6 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
         DELETE_PLS: "Usuń"
     };
     $scope.entities = [];
-    $scope.auth();
     $scope.newEntity = {};
     $scope.editedEntity = {};
     var nUploader = $scope.nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/images/image_upload.php'});
@@ -248,8 +247,9 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
             $scope.getEntities();
         });
     }
-
-    $scope.getEntities();
+    $scope.auth(undefined, function callback(){
+        $scope.getEntities();
+    })
 });
 app.controller("MusicController", function($scope, entityService, FileUploader, $http){
     $scope.title.sub = "Muzyka";
@@ -273,7 +273,6 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         DELETE_PLS: "Usuń"
     };
     $scope.categories = [];
-    $scope.auth();
     $scope.newCategory = {};
     $scope.createCategory = function(){
         if($scope.createCategory_form.$valid){
@@ -299,7 +298,9 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
             $scope.categories = data;
         })
     }
-    $scope.getEntities();
+    $scope.auth(undefined, function callback(){
+        $scope.getEntities();
+    });
 });
 app.service("entityService", function($rootScope, $http){
     scope = null;

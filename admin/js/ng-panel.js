@@ -3,6 +3,7 @@
  */
 app = angular.module("panel", ['ngSanitize', 'ngRoute', 'ngDialog', 'textAngular', "angularFileUpload"]);
 app.run(function($rootScope, $http, ngDialog, authService){
+    $rootScope.pendingCallback = undefined;
     var dialogVisible = false;
     $rootScope.message = {text:""};
     $rootScope.authmessage = "Zaloguj się";
@@ -10,13 +11,18 @@ app.run(function($rootScope, $http, ngDialog, authService){
 //    $rootScope.host = "http://wlodekkozlowski.pl"; //todo
     $rootScope.apiHost = $rootScope.host+"/admin/api";
     $rootScope.title = {main: "WK Panel"/*todo*/, sub: ""};
-    $rootScope.auth = function(user){
+    $rootScope.auth = function(user, callback){
             authService.auth(user)
                 .then(function(result){
+                    if(callback) $rootScope.pendingCallback = callback;
                     if(result.data.user != undefined){
                         $rootScope.user = result.data.user;
                         ngDialog.close();
                         dialogVisible = false;
+                        if($rootScope.pendingCallback){
+                            $rootScope.pendingCallback();
+                            $rootScope.pendingCallback = undefined;
+                        }
                     }
                     else if(result.data.error != undefined){
                         $rootScope.user = undefined;
