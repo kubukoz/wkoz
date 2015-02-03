@@ -7,31 +7,34 @@
     </form>
     <form>
         <fieldset>
+            <legend>Istniejące kategorie</legend>
             <table ng-repeat="category in categories">
                 <tr>
-                    <td>{{category.name}}</td>
+                    <td><input type="text" ng-model="category.name" ng-minlength="1" placeholder="Nazwa kategorii"/></td>
+                    <td><button ng-click="updateCategory(category)" ng-class="{'disabled':category.name.length<1}">{{strings.UPDATE_PLS}}</button></td>
                     <td><button class="delete" ng-click="deleteEntity()">{{strings.DELETE_PLS}}</button></td>
                     <td ng-if="$index==0"></td>
-                    <td class="order" ng-click="reorderEntity(category, 1)" ng-if="$index != 0"><i
-                            class="fa fa-sort-up"></i></td>
+                    <td class="order" ng-click="reorderCategory(category, 1)" ng-if="$index != 0"><i
+                            class="fa fa-sort-up" title="Przenieś w górę"></i></td>
                     <td ng-if="$index==categories.length-1"></td>
-                    <td class="order" ng-click="reorderEntity(category, -1)" ng-if="$index != categories.length-1"><i
-                            class="fa fa-sort-down"></i></td>
+                    <td class="order" ng-click="reorderCategory(category, -1)" colspan="3" ng-if="$index != categories.length-1"><i
+                            class="fa fa-sort-down" title="Przenieś w dół"></i></td>
                 </tr>
                 <tr>
                     <td><input ng-model="nSong.name" placeholder="Nazwa piosenki"></td>
                     <td><input type="file" nv-file-select uploader="nUploader" style="width: auto" multiple/></td>
-                    <td colspan="4" class="add" title="{{strings.CREATE_PLS}}" ng-click="addSong()"><!--todo nie waliduje--><i class="fa fa-plus"></i></td>
+                    <td colspan="5" class="add" title="{{strings.CREATE_PLS}}" ng-click="addSong()"><!--todo nie waliduje. właściwie nie robi nic.--><i class="fa fa-plus"></i></td>
                 </tr>
                 <tr ng-repeat="song in category.songs">
                     <td>{{song.name}}</td>
-                    <td colspan="2"><input type="file" nv-file-select uploader="mUploader" style="width: auto" multiple/></td>
+                    <td colspan="2"><input type="file" nv-file-select uploader="eUploader" style="width: auto" multiple/></td>
+                    <td><button ng-click="updateTrack(song)">{{strings.UPDATE_PLS}}</button></td>
                     <td class="order delete"><i class="fa fa-times"></i></td>
                     <td ng-if="$index==0"></td>
-                    <td class="order" ng-click="reorderTrack(track, 1)" ng-if="$index != 0"><i
+                    <td class="order" ng-click="reorderTrack(song, category.id, 1)" ng-if="$index != 0"><i
                             class="fa fa-sort-up"></i></td>
                     <td ng-if="$index==category.songs.length-1"></td>
-                    <td class="order" ng-click="reorderTrack(track, -1)" ng-if="$index != category.songs.length-1"><i
+                    <td class="order" ng-click="reorderTrack(song, category.id, -1)" ng-if="$index != category.songs.length-1"><i
                             class="fa fa-sort-down"></i></td>
                 </tr>
             </table>

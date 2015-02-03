@@ -254,6 +254,9 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
 app.controller("MusicController", function($scope, entityService, FileUploader, $http){
     $scope.title.sub = "Muzyka";
     entityService.scope = $scope;
+    var nUploader = $scope.nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/upload.php'});
+    var eUploader = $scope.eUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/update.php'});
+
     var strings = $scope.$root.strings = {
         TYPE: "music",
         FORM: {
@@ -292,6 +295,38 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
                 }
             })
         }
+    }
+    $scope.updateCategory = function(cat){
+        if(cat.name.length>0){
+            entityService.updateEntity(strings.TYPE+"/cats", cat, function(data,code){
+                switch(code) {
+                    case entityService.codes.ENTITY_UPDATED:
+                        $scope.message.text = strings.UPDATED;
+                        break;
+                    case entityService.codes.ENTITY_INVALID:
+                        $scope.message.text = strings.INVALID;
+                        break;
+                    case entityService.codes.ENTITY_NOTFOUND:
+                        $scope.message.text = strings.NOTFOUND;
+                        break;
+                    default:
+                        $scope.message.text = strings.ERROR;
+                        break;
+                }
+            });
+        }
+    }
+    $scope.reorderCategory = function(entity, change){
+        $http.post($scope.apiHost+"/"+strings.TYPE+"/cats/reorder.php", {form: JSON.stringify(entity), change: change}).then(function(){
+            $scope.message.text = strings.REORDERED;
+            $scope.getEntities();
+        });
+    }
+    $scope.reorderTrack = function(entity, categoryId, change){
+        $http.post($scope.apiHost+"/"+strings.TYPE+"/reorder.php", {form: JSON.stringify(entity), category: categoryId, change: change}).then(function(){
+            $scope.message.text = "Przeniesiono piosenkę.";
+            $scope.getEntities();
+        });
     }
     $scope.getEntities = function(){
         entityService.getEntities(strings.TYPE+"/cats", function(data){

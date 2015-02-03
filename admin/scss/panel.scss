@@ -97,6 +97,7 @@ a{
   margin-bottom: 200px;
   table{
     .order{
+      text-align: center;
       padding-left: 10px;
       padding-right: 10px;
       @include transitionAll(.2s);
