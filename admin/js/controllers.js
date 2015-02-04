@@ -322,6 +322,40 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
             $scope.getEntities();
         });
     }
+
+    $scope.createTrack = function(category){
+        entity = category.nsong;
+        entity.category = category.id;
+        if(category.nsong.name.length && (nUploader.queue.length)){
+            $scope.uploading = true;
+            //todo powiedzmy że jestem tutaj.
+            entityService.createEntity(strings.TYPE, entity, function(data, code){
+                $scope.uploading = false;
+                switch(code) {
+                    case entityService.codes.ENTITY_CREATED:
+                        if(nUploader.queue.length){
+                            var filename = data.id;
+                            nUploader.onSuccessItem = function(fileItem, response){
+                                $scope.uploading = false;
+                                nUploader.queue = [];
+                                $scope.message.text = strings.CREATED;
+                                $scope.newEntity = {}; $scope.editedEntity = {};
+                                $scope.getEntities();
+                            }
+                            nUploader.queue[0].formData= [{filename:filename, folder:"gallery"}];
+                            nUploader.uploadAll();
+                        }
+                        break;
+                    case entityService.codes.ENTITY_INVALID:
+                        $scope.message.text = strings.INVALID;
+                        break;
+                    default:
+                        $scope.message.text = strings.ERROR;
+                        break;
+                }
+            })
+        }
+    }
     $scope.reorderTrack = function(entity, categoryId, change){
         $http.post($scope.apiHost+"/"+strings.TYPE+"/reorder.php", {form: JSON.stringify(entity), category: categoryId, change: change}).then(function(){
             $scope.message.text = "Przeniesiono piosenkę.";

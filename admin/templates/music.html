@@ -20,10 +20,10 @@
                     <td class="order" ng-click="reorderCategory(category, -1)" colspan="3" ng-if="$index != categories.length-1"><i
                             class="fa fa-sort-down" title="Przenieś w dół"></i></td>
                 </tr>
-                <tr>
-                    <td><input ng-model="nSong.name" placeholder="Nazwa piosenki"></td>
+                <tr ng-init="category.nsong = {}">
+                    <td><input ng-model="category.nsong.name" placeholder="Nazwa piosenki"></td>
                     <td><input type="file" nv-file-select uploader="nUploader" style="width: auto" multiple/></td>
-                    <td colspan="5" class="add" title="{{strings.CREATE_PLS}}" ng-click="addSong()"><!--todo nie waliduje. właściwie nie robi nic.--><i class="fa fa-plus"></i></td>
+                    <td colspan="5" class="add" title="{{strings.CREATE_PLS}}" ng-click="createTrack(category)"><i class="fa fa-plus"></i></td>
                 </tr>
                 <tr ng-repeat="song in category.songs">
                     <td>{{song.name}}</td>
