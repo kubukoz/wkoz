@@ -20,14 +20,15 @@
                     <td class="order" ng-click="reorderCategory(category, -1)" colspan="3" ng-if="$index != categories.length-1"><i
                             class="fa fa-sort-down" title="Przenieś w dół"></i></td>
                 </tr>
-                <tr ng-init="category.nsong = {}">
+                <tr>
                     <td><input ng-model="category.nsong.name" placeholder="Nazwa piosenki"></td>
-                    <td><input type="file" nv-file-select uploader="nUploader" style="width: auto" multiple/></td>
+                    <td ng-hide="getNewUploader(category).queue.length"><input type="file" nv-file-select uploader="getNewUploader(category)" style="width: auto" multiple/></td>
+                    <td ng-show="getNewUploader(category).queue.length">Oczekuje: {{getNewUploader(category).queue[0].file.name}}</td>
                     <td colspan="5" class="add" title="{{strings.CREATE_PLS}}" ng-click="createTrack(category)"><i class="fa fa-plus"></i></td>
                 </tr>
                 <tr ng-repeat="song in category.songs">
                     <td>{{song.name}}</td>
-                    <td colspan="2"><input type="file" nv-file-select uploader="eUploader" style="width: auto" multiple/></td>
+                    <td colspan="2"><input type="file" nv-file-select uploader="getEditedUploader(song)" style="width: auto" multiple/></td>
                     <td><button ng-click="updateTrack(song)">{{strings.UPDATE_PLS}}</button></td>
                     <td class="order delete"><i class="fa fa-times"></i></td>
                     <td ng-if="$index==0"></td>

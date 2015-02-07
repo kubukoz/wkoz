@@ -10,7 +10,4 @@ if(@notAllSet(array($form['id'], $form['name'])) || strlen($form['name'])<1) exi
 if($dbh->quickQuery("select * from music_cats where id=? limit 1", array($form['id']))->rowCount() < 1) exitMessage($CODES['ENTITY_NOTFOUND']);
 
 $sth = $dbh->quickQuery("update music_cats set name=? where id=? limit 1", array($form['name'], $form['id']));
-if($sth->rowCount()>0){
-    echo json_encode(array("message"=>$CODES['ENTITY_UPDATED']));
-}
-else exitMessage($CODES['SERVER_ERROR']);
+echo json_encode(array("message"=>$CODES['ENTITY_UPDATED']));

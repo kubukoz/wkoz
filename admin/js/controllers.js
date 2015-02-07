@@ -134,20 +134,15 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
     $scope.editedEntity = {};
     var nUploader = $scope.nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/images/image_upload.php'});
     var eUploader = $scope.eUploader = new FileUploader({withCredentials:true, url: $scope.apiHost+"/gallery/update.php"});
-    nUploader.filters.push({
+    var filter = {
         name: 'imageFilter',
-        fn: function(item /*{File|FileLikeObject}*/, options) {
+        fn: function(item, options){
             var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
             return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
         }
-    });
-    eUploader.filters.push({
-        name: 'imageFilter',
-        fn: function(item /*{File|FileLikeObject}*/, options) {
-            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-        }
-    });
+    };
+    nUploader.filters.push(filter);
+    eUploader.filters.push(filter);
     $scope.$watch("selectedEntity", function(){
         angular.copy($scope.selectedEntity, $scope.editedEntity);
     })
@@ -254,8 +249,15 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
 app.controller("MusicController", function($scope, entityService, FileUploader, $http){
     $scope.title.sub = "Muzyka";
     entityService.scope = $scope;
-    var nUploader = $scope.nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/upload.php'});
-    var eUploader = $scope.eUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/update.php'});
+
+    var filter = {
+        name: 'musicFilter',
+        fn: function(item, options){
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|mp3|'/*+'wav|'*/.indexOf(type) !== -1;
+        }
+    };
+
 
     var strings = $scope.$root.strings = {
         TYPE: "music",
@@ -276,7 +278,18 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         DELETE_PLS: "Usuń"
     };
     $scope.categories = [];
-    $scope.newCategory = {};
+
+    $scope.getNewUploader = function(category){
+        for(var i = 0; i < $scope.newUploaders.length; i++){
+            if($scope.newUploaders[i].id == category.id) return $scope.newUploaders[i].uploader;
+        }
+    }
+    $scope.getEditedUploader = function(song){
+        for(var i = 0; i < $scope.editedUploaders.length; i++){
+            if($scope.editedUploaders[i].id == song.id) return $scope.editedUploaders[i].uploader;
+        }
+    }
+
     $scope.createCategory = function(){
         if($scope.createCategory_form.$valid){
             entityService.createEntity(strings.TYPE+"/cats", $scope.newCategory, function(data, code){
@@ -326,23 +339,28 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
     $scope.createTrack = function(category){
         entity = category.nsong;
         entity.category = category.id;
-        if(category.nsong.name.length && (nUploader.queue.length)){
+        nUploader = $scope.getNewUploader(category);
+        if(category.nsong.name && nUploader.queue.length){
             $scope.uploading = true;
-            //todo powiedzmy że jestem tutaj.
             entityService.createEntity(strings.TYPE, entity, function(data, code){
                 $scope.uploading = false;
                 switch(code) {
                     case entityService.codes.ENTITY_CREATED:
                         if(nUploader.queue.length){
-                            var filename = data.id;
+                            var filename = (data.id + "_" + nUploader.queue[0].file.name).split(" ").join("_");
                             nUploader.onSuccessItem = function(fileItem, response){
                                 $scope.uploading = false;
-                                nUploader.queue = [];
-                                $scope.message.text = strings.CREATED;
-                                $scope.newEntity = {}; $scope.editedEntity = {};
-                                $scope.getEntities();
+                                if(response.message != "no_files"){
+                                    nUploader.queue = [];
+                                    $scope.message.text = "Dodano piosenkę.";
+                                    $scope.newEntity = {}; $scope.editedEntity = {};
+                                    $scope.getEntities();
+                                }
+                                else{
+                                    $scope.message.text = "Nie wybrano pliku. Spróbuj ponownie.";
+                                }
                             }
-                            nUploader.queue[0].formData= [{filename:filename, folder:"gallery"}];
+                            nUploader.queue[0].formData= [{filename:filename, folder:"music"}];
                             nUploader.uploadAll();
                         }
                         break;
@@ -365,9 +383,24 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
     $scope.getEntities = function(){
         entityService.getEntities(strings.TYPE+"/cats", function(data){
             $scope.categories = data;
+            $scope.newUploaders = [];
+            $scope.editedUploaders = [];
+            $scope.newCategory = {};
+            for(var i = 0; i < data.length; i++){
+                var nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/upload.php'});
+                nUploader.filters.push(filter);
+                $scope.newUploaders.push({id: data[i].id, uploader: nUploader});
+                data[i].nsong = {};
+                for(var j = 0; j < data[i].songs.length; j++){
+                    var eUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/update.php'});
+                    eUploader.filters.push(filter);
+                    $scope.editedUploaders.push({id: data[i].songs[j].id, uploader: eUploader});
+                }
+            }
         })
     }
-    $scope.auth(undefined, function callback(){
+
+    $scope.auth(null, function callback(){
         $scope.getEntities();
     });
 });

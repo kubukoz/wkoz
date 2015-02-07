@@ -19,6 +19,12 @@ function uploadImage($filename, $folder, $ext, $tempPath, $CODES){
     $uploadPath = dirname(__FILE__)."/../images/".$folder."/".$filename.".".$ext;
     move_uploaded_file($tempPath, $uploadPath);
 }
+function uploadSong($filename, $ext, $tempPath, $CODES){
+    $extensions = array("mp3");
+    if(!in_array($ext, $extensions)) exitMessage($CODES['ENTITY_INVALID']);
+    $uploadPath = dirname(__FILE__)."/../music/".$filename;
+    move_uploaded_file($tempPath, $uploadPath);
+}
 function getMode(){return 0;}
 
 function exitMessage($message){
