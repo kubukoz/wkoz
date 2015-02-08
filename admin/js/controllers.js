@@ -279,6 +279,9 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
     };
     $scope.categories = [];
 
+    /**
+     * Poniższe 2 funkcje to dużo śmieszków
+    * */
     $scope.getNewUploader = function(category){
         for(var i = 0; i < $scope.newUploaders.length; i++){
             if($scope.newUploaders[i].id == category.id) return $scope.newUploaders[i].uploader;
@@ -360,7 +363,7 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
                                     $scope.message.text = "Nie wybrano pliku. Spróbuj ponownie.";
                                 }
                             }
-                            nUploader.queue[0].formData= [{filename:filename, folder:"music"}];
+                            nUploader.queue[0].formData= [{filename:filename, id: data.id, folder:"music"}];
                             nUploader.uploadAll();
                         }
                         break;
@@ -386,6 +389,9 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
             $scope.newUploaders = [];
             $scope.editedUploaders = [];
             $scope.newCategory = {};
+            /**
+             * Tu też dużo śmieszków
+             * */
             for(var i = 0; i < data.length; i++){
                 var nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/upload.php'});
                 nUploader.filters.push(filter);
