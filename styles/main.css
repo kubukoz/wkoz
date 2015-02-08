@@ -83,6 +83,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       flex-grow: 1;
       justify-content: center; }
       #header nav ul {
+        flex-grow: 1;
         margin: 0;
         align-self: stretch;
         display: flex;

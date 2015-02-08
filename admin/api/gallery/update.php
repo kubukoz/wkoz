@@ -16,7 +16,7 @@ $old = $old->fetch(PDO::FETCH_ASSOC);
 if(!empty($_FILES)){
     $oldFilename = $old['image'];
     $folder = "gallery";
-    removeImage($oldFilename);
+    removeFile($oldFilename);
     $filename = $old['id'];
     $ext = end(explode(".", $_FILES['file']['name']));
     $tempPath = $_FILES['file']['tmp_name'];

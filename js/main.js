@@ -14,6 +14,7 @@ app.run(function ($rootScope, $window, $http) {
         }
         $rootScope.categories = result.data.music;
         $rootScope.player.selected = $rootScope.categories[0].songs[0];
+        $rootScope.player.switchPlaying();
     })
 })
 app.config(function(scrollspyConfigProvider, $httpProvider){
