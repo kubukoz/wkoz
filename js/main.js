@@ -74,8 +74,6 @@ app.controller("GalleryController", function ($scope) {
     g.previous = function(){
         g.selected-=(g.selected>0?1:(-$scope.galrows.length+1));
     }
-    //todo move this somewhere far away
-
 })
 app.directive("galleryModal", function(ngDialog){
     return {
