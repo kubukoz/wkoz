@@ -2,9 +2,19 @@
  * Created by kubuk_000 on 2014-10-06.
  */
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
-app.run(function ($rootScope, $window) {
+app.run(function ($rootScope, $window, $http) {
     $rootScope.host = "http://"+$window.location.hostname+":8080/api";
     $rootScope.duOffset = 120;
+    $http.get($rootScope.host+"/get_all.php").then(function(result){
+        $rootScope.galrows = [];
+        var currRow = [];
+        for (var i = 0; i < result.data.gallery.length; i++) {
+            currRow.push(result.data.gallery[i]);
+            if(currRow.length == 3 || i == result.data.gallery.length-1){$rootScope.galrows.push(currRow); currRow = []}
+        }
+        $rootScope.categories = result.data.music;
+        $rootScope.player.selected = $rootScope.categories[0].songs[0];
+    })
 })
 app.config(function(scrollspyConfigProvider, $httpProvider){
     $httpProvider.defaults.withCredentials = true;
@@ -56,23 +66,16 @@ app.controller("NavController", function($scope, $window){
         $scope.hideNav();
     })
 })
-app.controller("GalleryController", function ($scope, $http) {
-    var g = $scope.gallery = {selected: 0, size: 0};
+app.controller("GalleryController", function ($scope) {
+    var g = $scope.gallery = {selected: 0};
     g.next = function(){
-        g.selected+=((g.selected<g.size-1)?1:-g.selected);
+        g.selected+=((g.selected<$scope.galrows.length-1)?1:-g.selected);
     }
     g.previous = function(){
-        g.selected-=(g.selected>0?1:(-g.size+1));
+        g.selected-=(g.selected>0?1:(-$scope.galrows.length+1));
     }
-    $http.get($scope.host+"/get_all.php").then(function(result){
-        $scope.galrows = [];
-        var currRow = [];
-        for (var i = 0; i < result.data.gallery.length; i++) {
-            currRow.push(result.data.gallery[i]);
-            if(currRow.length == 3 || i == result.data.gallery.length-1){$scope.galrows.push(currRow); currRow = []}
-        }
-        g.size = $scope.galrows.length;
-    })
+    //todo move this somewhere far away
+
 })
 app.directive("galleryModal", function(ngDialog){
     return {
@@ -91,21 +94,54 @@ app.directive("musicPlayer", function(){
     return{
         restrict: "E",
         link: function(scope,elem){
-            var p = scope.$root.player = scope.player = { playing: false, selected: 0, volume: 40, audio: new Audio()};
-            p.songs = scope.$root.songs = [
-                {name: "God Is Dead?", file: "bs.mp3"},
-                {name: "Get Lucky", file: "dp.mp3"},
-                {name: "Feeling Good", file: "mb.mp3"}
-            ];
+            var p = scope.$root.player = scope.player = { playing: false, selected: {}, volume: 40, audio: new Audio()};
+
+            p.getSongById = function(id){
+                var cats = scope.categories;
+                for(var i = 0; i < cats.length; i++)
+                    for(var j = 0; j < cats[i].songs.length; j++)
+                        if(cats[i].songs[j].id == id) return cats[i].songs[j]
+            }
+            getCategoryById = function(id){
+                for(var i = 0; i < scope.categories.length; i++)
+                    if(scope.categories[i].id == id) return scope.categories[i];
+            }
+
+            p.getNextCategoryAfter = function(category){
+                var cats = scope.categories;
+                return cats[category.ordr == cats.length?0:category.ordr];
+            }
+            p.getPreviousCategoryBefore = function(category){
+                var cats = scope.categories;
+                return cats[category.ordr==1?cats.length-1:category.ordr-2];
+            }
+
+            p.getNextSongAfter = function (song) {
+                var cat = getCategoryById(song.cat_id);
+                if(song.ordr==cat.songs.length)
+                        return p.getNextCategoryAfter(cat).songs[0];
+                else
+                    return cat.songs[song.ordr];
+            }
+            p.getPreviousSongBefore = function(song){
+                var cat = getCategoryById(song.cat_id);
+                if(song.ordr==1){
+                    var pcat = p.getPreviousCategoryBefore(cat);
+                    return pcat.songs[pcat.songs.length-1];
+                }
+                else
+                    return cat.songs[song.ordr-2];
+            }
+
             p.audio.volume = p.volume/100;
             p.audio.onended = function(){scope.$apply(function(){p.nextSong()})};
             scope.$watch(function(){return p.volume}, function(v){if(p.audio)p.audio.volume = v/100});
-            p.audio.src = "music/"+p.songs[p.selected].file;
+            p.audio.src = "";
             p.updatePlaying = function(pl){
                 p.playing=pl;
                 if(pl){
-                    if(p.audio.src.indexOf("music/"+ p.songs[p.selected].file)<0)
-                        p.audio.src = "music/"+ p.songs[p.selected].file;
+                    if(p.audio.src.indexOf(p.selected.filename)<0)
+                        p.audio.src = p.selected.filename;
                     p.audio.play();
                 }
                 else{
@@ -116,11 +152,11 @@ app.directive("musicPlayer", function(){
                 p.updatePlaying(!p.playing);
             }
             p.nextSong = function(){
-                p.selected+=(p.selected<p.songs.length-1?1:-(p.songs.length-1));
+                p.selected = p.getNextSongAfter(p.selected);
                 p.updatePlaying(true);
             }
             p.previousSong = function(){
-                p.selected-=(p.selected>0?1:-(p.songs.length-1));
+                p.selected = p.getPreviousSongBefore(p.selected);
                 p.updatePlaying(true);
             }
             p.volumeUp = function(){
@@ -184,8 +220,8 @@ app.directive("musicPlayer", function(){
             }
             scope.$on("musicRequested", function(obj, val){
                 scope.$apply(function () {
-                    if(!(p.playing && p.selected == val.id)){
-                        p.selected = val.id;
+                    if(!(p.playing && p.selected.id == val.id)){
+                        p.selected = p.getSongById(val.id);
                         p.updatePlaying(true);
                     }else{
                         p.updatePlaying(false);
@@ -194,7 +230,7 @@ app.directive("musicPlayer", function(){
             })
         }
     }
-})
+});
 app.directive("musicPlay", function(){
     return{
         scope: {
@@ -215,9 +251,8 @@ app.directive("clickableHidenav", function(){
             }
         }
     }
-})
+});
 
 /*
 * todo favicon
-* todo korzystanie z api, dostosowanie niedokończonego playera
 * */

@@ -258,7 +258,6 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         }
     };
 
-
     var strings = $scope.$root.strings = {
         TYPE: "music",
         FORM: {
@@ -270,6 +269,7 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         REORDERED: "Przeniesiono kategorię.",
         DELETE_QUESTION: "Czy aby na pewno chcesz usunąć tę kategorię wraz ze wszystkimi utworami w niej?",
 
+        DELETE_SONG_QUESTION: "Czy na pewno chcesz usunąć ten utwór?",
         INVALID: "Nie wypełniono wszystkich pól. Spróbuj ponownie.",
         ERROR: "Wystąpił błąd. Spróbuj ponownie.",
         FILL_ALL_FIELDS: "Wypełnij wszystkie pola.",
@@ -277,7 +277,6 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         UPDATE_PLS: "Aktualizuj",
         DELETE_PLS: "Usuń"
     };
-    $scope.categories = [];
 
     /**
      * Poniższe 2 funkcje to dużo śmieszków
@@ -293,17 +292,58 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         }
     }
 
-    $scope.createCategory = function(){
-        if($scope.createCategory_form.$valid){
-            entityService.createEntity(strings.TYPE+"/cats", $scope.newCategory, function(data, code){
-                switch(code) {
-                    case entityService.codes.ENTITY_CREATED:
-                        $scope.message.text = strings.CREATED;
-                        $scope.newCategory = {};
+    $scope.createCategory = function() {
+        entityService.createEntity(strings.TYPE + "/cats", $scope.newCategory, function (data, code) {
+            switch (code) {
+                case entityService.codes.ENTITY_CREATED:
+                    $scope.message.text = strings.CREATED;
+                    $scope.newCategory = {};
+                    $scope.getEntities();
+                    break;
+                case entityService.codes.ENTITY_INVALID:
+                    $scope.message.text = strings.INVALID;
+                    break;
+                default:
+                    $scope.message.text = strings.ERROR;
+                    break;
+            }
+        })
+    }
+    $scope.updateCategory = function(cat) {
+        entityService.updateEntity(strings.TYPE + "/cats", cat, function (data, code) {
+            switch (code) {
+                case entityService.codes.ENTITY_UPDATED:
+                    $scope.message.text = strings.UPDATED;
+                    $scope.getEntities();
+                    break;
+                case entityService.codes.ENTITY_INVALID:
+                    $scope.message.text = strings.INVALID;
+                    break;
+                case entityService.codes.ENTITY_NOTFOUND:
+                    $scope.message.text = strings.NOTFOUND;
+                    break;
+                default:
+                    $scope.message.text = strings.ERROR;
+                    break;
+            }
+        });
+    }
+    $scope.reorderCategory = function(entity, change){
+        $http.post($scope.apiHost+"/"+strings.TYPE+"/cats/reorder.php", {form: JSON.stringify(entity), change: change}).then(function(){
+            $scope.message.text = strings.REORDERED;
+            $scope.getEntities();
+        });
+    }
+    $scope.deleteCategory = function(category){
+        if(confirm(strings.DELETE_QUESTION)){
+            entityService.deleteEntity(strings.TYPE+"/cats", category, function(data, code){
+                switch (code) {
+                    case entityService.codes.ENTITY_DELETED:
+                        $scope.message.text = "Usunięto kategorię.";
                         $scope.getEntities();
                         break;
-                    case entityService.codes.ENTITY_INVALID:
-                        $scope.message.text = strings.INVALID;
+                    case entityService.codes.ENTITY_NOTFOUND:
+                        $scope.message.text = "Wybrana kategoria nie istnieje.";
                         break;
                     default:
                         $scope.message.text = strings.ERROR;
@@ -311,32 +351,6 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
                 }
             })
         }
-    }
-    $scope.updateCategory = function(cat){
-        if(cat.name.length>0){
-            entityService.updateEntity(strings.TYPE+"/cats", cat, function(data,code){
-                switch(code) {
-                    case entityService.codes.ENTITY_UPDATED:
-                        $scope.message.text = strings.UPDATED;
-                        break;
-                    case entityService.codes.ENTITY_INVALID:
-                        $scope.message.text = strings.INVALID;
-                        break;
-                    case entityService.codes.ENTITY_NOTFOUND:
-                        $scope.message.text = strings.NOTFOUND;
-                        break;
-                    default:
-                        $scope.message.text = strings.ERROR;
-                        break;
-                }
-            });
-        }
-    }
-    $scope.reorderCategory = function(entity, change){
-        $http.post($scope.apiHost+"/"+strings.TYPE+"/cats/reorder.php", {form: JSON.stringify(entity), change: change}).then(function(){
-            $scope.message.text = strings.REORDERED;
-            $scope.getEntities();
-        });
     }
 
     $scope.createTrack = function(category){
@@ -383,6 +397,27 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
             $scope.getEntities();
         });
     }
+    $scope.deleteTrack = function(track){
+        event.preventDefault();
+        if (confirm(strings.DELETE_SONG_QUESTION)) {
+            entityService.deleteEntity(strings.TYPE, track, function (data, code) {
+                switch (code) {
+                    case entityService.codes.ENTITY_DELETED:
+                        $scope.message.text = "Usunięto utwór.";
+                        $scope.getEntities();
+                        break;
+                    case entityService.codes.ENTITY_NOTFOUND:
+                        $scope.message.text = "Wybrany utwór nie istnieje.";
+                        break;
+                    default:
+                        $scope.message.text = strings.ERROR;
+                        break;
+                }
+            });
+        }
+    }
+
+
     $scope.getEntities = function(){
         entityService.getEntities(strings.TYPE+"/cats", function(data){
             $scope.categories = data;

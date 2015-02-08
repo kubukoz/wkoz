@@ -648,16 +648,7 @@ body .ngdialog.ngdialog-theme-default {
               fill: white;
             }
           }
-          .length{
-            text-indent: 0;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 20px;
-            margin: auto;
-            opacity: .5;
-          }
-          &:not(:hover){
+          &:not(:hover):not(.playing){
             .button{
               opacity: .5;
             }

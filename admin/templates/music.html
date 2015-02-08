@@ -2,17 +2,17 @@
     <form ng-submit="createCategory()" name="createCategory_form" novalidate>
         <fieldset>
             <legend>{{strings.FORM.CREATE_ENTITY}}</legend>
-            <table><tr><td><input type="text" ng-model="newCategory.name" placeholder="Nazwa kategorii" required></td><td><button type="submit" class="disabled" ng-class="{'disabled':createCategory_form.$invalid}">{{strings.CREATE_PLS}}</button></td></tr></table>
+            <table><tr><td><input type="text" ng-model="newCategory.name" placeholder="Nazwa kategorii (opcjonalna)"></td><td><button type="submit" >{{strings.CREATE_PLS}}</button></td></tr></table>
         </fieldset>
     </form>
-    <form>
+    <form ng-show="categories.length">
         <fieldset>
             <legend>Istniejące kategorie</legend>
             <table ng-repeat="category in categories">
                 <tr>
-                    <td><input type="text" ng-model="category.name" ng-minlength="1" placeholder="Nazwa kategorii"/></td>
+                    <td><input type="text" ng-model="category.name" placeholder="Kategoria bez nazwy"/></td>
                     <td><button ng-click="updateCategory(category)" ng-class="{'disabled':category.name.length<1}">{{strings.UPDATE_PLS}}</button></td>
-                    <td><button class="delete" ng-click="deleteEntity()">{{strings.DELETE_PLS}}</button></td>
+                    <td><button class="delete" ng-click="deleteCategory(category)">{{strings.DELETE_PLS}}</button></td>
                     <td ng-if="$index==0"></td>
                     <td class="order" ng-click="reorderCategory(category, 1)" ng-if="$index != 0"><i
                             class="fa fa-sort-up" title="Przenieś w górę"></i></td>
@@ -30,7 +30,7 @@
                     <td>{{song.name}}</td>
                     <td colspan="2"><input type="file" nv-file-select uploader="getEditedUploader(song)" style="width: auto" multiple/></td>
                     <td><button ng-click="updateTrack(song)">{{strings.UPDATE_PLS}}</button></td>
-                    <td class="order delete"><i class="fa fa-times"></i></td>
+                    <td class="order delete" ng-click="deleteTrack(song)"><i class="fa fa-times"></i></td>
                     <td ng-if="$index==0"></td>
                     <td class="order" ng-click="reorderTrack(song, category.id, 1)" ng-if="$index != 0"><i
                             class="fa fa-sort-up"></i></td>

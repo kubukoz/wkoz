@@ -1,6 +1,6 @@
 <?php
 include '../../../api/core.php';
-include '../images/image_remove.php';
+include '../images/file_remove.php';
 requireUser($dbh);
 
 if(!empty($_FILES))

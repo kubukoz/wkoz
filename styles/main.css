@@ -580,15 +580,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             #music .column .block ul li .button svg {
               width: 20px;
               fill: white; }
-          #music .column .block ul li .length {
-            text-indent: 0;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 20px;
-            margin: auto;
-            opacity: .5; }
-          #music .column .block ul li:not(:hover) .button {
+          #music .column .block ul li:not(:hover):not(.playing) .button {
             opacity: .5; }
           #music .column .block ul li:not(:last-of-type) {
             margin-bottom: 2px; }

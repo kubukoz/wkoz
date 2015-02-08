@@ -279,52 +279,23 @@
     <div class="ninesixzero">
         <h1 class="heading">Muzyka</h1>
         <div class="col-sm-12 col-md-6 column">
-            <div class="block">
-                <h2>Jazz</h2>
-                <ul>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>T.R.I.P.<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Spadłem<div class="length">12:25</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Odblokuj<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Siła Nocnych Koszmarów<div class="length">12:25</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Grawitacja<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Gdzie Ty Jesteś?<div class="length">12:25</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Uciekamy<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Bezsenność<div class="length">12:25</div></li>
-                </ul>
-                <ul>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>T.R.I.P.<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Spadłem<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Odblokuj<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Siła Nocnych Koszmarów<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Grawitacja<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Gdzie Ty Jesteś?<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Uciekamy<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==0 && player.playing}" music-play="0"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Bezsenność<div class="length">2:50</div></li>
-                </ul>
+            <div class="block" ng-show="categories.length">
+                <div ng-repeat="category in categories.slice(0,2)">
+                    <h2 ng-show="category.name.length">{{category.name}}</h2>
+                    <ul>
+                        <li ng-repeat="song in category.songs" ng-class="{'playing':player.selected.id==song.id && player.playing}" music-play="{{song.id}}"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>{{song.name}}</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 column">
-            <div class="block">
-                <h2>Kolędy</h2>
-                <ul>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>T.R.I.P.<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Spadłem<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Odblokuj<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Siła Nocnych Koszmarów<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Grawitacja<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Gdzie Ty Jesteś?<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Uciekamy<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Bezsenność<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Gniew<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==1 && player.playing}" music-play="1"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Elektryczność w ciszy<div class="length">2:50</div></li>
-                </ul>
-            </div>
-            <div class="block">
-                <h2>Inne</h2>
-                <ul>
-                    <li ng-class="{'playing':player.selected==2 && player.playing}" music-play="2"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Spadłem<div class="length">2:50</div></li>
-                    <li ng-class="{'playing':player.selected==2 && player.playing}" music-play="2"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>Bezsenność<div class="length">2:50</div></li>
-                </ul>
+            <div class="block" ng-show="categories.length">
+                <div ng-repeat="category in categories.slice(2)">
+                    <h2 ng-show="category.name.length">{{category.name}}</h2>
+                    <ul>
+                        <li ng-repeat="song in category.songs" ng-class="{'playing':player.selected.id==song.id && player.playing}" music-play="{{song.id}}"><i class="button"><svg viewBox="0 0 40 40"><use class="play" xlink:href="#play_button"></use><use class="pause" xlink:href="#pause_button"></use></svg></i>{{song.name}}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -391,7 +362,7 @@
     <div class="ninesixzero">
         <div class="section" id="now_playing">
             <span>Teraz grane:</span>
-            <b>{{player.songs[player.selected].name}}</b>
+            <b>{{player.selected.name}}</b>
         </div>
         <div class="section" id="controls">
             <div class="control left" ng-click="player.previousSong()">
