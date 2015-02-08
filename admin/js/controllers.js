@@ -288,7 +288,8 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
     }
     $scope.getEditedUploader = function(song){
         for(var i = 0; i < $scope.editedUploaders.length; i++){
-            if($scope.editedUploaders[i].id == song.id) return $scope.editedUploaders[i].uploader;
+            if($scope.editedUploaders[i].id == song.id)
+                return $scope.editedUploaders[i].uploader;
         }
     }
 
@@ -357,7 +358,7 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         entity = category.nsong;
         entity.category = category.id;
         nUploader = $scope.getNewUploader(category);
-        if(category.nsong.name && nUploader.queue.length){
+        if(category.nsong.name.length && nUploader.queue.length && !$scope.uploading){
             $scope.uploading = true;
             entityService.createEntity(strings.TYPE, entity, function(data, code){
                 $scope.uploading = false;
@@ -370,14 +371,14 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
                                 if(response.message != "no_files"){
                                     nUploader.queue = [];
                                     $scope.message.text = "Dodano piosenkę.";
-                                    $scope.newEntity = {}; $scope.editedEntity = {};
                                     $scope.getEntities();
                                 }
                                 else{
                                     $scope.message.text = "Nie wybrano pliku. Spróbuj ponownie.";
                                 }
                             }
-                            nUploader.queue[0].formData= [{filename:filename, id: data.id, folder:"music"}];
+                            nUploader.queue[0].formData= [{filename:filename, id: data.id}];
+                            $scope.uploading = true;
                             nUploader.uploadAll();
                         }
                         break;
@@ -416,7 +417,38 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
             });
         }
     }
-
+    $scope.updateTrack = function(track){
+        var eUploader = $scope.getEditedUploader(track);
+        if(track.name.length && !$scope.uploading){
+            $scope.uploading = true;
+            if(eUploader.queue.length){
+                var filename = (track.id + "_" + eUploader.queue[0].file.name).split(" ").join("_");
+                eUploader.onSuccessItem = function(fileItem, response){
+                    $scope.uploading = false;
+                    if(response.message != "no_files"){
+                        eUploader.queue = [];
+                        $scope.message.text = "Zmieniono piosenkę.";
+                        $scope.getEntities();
+                    }
+                    else{
+                        $scope.message.text = "Nie wybrano prawidłowego pliku. Spróbuj ponownie.";
+                    }
+                }
+                eUploader.queue[0].formData = [{filename: filename, id: track.id, name: track.name}];
+                eUploader.uploadAll();
+            }
+            else{
+                $http.post($scope.apiHost+"/music/update.php", {id: track.id, name: track.name}).then(function(result){
+                    $scope.uploading = false;
+                    if(result.data.message != "no_files"){
+                        $scope.message.text = "Zmieniono nazwę piosenki.";
+                        $scope.getEntities();
+                    }
+                    else $scope.message.text = "Wystąpił błąd. Spróbuj ponownie.";
+                })
+            }
+        }
+    }
 
     $scope.getEntities = function(){
         entityService.getEntities(strings.TYPE+"/cats", function(data){
