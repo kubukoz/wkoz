@@ -12,9 +12,11 @@ app.run(function ($rootScope, $window, $http) {
             currRow.push(result.data.gallery[i]);
             if(currRow.length == 3 || i == result.data.gallery.length-1){$rootScope.galrows.push(currRow); currRow = []}
         }
-        $rootScope.categories = result.data.music;
-        $rootScope.player.selected = $rootScope.categories[0].songs[0];
-        $rootScope.player.switchPlaying();
+        if(result.data.music.length){
+            $rootScope.categories = result.data.music;
+            $rootScope.player.selected = $rootScope.categories[0].songs[0];
+            $rootScope.player.switchPlaying(true);
+        }
     })
 })
 app.config(function(scrollspyConfigProvider, $httpProvider){
@@ -147,8 +149,11 @@ app.directive("musicPlayer", function(){
                     p.audio.pause();
                 }
             }
-            p.switchPlaying = function(){
-                p.updatePlaying(!p.playing);
+            p.switchPlaying = function(force){
+                var newPlaying;
+                if(force != null) newPlaying = force;
+                else newPlaying = !p.playing;
+                p.updatePlaying(newPlaying);
             }
             p.nextSong = function(){
                 p.selected = p.getNextSongAfter(p.selected);
