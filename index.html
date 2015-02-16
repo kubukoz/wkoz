@@ -174,7 +174,7 @@
                 <li scrollspy-listen="repertoire"><a href="#repertoire" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Repertuar</a></li>
                 <li scrollspy-listen="about_se|locations"><a href="#about_se" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">O Standard Express</a></li>
                 <li scrollspy-listen="music" ng-show="categories.length"><a href="#music" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Muzyka</a></li>
-                <li scrollspy-listen="gallery" ng-show="gallery.length"><a href="#gallery" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Galeria</a></li>
+                <li scrollspy-listen="gallery" ng-show="galrows.length"><a href="#gallery" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Galeria</a></li>
                 <li scrollspy-listen="contact|footer"><a href="#contact" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Kontakt</a></li>
             </ul>
             <div id="drawer" ng-click="toggleNav()" ng-class="{'active':nav.visible}">
@@ -300,7 +300,7 @@
         </div>
     </div>
 </div>
-<div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController" ng-show="gallery.length">
+<div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController" ng-show="galrows.length">
     <div class="ninesixzero">
         <h1 class="heading">Galeria</h1>
         <div class="wrapper">

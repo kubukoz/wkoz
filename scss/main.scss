@@ -62,6 +62,7 @@ body .ngdialog.ngdialog-theme-default {
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   .inside{
     display: flex;
+    display: -webkit-flex;
   }
   #logo_main{
     display: inline-block;
@@ -86,25 +87,38 @@ body .ngdialog.ngdialog-theme-default {
   @media screen and (min-width: 981px){
     nav{
       display: inline-flex;
+      display: -webkit-inline-flex;
       align-self: stretch;
+      -webkit-align-self: stretch;
       flex-grow: 1;
+      -webkit-flex-grow: 1;
       justify-content: center;
+      -webkit-justify-content: center;
       ul{
         flex-grow: 1;
+        -webkit-flex-grow: 1;
         margin: 0;
         align-self: stretch;
+        -webkit-align-self: stretch;
         display: flex;
+        display: -webkit-flex;
         flex-direction: row;
+        -webkit-flex-direction: row;
         li{
           align-self: stretch;
+          -webkit-align-self: stretch;
           display: flex;
+          display: -webkit-flex;
           align-items: stretch;
+          -webkit-align-items: stretch;
           a{
             @include transitionAll(.2s);
             padding-left: 18px;
             padding-right: 18px;
             display: flex;
+            display: -webkit-flex;
             align-items: center;
+            -webkit-align-items: center;
             font-family: $font-main;
             font-size: .875em;
             text-transform: uppercase;
@@ -147,12 +161,16 @@ body .ngdialog.ngdialog-theme-default {
       max-width: inherit;
     }
     display: flex;
+    display: -webkit-flex;
     align-items: center;
+    -webkit-align-items: center;
     background: $blue;
     #logo_main{
       z-index: 3;
       display: flex;
+      display: -webkit-flex;
       align-items: center;
+      -webkit-align-items: center;
       padding: 0 0 0 20px;
       &:after{
         display: none;
@@ -244,13 +262,17 @@ body .ngdialog.ngdialog-theme-default {
       height: 42px;
       @include transitionAll(.2s);
       display: flex;
+      display: -webkit-flex;
       flex-direction: column;
+      -webkit-flex-direction: column;
       justify-content: center;
+      -webkit-justify-content: center;
       width: 42px;
       .line{
         @include transitionAll(.2s);
         display: block;
         flex-grow: 1;
+        -webkit-flex-grow: 1;
         background: #ffffff;
         height: 2px;
         &:not(:last-of-type){
@@ -369,15 +391,20 @@ body .ngdialog.ngdialog-theme-default {
           padding: 0 42px;
           background: $blue;
           display: inline-flex;
+          display: -webkit-inline-flex;
           align-items: center;
+          -webkit-align-items: center;
           color: #ffffff;
           @include transitionAll(.1s);
           i{
             position: absolute;
             right: 100%;
             display: flex;
+            display: -webkit-flex;
             align-items: center;
+            -webkit-align-items: center;
             justify-content: center;
+            -webkit-justify-content: center;
             top: 0;
             width: 40px;
             height: 40px;
@@ -412,7 +439,9 @@ body .ngdialog.ngdialog-theme-default {
       padding-bottom: 10px;
       .block {
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         h2{
           width: 50%;
           margin: 0 auto;
@@ -424,7 +453,9 @@ body .ngdialog.ngdialog-theme-default {
             padding: 0 42px 0 0;
             text-align: center;
             display: flex;
+            display: -webkit-flex;
             justify-content: center;
+            -webkit-justify-content: center;
             margin: 20px auto 0;
             width: 80%;
           }
@@ -503,8 +534,11 @@ body .ngdialog.ngdialog-theme-default {
     .inside{
       .sax{
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         align-items: center;
+        -webkit-align-items: center;
         width:90%;
         margin: 0 auto;
       }
@@ -513,8 +547,11 @@ body .ngdialog.ngdialog-theme-default {
         padding-left: 20px;
         padding-right: 20px;
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         align-items: center;
+        -webkit-align-items: center;
         h2{
           width: 100%;
         }
@@ -721,7 +758,9 @@ body .ngdialog.ngdialog-theme-default {
       .slide {
         width: 100%;
         display: flex;
+        display: -webkit-flex;
         justify-content: space-between;
+        -webkit-justify-content: space-between;
         .item {
           cursor: pointer;
           display: inline-block;
@@ -736,7 +775,9 @@ body .ngdialog.ngdialog-theme-default {
         }
         @media screen and (max-width: 580px){
           flex-direction: column;
+          -webkit-flex-direction: column;
           align-items: center;
+          -webkit-align-items: center;
           .item{
             width: 90%;
             &:not(:last-of-type){
@@ -781,7 +822,9 @@ body .ngdialog.ngdialog-theme-default {
     max-width: 980px;
     padding: 29px 10px 32px 10px;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
+    -webkit-align-items: center;
     .tag{
       padding: 0;
       h1{
@@ -791,8 +834,11 @@ body .ngdialog.ngdialog-theme-default {
     }
     .data{
       display: inline-flex;
+      display: -webkit-inline-flex;
       align-items: center;
+      -webkit-align-items: center;
       justify-content: flex-end;
+      -webkit-justify-content: flex-end;
       text-align: right;
       padding: 0;
       overflow: hidden;
@@ -836,7 +882,9 @@ body .ngdialog.ngdialog-theme-default {
         padding-left: 32px;
         .fb{
           display: flex;
+          display: -webkit-flex;
           align-items: center;
+          -webkit-align-items: center;
           margin: 0;
           svg{
             width: 40px;
@@ -856,6 +904,7 @@ body .ngdialog.ngdialog-theme-default {
   @media screen and (max-width: 768px){
     .inside{
       flex-direction: column;
+      -webkit-flex-direction: column;
       .tag{
         h1{
           text-align: center;
@@ -863,7 +912,9 @@ body .ngdialog.ngdialog-theme-default {
       }
       .data{
         justify-content: center;
+        -webkit-justify-content: center;
         flex-direction: column;
+        -webkit-flex-direction: column;
         text-align: center;
         .left{
           margin-top: 20px;
@@ -891,8 +942,11 @@ footer{
     padding: 20px 10px;
     overflow: auto;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
+    -webkit-align-items: center;
     justify-content: space-between;
+    -webkit-justify-content: space-between;
     h2 {
       font-size: 1em;
       font-family: $font-main;
@@ -924,6 +978,7 @@ footer{
   @media screen and (max-width: 768px){
     .ninesixzero{
       flex-direction: column;
+      -webkit-flex-direction: column;
       .copyright, .logo, .authors{
         text-align: center;
       }
@@ -947,8 +1002,11 @@ music-player{
     height: 100%;
     padding: 0;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
+    -webkit-align-items: center;
     justify-content: space-between;
+    -webkit-justify-content: space-between;
     .section{
       padding: 0;
     }
@@ -957,8 +1015,11 @@ music-player{
     padding-left: 10px;
     margin-bottom: 5px;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     justify-content: flex-start;
+    -webkit-justify-content: flex-start;
     span{
       font-family: $font-headers;
       font-size: 1.125em;
@@ -983,9 +1044,12 @@ music-player{
     margin: auto;
     height: 100%;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
+    -webkit-align-items: center;
     width: 160px;
     justify-content: space-between;
+    -webkit-justify-content: space-between;
     .control{
       cursor: pointer;
       width: 40px;
@@ -1017,15 +1081,20 @@ music-player{
   }
   #volume{
     display: flex;
+    display: -webkit-flex;
     padding-right: 10px;
     align-items: center;
+    -webkit-align-items: center;
     justify-content: center;
+    -webkit-justify-content: center;
     height: 100%;
     overflow: visible;
     position: relative;
     i{
       display: flex;
+      display: -webkit-flex;
       align-items: center;
+      -webkit-align-items: center;
       font-size: 1.7em;
       color: $blue;
       position: absolute;
@@ -1038,8 +1107,11 @@ music-player{
       margin-left: 33px;
       z-index: 99999;
       display: flex;
+      display: -webkit-flex;
       align-items: center;
+      -webkit-align-items: center;
       justify-content: flex-end;
+      -webkit-justify-content: flex-end;
       width: 100px;
       height: 100%;
       overflow: visible;

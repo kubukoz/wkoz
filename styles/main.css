@@ -58,7 +58,8 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
   -moz-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25); }
   #header .inside {
-    display: flex; }
+    display: flex;
+    display: -webkit-flex; }
   #header #logo_main {
     display: inline-block;
     padding: 31px 54px 5px;
@@ -79,19 +80,30 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
   @media screen and (min-width: 981px) {
     #header nav {
       display: inline-flex;
+      display: -webkit-inline-flex;
       align-self: stretch;
+      -webkit-align-self: stretch;
       flex-grow: 1;
-      justify-content: center; }
+      -webkit-flex-grow: 1;
+      justify-content: center;
+      -webkit-justify-content: center; }
       #header nav ul {
         flex-grow: 1;
+        -webkit-flex-grow: 1;
         margin: 0;
         align-self: stretch;
+        -webkit-align-self: stretch;
         display: flex;
-        flex-direction: row; }
+        display: -webkit-flex;
+        flex-direction: row;
+        -webkit-flex-direction: row; }
         #header nav ul li {
           align-self: stretch;
+          -webkit-align-self: stretch;
           display: flex;
-          align-items: stretch; }
+          display: -webkit-flex;
+          align-items: stretch;
+          -webkit-align-items: stretch; }
           #header nav ul li a {
             -webkit-transition: 0.2s;
             -moz-transition: 0.2s;
@@ -101,7 +113,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             padding-left: 18px;
             padding-right: 18px;
             display: flex;
+            display: -webkit-flex;
             align-items: center;
+            -webkit-align-items: center;
             font-family: "Open Sans", sans-serif;
             font-size: .875em;
             text-transform: uppercase;
@@ -137,14 +151,18 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
     #header {
       height: 80px;
       display: flex;
+      display: -webkit-flex;
       align-items: center;
+      -webkit-align-items: center;
       background: #1e3f59; }
       #header .ninesixzero {
         max-width: inherit; }
       #header #logo_main {
         z-index: 3;
         display: flex;
+        display: -webkit-flex;
         align-items: center;
+        -webkit-align-items: center;
         padding: 0 0 0 20px; }
         #header #logo_main:after {
           display: none; }
@@ -239,8 +257,11 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         -o-transition: 0.2s;
         transition: 0.2s;
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         justify-content: center;
+        -webkit-justify-content: center;
         width: 42px; }
         #header #drawer .line {
           -webkit-transition: 0.2s;
@@ -250,6 +271,7 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
           transition: 0.2s;
           display: block;
           flex-grow: 1;
+          -webkit-flex-grow: 1;
           background: #ffffff;
           height: 2px; }
           #header #drawer .line:not(:last-of-type) {
@@ -343,7 +365,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       padding: 0 42px;
       background: #1e3f59;
       display: inline-flex;
+      display: -webkit-inline-flex;
       align-items: center;
+      -webkit-align-items: center;
       color: #ffffff;
       -webkit-transition: 0.1s;
       -moz-transition: 0.1s;
@@ -354,8 +378,11 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         position: absolute;
         right: 100%;
         display: flex;
+        display: -webkit-flex;
         align-items: center;
+        -webkit-align-items: center;
         justify-content: center;
+        -webkit-justify-content: center;
         top: 0;
         width: 40px;
         height: 40px;
@@ -389,7 +416,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
     padding-bottom: 10px; }
     #repertoire .inside .block {
       display: flex;
-      flex-direction: column; }
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column; }
       #repertoire .inside .block h2 {
         width: 50%;
         margin: 0 auto;
@@ -400,7 +429,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
           padding: 0 42px 0 0;
           text-align: center;
           display: flex;
+          display: -webkit-flex;
           justify-content: center;
+          -webkit-justify-content: center;
           margin: 20px auto 0;
           width: 80%; } }
 @media screen and (max-width: 460px) {
@@ -454,8 +485,11 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
   @media screen and (max-width: 768px) {
     #about_se .inside .sax {
       display: flex;
+      display: -webkit-flex;
       flex-direction: column;
+      -webkit-flex-direction: column;
       align-items: center;
+      -webkit-align-items: center;
       width: 90%;
       margin: 0 auto; }
     #about_se .inside .right {
@@ -463,8 +497,11 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       padding-left: 20px;
       padding-right: 20px;
       display: flex;
+      display: -webkit-flex;
       flex-direction: column;
-      align-items: center; }
+      -webkit-flex-direction: column;
+      align-items: center;
+      -webkit-align-items: center; }
       #about_se .inside .right h2 {
         width: 100%; }
     #about_se .inside hr {
@@ -636,7 +673,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
       #gallery .ninesixzero .wrapper .slide {
         width: 100%;
         display: flex;
+        display: -webkit-flex;
         justify-content: space-between;
+        -webkit-justify-content: space-between;
         -webkit-transition: 0.3s;
         -moz-transition: 0.3s;
         -ms-transition: 0.3s;
@@ -659,7 +698,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         @media screen and (max-width: 580px) {
           #gallery .ninesixzero .wrapper .slide {
             flex-direction: column;
-            align-items: center; }
+            -webkit-flex-direction: column;
+            align-items: center;
+            -webkit-align-items: center; }
             #gallery .ninesixzero .wrapper .slide .item {
               width: 90%; }
               #gallery .ninesixzero .wrapper .slide .item:not(:last-of-type) {
@@ -694,7 +735,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
     max-width: 980px;
     padding: 29px 10px 32px 10px;
     display: flex;
-    align-items: center; }
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center; }
     #contact .inside .tag {
       padding: 0; }
       #contact .inside .tag h1 {
@@ -702,8 +745,11 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         color: #3e2723; }
     #contact .inside .data {
       display: inline-flex;
+      display: -webkit-inline-flex;
       align-items: center;
+      -webkit-align-items: center;
       justify-content: flex-end;
+      -webkit-justify-content: flex-end;
       text-align: right;
       padding: 0;
       overflow: hidden; }
@@ -741,7 +787,9 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
         padding-left: 32px; }
         #contact .inside .data .right .fb {
           display: flex;
+          display: -webkit-flex;
           align-items: center;
+          -webkit-align-items: center;
           margin: 0; }
           #contact .inside .data .right .fb svg {
             width: 40px;
@@ -756,12 +804,15 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content {
             fill: #ebebeb; }
   @media screen and (max-width: 768px) {
     #contact .inside {
-      flex-direction: column; }
+      flex-direction: column;
+      -webkit-flex-direction: column; }
       #contact .inside .tag h1 {
         text-align: center; }
       #contact .inside .data {
         justify-content: center;
+        -webkit-justify-content: center;
         flex-direction: column;
+        -webkit-flex-direction: column;
         text-align: center; }
         #contact .inside .data .left {
           margin-top: 20px;
@@ -783,8 +834,11 @@ footer {
     padding: 20px 10px;
     overflow: auto;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
-    justify-content: space-between; }
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between; }
     footer .ninesixzero h2 {
       font-size: 1em;
       font-family: "Open Sans", sans-serif;
@@ -806,7 +860,8 @@ footer {
       text-align: right; }
   @media screen and (max-width: 768px) {
     footer .ninesixzero {
-      flex-direction: column; }
+      flex-direction: column;
+      -webkit-flex-direction: column; }
       footer .ninesixzero .copyright, footer .ninesixzero .logo, footer .ninesixzero .authors {
         text-align: center; } }
 
@@ -827,16 +882,22 @@ music-player {
     height: 100%;
     padding: 0;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
-    justify-content: space-between; }
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between; }
     music-player .ninesixzero .section {
       padding: 0; }
   music-player #now_playing {
     padding-left: 10px;
     margin-bottom: 5px;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
-    justify-content: flex-start; }
+    -webkit-flex-direction: column;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start; }
     music-player #now_playing span {
       font-family: "Roboto", sans-serif;
       font-size: 1.125em;
@@ -858,9 +919,12 @@ music-player {
     margin: auto;
     height: 100%;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
+    -webkit-align-items: center;
     width: 160px;
-    justify-content: space-between; }
+    justify-content: space-between;
+    -webkit-justify-content: space-between; }
     music-player #controls .control {
       cursor: pointer;
       width: 40px;
@@ -883,15 +947,20 @@ music-player {
           visibility: visible; }
   music-player #volume {
     display: flex;
+    display: -webkit-flex;
     padding-right: 10px;
     align-items: center;
+    -webkit-align-items: center;
     justify-content: center;
+    -webkit-justify-content: center;
     height: 100%;
     overflow: visible;
     position: relative; }
     music-player #volume i {
       display: flex;
+      display: -webkit-flex;
       align-items: center;
+      -webkit-align-items: center;
       font-size: 1.7em;
       color: #1e3f59;
       position: absolute;
@@ -903,8 +972,11 @@ music-player {
       margin-left: 33px;
       z-index: 99999;
       display: flex;
+      display: -webkit-flex;
       align-items: center;
+      -webkit-align-items: center;
       justify-content: flex-end;
+      -webkit-justify-content: flex-end;
       width: 100px;
       height: 100%;
       overflow: visible; }
