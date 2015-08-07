@@ -11,7 +11,7 @@ if(@notAllSet(array($form['id']))) exitMessage($CODES["ENTITY_INVALID"]);
 $x = $dbh->quickQuery("select * from songs where id=? limit 1", array($form['id']));
 if($x->rowCount() < 1) exitMessage($CODES['ENTITY_NOTFOUND']);
 $song = $x->fetch(PDO::FETCH_ASSOC);
-if(!removeFile($song['filename'])) exitMessage($CODES['ENTITY_NOTFOUND']);
+removeFile($song['filename']);
 $order = $song['ordr'];
 $cat_id = $song['cat_id'];
 $dbh->quickQuery("delete from songs where id=? limit 1", array($form['id']));

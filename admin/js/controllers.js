@@ -132,8 +132,8 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
     $scope.entities = [];
     $scope.newEntity = {};
     $scope.editedEntity = {};
-    var nUploader = $scope.nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/images/image_upload.php'});
-    var eUploader = $scope.eUploader = new FileUploader({withCredentials:true, url: $scope.apiHost+"/gallery/update.php"});
+    var nUploader = $scope.nUploader = new FileUploader({withCredentials:true, url: '/admin/api/images/image_upload.php'});
+    var eUploader = $scope.eUploader = new FileUploader({withCredentials:true, url: "/admin/api/gallery/update.php"});
     var filter = {
         name: 'imageFilter',
         fn: function(item, options){
@@ -207,7 +207,7 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
                 eUploader.queue[0].formData= [{form:JSON.stringify($scope.editedEntity)}];
                 eUploader.uploadAll();
             } else
-                $http.post($scope.apiHost+"/gallery/update.php", {form: JSON.stringify($scope.editedEntity)}).then(function(result){
+                $http.post("/admin/api/gallery/update.php", {form: JSON.stringify($scope.editedEntity)}).then(function(result){
                     eUploader.onSuccessItem(null, result.data);
                 })
         }
@@ -237,7 +237,7 @@ app.controller("GalleryController", function($scope, entityService, FileUploader
     }
 
     $scope.reorderEntity = function(entity, change){
-        $http.post($scope.apiHost+"/gallery/reorder.php", {form: JSON.stringify(entity), change: change}).then(function(){
+        $http.post("/admin/api/gallery/reorder.php", {form: JSON.stringify(entity), change: change}).then(function(){
             $scope.message.text = strings.REORDERED;
             $scope.getEntities();
         });
@@ -330,7 +330,7 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         });
     }
     $scope.reorderCategory = function(entity, change){
-        $http.post($scope.apiHost+"/"+strings.TYPE+"/cats/reorder.php", {form: JSON.stringify(entity), change: change}).then(function(){
+        $http.post("/admin/api/"+strings.TYPE+"/cats/reorder.php", {form: JSON.stringify(entity), change: change}).then(function(){
             $scope.message.text = strings.REORDERED;
             $scope.getEntities();
         });
@@ -393,7 +393,7 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
         }
     }
     $scope.reorderTrack = function(entity, categoryId, change){
-        $http.post($scope.apiHost+"/"+strings.TYPE+"/reorder.php", {form: JSON.stringify(entity), category: categoryId, change: change}).then(function(){
+        $http.post("/admin/api/"+strings.TYPE+"/reorder.php", {form: JSON.stringify(entity), category: categoryId, change: change}).then(function(){
             $scope.message.text = "Przeniesiono piosenkę.";
             $scope.getEntities();
         });
@@ -438,7 +438,7 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
                 eUploader.uploadAll();
             }
             else{
-                $http.post($scope.apiHost+"/music/update.php", {id: track.id, name: track.name}).then(function(result){
+                $http.post("/admin/api/music/update.php", {id: track.id, name: track.name}).then(function(result){
                     $scope.uploading = false;
                     if(result.data.message != "no_files"){
                         $scope.message.text = "Zmieniono nazwę piosenki.";
@@ -460,12 +460,12 @@ app.controller("MusicController", function($scope, entityService, FileUploader, 
              * Tu też dużo śmieszków
              * */
             for(var i = 0; i < data.length; i++){
-                var nUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/upload.php'});
+                var nUploader = new FileUploader({withCredentials:true, url: '/admin/api/music/upload.php'});
                 nUploader.filters.push(filter);
                 $scope.newUploaders.push({id: data[i].id, uploader: nUploader});
                 data[i].nsong = {};
                 for(var j = 0; j < data[i].songs.length; j++){
-                    var eUploader = new FileUploader({withCredentials:true, url: $scope.host+'/admin/api/music/update.php'});
+                    var eUploader = new FileUploader({withCredentials:true, url: '/admin/api/music/update.php'});
                     eUploader.filters.push(filter);
                     $scope.editedUploaders.push({id: data[i].songs[j].id, uploader: eUploader});
                 }
@@ -503,13 +503,13 @@ app.service("entityService", function($rootScope, $http){
         },
         callAPI: function (method, entityUri, callback, entityObject){
             var scope = this.scope;
-            $http.post($rootScope.apiHost+"/"+entityUri+"/"+method+".php", {form: entityObject}).then(function(result){
+            $http.post("/admin/api/"+entityUri+"/"+method+".php", {form: entityObject}).then(function(result){
                 callback(result.data.content, result.data.message);
                 if(method=="create" && result.data.message==codes.ENTITY_CREATED && entityUri!="teachers") {scope.newEntity = {}; scope.editedEntity = {}}
                 else if(method=="update" && result.data.message==codes.ENTITY_UPDATED) scope.editedEntity = {};
                 else if(method=="delete" && result.data.message==codes.ENTITY_DELETED) scope.editedEntity = {};
             });
-            if(method != "get_all") this.scope.getEntities();
+            if(method != "get_all" && entityUri != "music") this.scope.getEntities();
         }
     }
 })

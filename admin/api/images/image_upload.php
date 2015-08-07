@@ -10,7 +10,7 @@ $tempPath = $_FILES['file']['tmp_name'];
 $bin = $_POST;
 $filename = $bin['filename'];
 $folder = $bin['folder'];
-$ext = end(explode(".", $_FILES['file']['name']));
+@$ext = @end(explode(".", $_FILES['file']['name']));
 
 uploadImage($filename, $folder, $ext, $tempPath, $CODES);
 

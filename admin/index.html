@@ -2,6 +2,7 @@
 <html ng-app="panel">
 <head>
     <meta charset="UTF-8">
+    <base href="/admin/"/>
     <title ng-bind="title.main + (title.sub.length>0?' - ' + title.sub:'')">WK - Panel Administratora</title>
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-route/angular-route.min.js"></script>
@@ -39,7 +40,7 @@
         <div class="small-12 medium-9 columns" id="site" ng-view>
         </div>
     </div>
-    <div id="footer">&copy; 2014 Wykonanie: <a href="http://github.com/kubukoz"><b>Jakub&nbsp;Kozłowski</b>&nbsp;<i class="fa fa-github"></i></a></div>
+    <div id="footer">&copy; 2015 Wykonanie: <a href="http://github.com/kubukoz"><b>Jakub&nbsp;Kozłowski</b>&nbsp;<i class="fa fa-github"></i></a></div>
 </div>
 </body>
 </html>

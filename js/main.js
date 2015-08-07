@@ -3,9 +3,8 @@
  */
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, $window, $http) {
-    $rootScope.host = "http://"+$window.location.hostname+":8080/api";
     $rootScope.duOffset = 120;
-    $http.get($rootScope.host+"/get_all.php").then(function(result){
+    $http.get("api/get_all.php").then(function(result){
         $rootScope.galrows = [];
         var currRow = [];
         for (var i = 0; i < result.data.gallery.length; i++) {

@@ -1,4 +1,5 @@
 <?php
+
 class SimplePDO extends PDO{
     function quickQuery($query, $args = null){
         $result = $this->prepare($query);
@@ -84,7 +85,7 @@ function authenticate_user(PDO $dbh){
     $user = $sth->fetchAll(PDO::FETCH_ASSOC);
     $response = $user[0];
     if(getMode()==1)
-        setcookie("user", json_encode($response), time()+3600*24*365.25, '/', ".wlodekkozlowski.pl", null, true); //todo
+        setcookie("user", json_encode($response), time()+3600*24*365.25, '/', ".standardexpress.esy.es", null, true); //todo
     else
         setcookie("user", json_encode($response), time()+3600*24*365.25, '/', null, null, true);
     return json_encode(array("user"=>$response));
@@ -107,18 +108,18 @@ function requireUser($dbh){
     }
     else return $result;
 };
-
+echo $_SERVER['Headers'];
 if(getMode()==1)
-    header("Access-Control-Allow-Origin: http://wlodekkozlowski.pl");//todo
+    header("Access-Control-Allow-Origin: http://standardexpress.esy.es");//todo
 else
     header("Access-Control-Allow-Origin: http://localhost:63342");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
 
-$dbname = getMode()==0?"wkoz":"";
-$host = "localhost:3306";
-$user = getMode()==0?"root":""; $pass = getMode()==0?"":"";
+$dbname = getMode()==0?"wkoz":"u461537411_wkoz";
+$host = getMode()==0?"localhost:3306":"mysql.hostinger.pl";
+$user = getMode()==0?"root":"u461537411_wkoz"; $pass = getMode()==0?"":"&68PdlHv$1CpW1rf?O";
 try{
     $dbh = new SimplePDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $dbh->query("SET NAMES utf8");

@@ -10,10 +10,10 @@ $tempPath = $_FILES['file']['tmp_name'];
 
 $bin = $_POST;
 $filename = $bin['filename'];
-$ext = end(explode(".", $_FILES['file']['name']));
+$ext = @end(explode(".", $_FILES['file']['name']));
 
 uploadSong($filename, $ext, $tempPath, $CODES);
 
 $file = $dbh->quickQuery("update songs set filename=? where id=? limit 1", array("music/".$filename, $bin['id']));
 
-exitMessage("file_uploaded");
+exitMessage($filename);

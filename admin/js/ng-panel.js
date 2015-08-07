@@ -7,9 +7,7 @@ app.run(function($rootScope, $http, ngDialog, authService){
     var dialogVisible = false;
     $rootScope.message = {text:""};
     $rootScope.authmessage = "Zaloguj się";
-    $rootScope.host = "http://localhost:8080";
-//    $rootScope.host = "http://wlodekkozlowski.pl"; //todo
-    $rootScope.apiHost = $rootScope.host+"/admin/api";
+//    = "http://wlodekkozlowski.pl"; //todo
     $rootScope.title = {main: "WK Panel"/*todo*/, sub: ""};
     $rootScope.auth = function(user, callback){
             authService.auth(user)
@@ -63,7 +61,7 @@ app.config(function($routeProvider, $httpProvider){
         .when("/logout", {
             template: "Trwa wylogowywanie.",
             controller: function($scope, $http, $location){
-                $http.post($scope.host+"/admin/api/logout.php", null).then(function(){
+                $http.post("/admin/api/logout.php", null).then(function(){
                     $location.path("/");
                 });
             }
@@ -145,7 +143,7 @@ app.directive("message", function($timeout){
 app.service("authService", function($rootScope, $http){
     return {
         auth: function(user){
-            return $http.post($rootScope.host+"/admin/api/login.php", {user:user});
+            return $http.post("/admin/api/login.php", {user:user});
         }
     }
 })
