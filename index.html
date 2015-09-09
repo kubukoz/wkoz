@@ -3,16 +3,11 @@
 <html ng-app="wKoz">
 <head>
     <meta charset="UTF-8">
-    <!--<base href="/">-->
+    <base href="/wkoz/">
     <title>Standard Express</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link href="plugins/reset.css" rel="stylesheet"/>
     <link href="styles/main.css" rel="stylesheet"/>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="plugins/ng-ScrollSpy.js"></script>
-    <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
-    <script src="bower_components/ngDialog/js/ngDialog.min.js"></script>
     <link rel="icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css"/>
@@ -26,7 +21,7 @@
     <meta property="og:site_name" content="Standard Express"/>
     <meta property="og:image" content="http://standardexpress.pl/images/og_image.png"/>
     <meta property="og:description" content="Standard Express to grupa muzyków zajmujących się jazzem, o zmiennym składzie."/><!--todo-->
-    <script>
+    <!--<script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -35,7 +30,7 @@
         ga('create', 'UA-55943015-3', 'auto');
         ga('send', 'pageview');
 
-    </script>
+    </script>-->
 </head>
 <body>
 <header id="header" scrollspy-broadcast scrollspy-offset="auto">
@@ -183,8 +178,8 @@
                 <li scrollspy-listen="about"><a href="#about" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">O mnie</a></li>
                 <li scrollspy-listen="repertoire"><a href="#repertoire" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Repertuar</a></li>
                 <li scrollspy-listen="about_se|locations"><a href="#about_se" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">O Standard Express</a></li>
-                <li scrollspy-listen="musi`c" ng-show="categories.length"><a href="#music" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Muzyka</a></li>
-                <li scrollspy-listen="gallery" ng-show="galrows.length"><a href="#gallery" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Galeria</a></li>
+                <!--<li scrollspy-listen="music"><a href="#music" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Muzyka</a></li>-->
+                <!--<li scrollspy-listen="gallery"><a href="#gallery" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Galeria</a></li>-->
                 <li scrollspy-listen="contact|footer"><a href="#contact" clickable-hidenav du-smooth-scroll offset="{{duOffset}}">Kontakt</a></li>
             </ul>
             <div id="drawer" ng-click="toggleNav()" ng-class="{'active':nav.visible}">
@@ -197,7 +192,7 @@
 </header>
 <div id="about" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
     <div id="about_inside" class="ninesixzero clearfix">
-        <div class="image col-xs-12 col-sm-4"><div class="inside"></div> </div>
+        <div class="image col-xs-12 col-sm-4"><div class="inside"></div></div>
         <div class="text col-xs-12 col-sm-8">
             <h1>Włodek Kozłowski</h1>
             <hr/>
@@ -310,7 +305,7 @@
         </div>
     </div>
 </div>
-<div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController" ng-show="galrows.length">
+<div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController" ng-show="gallery.items">
     <div class="ninesixzero">
         <h1 class="heading">Galeria</h1>
         <div class="wrapper">
@@ -327,8 +322,8 @@
                 <svg><use xlink:href="#arrow"></use></svg>
             </div>
             <div class="slides">
-                <div ng-repeat="row in galrows" class="slide" ng-class="{'unselected':gallery.selected!=$index, 'left':gallery.selected>$index, 'right':gallery.selected<$index}">
-                    <div class="item" ng-repeat="item in row"><div class="image" ng-attr-title="{{item.name}}" ng-style="{'background-image': 'url('+item.image+')'}" gallery-modal ng-href="{{item.image}}"></div></div>
+                <div ng-repeat="row in []|range:gallery.slideCount" class="slide" ng-class="{'unselected':gallery.selected!=$index, 'left':gallery.selected>$index, 'right':gallery.selected<$index}">
+                    <div class="item" ng-repeat="item in gallery.items.slice($index*3, ($index+1)*3)"><div class="image" ng-attr-title="{{item.name}}" ng-style="{'background-image': 'url('+item.image+')'}" gallery-modal ng-href="{{item.image}}"></div></div>
                 </div>
             </div>
         </div>
@@ -418,6 +413,11 @@
         </div>
     </div>
 </music-player>
-</body>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="plugins/ng-ScrollSpy.js"></script>
+<script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
+<script src="bower_components/ngDialog/js/ngDialog.min.js"></script>
 <script src="js/main.js"></script>
+</body>
 </html>

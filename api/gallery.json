@@ -1,0 +1,26 @@
+[
+  {
+    "name": "test",
+    "image": "images/gallery/test.jpg"
+  },
+  {
+    "name": "test 2",
+    "image": "images/gallery/test2.jpg"
+  },
+  {
+    "name": "test 3",
+    "image": "images/gallery/test3.png"
+  },
+  {
+    "name": "test",
+    "image": "images/gallery/test.jpg"
+  },
+  {
+    "name": "test 2",
+    "image": "images/gallery/test2.jpg"
+  },
+  {
+    "name": "test 3",
+    "image": "images/gallery/test3.png"
+  }
+]
