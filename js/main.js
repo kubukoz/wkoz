@@ -4,9 +4,9 @@
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, $window, $http) {
 	$rootScope.duOffset = 120;
-	$http.get("/api/music").then(function (result) {
-		if (result.data.music.length) {
-			$rootScope.categories = result.data.music;
+	$http.get("/wkoz/api/music.json").then(function (result) {
+		if (result.data.length) {
+			$rootScope.categories = result.data;
 			$rootScope.player.selected = $rootScope.categories[0].songs[0];
 			$rootScope.player.switchPlaying(true);
 		}
