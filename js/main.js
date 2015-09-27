@@ -4,7 +4,7 @@
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, $window, $http) {
 	$rootScope.duOffset = 120;
-	$http.get("/wkoz/api/music.json").then(function (result) {
+	$http.get("api/music.json").then(function (result) {
 		if (result.data.length) {
 			$rootScope.categories = result.data;
 			$rootScope.player.selected = $rootScope.categories[0].songs[0];
@@ -51,7 +51,7 @@ app.controller("GalleryController", function ($scope, $http) {
 	g.previous = function () {
 		g.selected -= (g.selected > 0 ? 1 : (-$scope.galrows.length + 1));
 	};
-	$http.get("/wkoz/api/gallery.json").then(function (result) {
+	$http.get("api/gallery.json").then(function (result) {
 		g.items = result.data;
 		g.slideCount = Math.ceil(result.data.length/3.0);
 	})
