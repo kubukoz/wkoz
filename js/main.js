@@ -46,10 +46,10 @@ app.controller("NavController", function ($scope, $window) {
 app.controller("GalleryController", function ($scope, $http) {
 	var g = $scope.gallery = {selected: 0};
 	g.next = function () {
-		g.selected += ((g.selected < $scope.galrows.length - 1) ? 1 : -g.selected);
+		g.selected += ((g.selected < g.slideCount - 1) ? 1 : -g.selected);
 	};
 	g.previous = function () {
-		g.selected -= (g.selected > 0 ? 1 : (-$scope.galrows.length + 1));
+		g.selected -= (g.selected > 0 ? 1 : (-g.slideCount+ 1));
 	};
 	$http.get("api/gallery.json").then(function (result) {
 		g.items = result.data;

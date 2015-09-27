@@ -1,5 +1,5 @@
 {
-  "name": "kumalg",
+  "name": "wkoz",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kubukoz/kratex"
+    "url": "https://github.com/kubukoz/standardexpress"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kubukoz/kratex/issues"
+    "url": "https://github.com/kubukoz/standardexpress/issues"
   },
-  "homepage": "https://github.com/kubukoz/kratex"
+  "homepage": "https://github.com/kubukoz/standardexpress"
 }
