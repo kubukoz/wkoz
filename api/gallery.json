@@ -1,15 +1,19 @@
 [
   {
     "name": "1",
-    "image": "images/gallery/1.jpg"
+    "image": "images/gallery/2.jpg"
   },
   {
     "name": "2",
-    "image": "images/gallery/2.jpg"
+    "image": "images/gallery/15.jpg"
   },
   {
     "name": "3",
     "image": "images/gallery/3.jpg"
+  },
+  {
+    "name": "1",
+    "image": "images/gallery/1.jpg"
   },
   {
     "name": "4",
@@ -17,44 +21,42 @@
   },
   {
     "name": "5",
-    "image": "images/gallery/5.jpg",
-    "itd": [
-      {
-        "name": "6",
-        "image": "images/gallery/6.jpg"
-      },
-      {
-        "name": "13",
-        "image": "images/gallery/13.jpg"
-      }
-    ]
+    "image": "images/gallery/5.jpg"
   },
   {
-    "name": "7",
+    "name": "6",
     "image": "images/gallery/7.jpg"
   },
   {
-    "name": "8",
+    "name": "7",
     "image": "images/gallery/8.jpg"
   },
   {
-    "name": "9",
+    "name": "8",
     "image": "images/gallery/9.jpg"
   },
   {
-    "name": "10",
+    "name": "9",
     "image": "images/gallery/10.png"
   },
   {
-    "name": "11",
+    "name": "10",
     "image": "images/gallery/11.png"
   },
   {
-    "name": "12",
+    "name": "11",
     "image": "images/gallery/12.jpg"
   },
   {
-    "name": "14",
+    "name": "12",
     "image": "images/gallery/14.jpg"
+  },
+  {
+    "name": "13",
+    "image": "images/gallery/6.jpg"
+  },
+  {
+    "name": "14",
+    "image": "images/gallery/13.jpg"
   }
 ]

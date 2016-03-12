@@ -4,6 +4,7 @@
 app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, $window, $http) {
 	$rootScope.duOffset = 120;
+	$rootScope.currentYear = new Date().getFullYear();
 	$http.get("api/music.json").then(function (result) {
 		if (result.data.length) {
 			$rootScope.categories = result.data;
