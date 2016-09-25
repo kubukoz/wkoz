@@ -1,7 +1,7 @@
 /**
  * Created by kubuk_000 on 2014-10-06.
  */
-app = angular.module("wKoz", ["ngScrollSpy", "ngRoute", "duScroll", "ngDialog"]);
+app = angular.module("wKoz", ["ngScrollSpy", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, $window, $http) {
 	$rootScope.duOffset = 120;
 	$rootScope.currentYear = new Date().getFullYear();
