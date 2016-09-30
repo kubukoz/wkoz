@@ -11,4 +11,4 @@ before_script:
 script:
 - bower install
 - gulp deploy
-- firebase deploy --token ${FIREBASE_TOKEN} --project project-1446004755431126045
+- firebase deploy --token ${FIREBASE_TOKEN}
