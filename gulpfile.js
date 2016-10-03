@@ -5,7 +5,7 @@ var rename = require("gulp-rename");
 var cleanCSS = require("gulp-clean-css");
 var sass = require('gulp-sass');
 
-gulp.task('styles', function () {
+gulp.task('styles', () => {
   return gulp.src('styles/*.scss')
     .pipe(sass())
     .pipe(autoprefixer({
@@ -20,13 +20,11 @@ gulp.task('deploy', ['styles'], () => {
   return gulp.src([
     "api/**",
     "bower_components/**",
-    "favicon/favicon.png",
+    "images/favicon.*",
     "images/**",
     "js/**",
     "plugins/**",
     "styles/*.css",
-    "templates/**",
-    "keybase.txt",
     "index.html"
   ], {base: "."})
     .pipe(gulp.dest("public/"))

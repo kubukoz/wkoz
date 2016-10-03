@@ -470,8 +470,14 @@
         </div>
     </div>
 </music-player>
+<div cookie-consent id="cookie-consent" ng-class="{'visible':!cookiesAccepted}">
+    <div class="ninesixzero">Strona korzysta z plików cookie w celach statystycznych.
+        <a target="_blank" href="https://support.google.com/analytics/answer/6004245?hl=en">Dowiedz
+            się więcej</a> lub <a class="closer" ng-click="acceptCookies()">Zamknij</a></div>
+</div>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="plugins/ng-ScrollSpy.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
 <script src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
 <script src="js/main.js"></script>

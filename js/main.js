@@ -1,7 +1,7 @@
 /**
  * Created by kubuk_000 on 2014-10-06.
  */
-app = angular.module("wKoz", ["ngScrollSpy", "duScroll", "ngDialog"]);
+var app = angular.module("wKoz", ["ngScrollSpy", "ngCookies", "duScroll", "ngDialog"]);
 app.run(function ($rootScope, $window, $http) {
 	$rootScope.duOffset = 120;
 	$rootScope.currentYear = new Date().getFullYear();
@@ -254,5 +254,19 @@ app.filter("range", function(){
 		for(var i = 0; i < total; i++)
 			input.push(i);
 		return input;
+	}
+});
+app.directive("cookieConsent", function($cookies){
+	return {
+		scope: false,
+		link: function(scope){
+			scope.cookiesAccepted = $cookies.get("acceptCookies");
+			scope.acceptCookies = function(){
+				var expires = new Date();
+				expires.setFullYear(expires.getFullYear()+1);
+				$cookies.put("acceptCookies", "true", {expires: expires});
+				scope.cookiesAccepted = true;
+			}
+		}
 	}
 });

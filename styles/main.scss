@@ -1203,3 +1203,31 @@ music-player{
     }
   }
 }
+#cookie-consent {
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: .2s;
+  background: #000000;
+  &.visible {
+    transform: translateY(0);
+  }
+  .ninesixzero {
+    text-align: center;
+    font-family: $font-headers;
+    padding: 10px 20px;
+    max-width: 1000px;
+    font-size: 1em;
+    color: $gray-light;
+    font-weight: $light;
+    a {
+      cursor: pointer;
+      transition: .2s;
+      font-weight: $regular;
+      color: #0282d6;
+    }
+  }
+}
