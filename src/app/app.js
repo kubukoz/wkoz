@@ -18,18 +18,32 @@ import 'ng-dialog/css/ngDialog.css'
 
 //data
 import galleryItems from '../data/gallery'
+import musicCategories from '../data/music'
 
-var app = angular.module("wkoz", ["ngScrollSpy", "ngCookies", "duScroll", "ngDialog"]);
-app.run(['$rootScope', '$window', '$http', function ($rootScope, $window, $http) {
-	$rootScope.duOffset = 120;
-	$rootScope.currentYear = new Date().getFullYear();
-	// $http.get("api/music.json").then(function (result) {
-	// 	if (result.data.length) {
-	// 		$rootScope.categories = result.data;
-	// 		$rootScope.player.selected = $rootScope.categories[0].songs[0];
-	// 		$rootScope.player.switchPlaying(true);
-	// 	}
-	// })
+const flatMap = (f, arr) => arr.reduce((x, y) => [...x, ...f(y)], []);
+
+const app = angular.module("wkoz", ["ngScrollSpy", "ngCookies", "duScroll", "ngDialog"]);
+app.run(['$rootScope', function ($rootScope) {
+  $rootScope.duOffset = 120;
+  $rootScope.currentYear = new Date().getFullYear();
+
+  let songId = 0;
+  $rootScope.categories = musicCategories.map((category, catIndex) => {
+    category.id = catIndex;
+    category.ordr = catIndex + 1;
+    category.songs = category.songs.map((song, songIndex) => {
+      song.id = (++songId);
+      song.ordr = songIndex + 1;
+      song.catId = catIndex;
+      return song;
+    });
+
+    return category;
+  });
+
+  setTimeout(() => {
+    $rootScope.$broadcast("musicRequested", {id: $rootScope.categories[1].songs[0].id})
+  }, 1000);
 }]);
 
 app.config(['scrollspyConfigProvider', function (scrollspyConfigProvider) {
@@ -97,17 +111,14 @@ app.directive("musicPlayer", function () {
 		restrict: "E",
 		link: function (scope, elem) {
 			var p = scope.$root.player = scope.player = {playing: false, selected: {}, volume: 40, audio: new Audio()};
+			p.audio.preload = "auto";
 
-			p.getSongById = function (id) {
-				var cats = scope.categories;
-				for (var i = 0; i < cats.length; i++)
-					for (var j = 0; j < cats[i].songs.length; j++)
-						if (cats[i].songs[j].id == id) return cats[i].songs[j]
-			};
-			var getCategoryById = function (id) {
-				for (var i = 0; i < scope.categories.length; i++)
-					if (scope.categories[i].id == id) return scope.categories[i];
-			};
+			p.getSongById =
+          id =>
+            flatMap(category => category.songs, scope.categories)
+              .find(song => song.id === id);
+
+			const getCategoryById = id => scope.categories.find(cat => cat.id === id);
 
 			p.getNextCategoryAfter = function (category) {
 				var cats = scope.categories;
@@ -119,14 +130,15 @@ app.directive("musicPlayer", function () {
 			};
 
 			p.getNextSongAfter = function (song) {
-				var cat = getCategoryById(song.cat_id);
+				var cat = getCategoryById(song.catId);
+				console.log(song)
 				if (song.ordr == cat.songs.length)
 					return p.getNextCategoryAfter(cat).songs[0];
 				else
 					return cat.songs[song.ordr];
 			};
 			p.getPreviousSongBefore = function (song) {
-				var cat = getCategoryById(song.cat_id);
+				var cat = getCategoryById(song.catId);
 				if (song.ordr == 1) {
 					var pcat = p.getPreviousCategoryBefore(cat);
 					return pcat.songs[pcat.songs.length - 1];
@@ -193,20 +205,16 @@ app.directive("musicPlayer", function () {
 				});
 			};
 			scrollbar.ontouchmove = scrollbar.onmousemove = function (e) {
+			  let vol;
 				if (scope.vol.clicked) {
 					e.preventDefault();
 					vol = Math.round(100 * Math.min(Math.max((e.offsetX || (e.clientX - scrollbar.getBoundingClientRect().left) || 0), 0) / scrollbar.offsetWidth, 1));
-					scope.$apply(function () {
-						p.volume = vol;
-					});
 				}
 				else if (e.type == "touchmove") {
 					e.preventDefault();
 					vol = Math.round(100 * Math.min(Math.max(((e.changedTouches[0].clientX - scrollbar.getBoundingClientRect().left) || 0), 0) / scrollbar.offsetWidth, 1));
-					scope.$apply(function () {
-						p.volume = vol;
-					})
 				}
+        if(vol !== undefined) scope.$apply(() => p.volume = vol)
 			};
 			document.onkeydown = function (e) {
 				scope.$apply(function () {

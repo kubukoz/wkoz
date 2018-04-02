@@ -1,0 +1,68 @@
+[{
+  "name": "Maciej Strzelczyk Band",
+  "songs": [
+    {
+      "name": "Wave",
+      "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-wave.mp3?alt=media&token=b2366352-9c6d-469c-953e-3b361540c81b"
+    },
+    {
+      "name": "Corcovado",
+      "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-corcovado.mp3?alt=media&token=50b7768d-2844-4328-a72a-16b78926c9da"
+    },
+    {
+      "name": "O amor en paz",
+      "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-o-amor.mp3?alt=media&token=066a09b1-a2d5-4071-9094-a15ef8c7564c"
+    },
+    {
+      "name": "Bye, bye blackbird",
+      "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-blackbird.mp3?alt=media&token=c9435672-6123-4afe-8709-e61ef40b37f8"
+    },
+    {
+      "name": "Triste",
+      "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-triste.mp3?alt=media&token=49505db4-101f-4575-b61c-410b372ec8ec"
+    },
+    {
+      "name": "Mr Magic",
+      "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-mr-magic.mp3?alt=media&token=12fde8b6-1863-4a0a-98cf-4ff4823467ca"
+    },
+    {
+      "name": "Alice in Wonderland",
+      "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-alice-in-wonderland.mp3?alt=media&token=f0765cd4-07c8-43fe-9de4-756f05427306"
+    }
+  ]
+ },
+  {
+    "name": "Jagiełło / Kozłowski / Stasiak",
+    "songs": [
+      {
+        "name": "If I should lose you",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-if-i-should-lose-you.mp3?alt=media&token=c9db1e4d-dbb6-4496-ab88-b9d14626106a"
+      },
+      {
+        "name": "The Girl from Ipanema",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-the-girl-from-ipanema.mp3?alt=media&token=287bd0ee-faa6-4f5b-8574-2386069802c4"
+      },
+      {
+        "name": "There will never be another you",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-terefere.mp3?alt=media&token=e9568e8e-20a2-40ac-94f2-d8910b2392a7"
+      },
+      {
+        "name": "Live Mix",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/columna-medica-live-mix.mp3?alt=media&token=651a76f7-37fc-4c3d-a5cb-8d896ad17064"
+      }
+    ]
+  },
+  {
+  "name": "Inne",
+   "songs": [
+     {
+       "name": "Agnieszka Nastarowicz - Joshua",
+       "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/agnieszka-nastarowicz-joshua.mp3?alt=media&token=ae301416-29f5-4bd7-828a-997cbdf66e65"
+     },
+     {
+       "name": "Trio Swingowe - Pod papugami",
+       "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-swingowe-papugi.mp3?alt=media&token=8d4d6116-68f8-45d3-8a09-ea96e4c614c3"
+     }
+   ]
+ }
+]

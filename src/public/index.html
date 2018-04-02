@@ -227,7 +227,7 @@
                     i&nbsp;wielu&nbsp;innych.
                 </div>
                 <div class="col-xs-12 col-sm-6 text">W swoim repertuarze mamy ponadto kompozycje artystów takich jak <b>Stevie&nbsp;Wonder,
-                    Beatlesi, &nbsp;Sting, Elvis&nbsp;Presley i Czesław&nbsp;Niemen</b>.
+                    The Beatles, &nbsp;Sting, Elvis&nbsp;Presley i Czesław&nbsp;Niemen</b>.
                 </div>
             </div>
         </div>
@@ -272,9 +272,9 @@
                 instrumenty. Współpracujemy również z wokalistkami.</p>
         </div>
         <hr/>
-        <p class="text">Muzycy, z którymi miałem i mam przyjemność grać, to wybitni artyści, tacy jak skrzypek jazzowy
+        <p class="text">Muzycy, z którymi miałem i mam przyjemność grać, to artyści tacy jak wybitny skrzypek jazzowy
             <b>Maciej&nbsp;Strzelczyk</b>, pianiści <b>Witold&nbsp;Janiak, Jarosław&nbsp;Małys</b>, gitarzyści
-            <b>Krzysztof&nbsp;Woliński, Romuald&nbsp;Erenc</b> i wielu innych.</p>
+            <b>Krzysztof&nbsp;Woliński, Romuald&nbsp;Erenc</b>, perkusista <b>Grzegorz Grzyb</b>, i wielu innych.</p>
     </div>
 </div>
 <div id="locations" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
@@ -297,7 +297,7 @@
         <h1 class="heading">Muzyka</h1>
         <div class="col-sm-12 col-md-6 column">
             <div class="block" ng-show="categories.length">
-                <div ng-repeat="category in categories.slice(0,2)">
+                <div ng-repeat="category in categories.slice(0,1)">
                     <h2 ng-show="category.name.length">{{category.name}}</h2>
                     <ul>
                         <li ng-repeat="song in category.songs"
@@ -315,7 +315,7 @@
         </div>
         <div class="col-sm-12 col-md-6 column">
             <div class="block" ng-show="categories.length">
-                <div ng-repeat="category in categories.slice(2)">
+                <div ng-repeat="category in categories.slice(1)">
                     <h2 ng-show="category.name.length">{{category.name}}</h2>
                     <ul>
                         <li ng-repeat="song in category.songs"
