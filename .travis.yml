@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- 9.10.1
+branches:
+  only:
+  - master
+before_script:
+- npm install
+script:
+- firebase deploy --token ${FIREBASE_TOKEN}
