@@ -111,7 +111,7 @@ app.directive("musicPlayer", function () {
 		restrict: "E",
 		link: function (scope, elem) {
 			var p = scope.$root.player = scope.player = {playing: false, selected: {}, volume: 40, audio: new Audio()};
-			p.audio.preload = "auto";
+			p.audio.preload = "none";
 
 			p.getSongById =
           id =>
