@@ -1,24 +1,43 @@
-/**
- * Created by kubuk_000 on 2014-10-06.
- */
-var app = angular.module("wKoz", ["ngScrollSpy", "ngCookies", "duScroll", "ngDialog"]);
-app.run(function ($rootScope, $window, $http) {
+import angular from 'angular';
+import ngCookies from 'angular-cookies'
+import duScroll from 'angular-scroll'
+import ngDialog from 'ng-dialog'
+
+//custom styles
+import '../style/reset.css'
+import '../style/app.scss'
+
+//custom scripts
+import '../plugins/ng-scrollSpy.js'
+
+//library styles
+import 'font-awesome/css/font-awesome.css'
+import 'bootstrap-css-only/css/bootstrap.css'
+import 'ng-dialog/css/ngDialog-theme-default.css'
+import 'ng-dialog/css/ngDialog.css'
+
+//data
+import galleryItems from '../data/gallery'
+
+var app = angular.module("wkoz", ["ngScrollSpy", "ngCookies", "duScroll", "ngDialog"]);
+app.run(['$rootScope', '$window', '$http', function ($rootScope, $window, $http) {
 	$rootScope.duOffset = 120;
 	$rootScope.currentYear = new Date().getFullYear();
-	$http.get("api/music.json").then(function (result) {
-		if (result.data.length) {
-			$rootScope.categories = result.data;
-			$rootScope.player.selected = $rootScope.categories[0].songs[0];
-			$rootScope.player.switchPlaying(true);
-		}
-	})
-});
-app.config(function (scrollspyConfigProvider) {
+	// $http.get("api/music.json").then(function (result) {
+	// 	if (result.data.length) {
+	// 		$rootScope.categories = result.data;
+	// 		$rootScope.player.selected = $rootScope.categories[0].songs[0];
+	// 		$rootScope.player.switchPlaying(true);
+	// 	}
+	// })
+}]);
+
+app.config(['scrollspyConfigProvider', function (scrollspyConfigProvider) {
 	scrollspyConfigProvider.config = {
 		offset: "120|60"
 	}
-});
-app.controller("NavController", function ($scope, $window) {
+}]);
+app.controller("NavController", ['$scope', '$window', function ($scope, $window) {
 	app.scope = $scope;
 	$scope.nav = {visible: false};
 	$scope.toggleNav = function () {
@@ -43,22 +62,20 @@ app.controller("NavController", function ($scope, $window) {
 	$scope.$root.$on("navCloseRequested", function () {
 		$scope.hideNav();
 	})
-});
-app.controller("GalleryController", function ($scope, $http) {
+}]);
+app.controller("GalleryController", ['$scope', '$http', function ($scope, $http) {
 	var g = $scope.gallery = {selected: 0};
 	g.next = function () {
 		g.selected += ((g.selected < g.slideCount - 1) ? 1 : -g.selected);
 	};
 	g.previous = function () {
 		g.selected -= (g.selected > 0 ? 1 : (-g.slideCount+ 1));
-	};
-	$http.get("api/gallery.json").then(function (result) {
-		g.items = result.data;
-		g.slideCount = Math.ceil(result.data.length/3.0);
-	})
-});
+  };
+  g.items = galleryItems
+  g.slideCount = Math.ceil(galleryItems.length/3.0)
+}]);
 
-app.directive("galleryModal", function (ngDialog) {
+app.directive("galleryModal", ['ngDialog', function (ngDialog) {
 	return {
 		scope: {href: "="},
 		link: function (scope, elem, attr) {
@@ -74,7 +91,7 @@ app.directive("galleryModal", function (ngDialog) {
 			})
 		}
 	}
-});
+}]);
 app.directive("musicPlayer", function () {
 	return {
 		restrict: "E",
@@ -256,7 +273,7 @@ app.filter("range", function(){
 		return input;
 	}
 });
-app.directive("cookieConsent", function($cookies){
+app.directive("cookieConsent", ['$cookies', function($cookies){
 	return {
 		scope: false,
 		link: function(scope){
@@ -269,4 +286,6 @@ app.directive("cookieConsent", function($cookies){
 			}
 		}
 	}
-});
+}]);
+
+export default 'wkoz';

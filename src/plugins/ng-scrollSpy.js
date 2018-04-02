@@ -7,8 +7,7 @@
  *
  * Date: 08/08/2014
  */
-
-'use strict';
+import angular from 'angular'
 
 angular.module('ngScrollSpy', [])
 

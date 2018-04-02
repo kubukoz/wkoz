@@ -6,7 +6,40 @@ $bold: 700;
 $blue: #1e3f59;
 $dark-brown: #3e2723;
 $gray-light: #ebebeb;
-@import 'mixins';
+
+@mixin withPseudo{
+  &:before, &:after{
+    display: block;
+    content: '';
+  }
+}
+
+@mixin transitionAll($time){
+  -webkit-transition: $time;
+  -moz-transition: $time;
+  -ms-transition: $time;
+  -o-transition: $time;
+  transition: $time;
+}
+@mixin transform($property){
+  -moz-transform: $property;
+  -webkit-transform: $property;
+  transform: $property;
+}
+
+.ninesixzero{
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+a{
+  text-decoration: inherit !important;
+}
+@media screen and (min-width: 400px){
+  .xxs-only{
+    display: none;
+  }
+}
 
 h1.heading{
   margin: 0;
@@ -132,7 +165,7 @@ body .ngdialog.ngdialog-theme-default {
               bottom: 24px;
               left: 0;
               right: 0;
-              background: url("../images/icons/menu_arrow.svg") no-repeat center / contain;
+              background: url("/images/icons/menu_arrow.svg") no-repeat center / contain;
               width: 11px;
               height: 9px;
               margin: auto;
@@ -290,7 +323,7 @@ body .ngdialog.ngdialog-theme-default {
 }
 #about{
   overflow: auto;
-  background: url("../images/backgrounds/bass.jpg") no-repeat center / cover $dark-brown;
+  background: url("/images/backgrounds/bass.jpg") no-repeat center / cover $dark-brown;
   #about_inside{
     padding-top: 100px;
     padding-bottom: 100px;
@@ -298,7 +331,7 @@ body .ngdialog.ngdialog-theme-default {
       .inside{
         margin: 0 auto;
         border-radius: 20px;
-        background: url("../images/icons/wlod.jpg") no-repeat center / contain;
+        background: url("/images/icons/wlod.jpg") no-repeat center / contain;
         width: 140px;
         height: 140px;
         -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
@@ -635,7 +668,7 @@ body .ngdialog.ngdialog-theme-default {
   overflow: auto;
   padding-bottom: 28px;
   color: #ffffff;
-  background: url("../images/backgrounds/music.jpg") no-repeat center / cover;
+  background: url("/images/backgrounds/music.jpg") no-repeat center / cover;
   h1{
     margin-top: 46px;
   }

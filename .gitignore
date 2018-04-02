@@ -1,8 +1,4 @@
-.idea/
+node_modules
+dist
+coverage
 **/.DS_Store
-node_modules/
-bower_components/
-*.iml
-public/
-styles/*.css
-styles/*.css.map
