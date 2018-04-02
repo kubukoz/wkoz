@@ -8,4 +8,5 @@ before_script:
 - npm install
 - npm install -g firebase-tools
 script:
+- npm run build
 - firebase deploy --token ${FIREBASE_TOKEN}
