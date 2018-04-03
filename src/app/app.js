@@ -42,7 +42,7 @@ app.run(['$rootScope', function ($rootScope) {
   });
 
   setTimeout(() => {
-    $rootScope.$broadcast("musicRequested", {id: $rootScope.categories[1].songs[0].id})
+    $rootScope.$broadcast("musicRequested", {id: $rootScope.categories[0].songs[0].id})
   }, 1000);
 }]);
 
