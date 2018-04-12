@@ -512,7 +512,6 @@ body .ngdialog.ngdialog-theme-default {
 }
 #about_se{
   background: $blue;
-  overflow: hidden;
   padding-top: 46px;
   padding-bottom: 42px;
   h1 {
@@ -540,9 +539,13 @@ body .ngdialog.ngdialog-theme-default {
         background: #ffffff;
       }
     }
+    .top {
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
     hr{
       width: 100%;
-      margin-top: 56px;
+      margin-top: 0;
       margin-bottom: 25px;
       border: 0;
       height: 2px;
@@ -967,7 +970,7 @@ body .ngdialog.ngdialog-theme-default {
 }
 footer{
   overflow: auto;
-  //margin-bottom: 60px; todo
+  margin-bottom: 60px;
   background: $blue;
   color: #ffffff;
   padding: 0;
