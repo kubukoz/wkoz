@@ -1,6 +1,6 @@
 [
   {
-    "name": "Jagiełło / Kozłowski / Stasiak",
+    "name": "Trio",
     "songs": [
       {
         "name": "If I should lose you",
@@ -21,7 +21,7 @@
     ]
   },
   {
-    "name": "Agnieszka Nastarowicz",
+    "name": "Kwartet z wokalem",
     "songs": [
       {
         "name": "Joshua",
@@ -67,10 +67,14 @@
     ]
   },
   {
-    "name": "Inne",
+    "name": "Trio swingowe",
     "songs": [
       {
-        "name": "Trio Swingowe - \"Pod papugami\"",
+        "name": "Isn't She Lovely",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/isnt%20she%20lovely%20(1).mp3?alt=media&token=93a0a349-3f0c-40d6-9b24-9d174f113edc"
+      },
+      {
+        "name": "Pod papugami",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-swingowe-papugi.mp3?alt=media&token=8d4d6116-68f8-45d3-8a09-ea96e4c614c3"
       }
     ]
