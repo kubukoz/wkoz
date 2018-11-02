@@ -222,15 +222,16 @@
                     <div>
                         Wraz z&nbsp;moimi przyjaciółmi, muzykami, gramy przede&nbsp;wszystkim
                         standardy muzyki
-                        amerykańskiej - utwory grane i&nbsp;śpiewane przez takie sławy jazzu jak&nbsp;<b>L.&nbsp;Armstrong,
-                        N.&nbsp;K.&nbsp;Cole, F.&nbsp;Sinatra, R.&nbsp;Charles,
-                        D.&nbsp;Ellington, G.&nbsp;Gershwin,
-                        E.&nbsp;Fitzgerald, M.&nbsp;Davis, S.&nbsp;Grappelli, P.&nbsp;Metheny, J.&nbsp;Coltrane, A.C.&nbsp;Jobim</b>
+                        amerykańskiej - utwory grane i&nbsp;śpiewane przez takie sławy jazzu jak&nbsp;<b>Chick&nbsp;Corea,
+                        Herbie&nbsp;Hancock,
+                        Frank&nbsp;Sinatra, Ray&nbsp;Charles,
+                        Duke&nbsp;Ellington, George&nbsp;Gershwin,
+                        Ella&nbsp;Fitzgerald, Miles&nbsp;Davis, Stéphane&nbsp;Grappelli, Pat&nbsp;Metheny, John&nbsp;Coltrane, Antônio&nbsp;Carlos&nbsp;Jobim, Keith&nbsp;Jarrett</b>
                         i&nbsp;wielu&nbsp;innych.
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 text">Oprócz utworów&nbsp;jazzowych, w swoim&nbsp;repertuarze mamy również własne&nbsp;aranżacje kompozycji artystów takich&nbsp;jak <b>Stevie&nbsp;Wonder,
-                    The Beatles, &nbsp;Sting, Elvis&nbsp;Presley i Czesław&nbsp;Niemen</b>.
+                    The&nbsp;Beatles, Sting, Elvis&nbsp;Presley i Czesław&nbsp;Niemen</b>.
                     <!--<div>
                         <a href="#music" du-smooth-scroll offset="{{duOffset}}" music-play="14"><i><svg viewBox="0 0 40 40"><use xlink:href="#play_button"></use></svg></i>Isn't She Lovely</a>
                     </div>-->
@@ -249,6 +250,7 @@
     </div>
 </div>
 <div id="about_se" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
+    <div class="background"></div>
     <div class="inside ninesixzero clearfix">
         <h1 class="heading">O Standard Express</h1>
         <div class="top">
@@ -276,15 +278,16 @@
                 <p>Występujemy najczęściej w kameralnych składach (duet, trio, kwartet). Na specjalne okoliczności przygotowujemy
                     skład wieloosobowy.</p>
                 <p>Fortepian, gitara, skrzypce, saksofon, trąbka, bas i perkusja to najczęściej wykorzystywane przez nas
-                    instrumenty. Współpracujemy również z wokalistkami.</p>
+                    instrumenty. Współpracujemy również z wokalistami.</p>
                 <p>Skład zespołu i repertuar starannie dobieramy do charakteru wydarzenia.</p>
-                <p>Posiadamy własny sprzęt nagłośnieniowy.</p>
+                <p class="bigger"><b>Posiadamy własny sprzęt nagłośnieniowy.</b></p>
             </div>
         </div>
         <hr/>
-        <p class="text">Muzycy, z którymi miałem i mam przyjemność grać, to artyści tacy jak wybitny skrzypek jazzowy
+        <p class="text">Artyści, z którymi miałem i mam przyjemność współpracować, to m.in.: wybitny skrzypek jazzowy
             <b>Maciej&nbsp;Strzelczyk</b>, pianiści <b>Witold&nbsp;Janiak, Jarosław&nbsp;Małys</b>, gitarzyści
-            <b>Krzysztof&nbsp;Woliński, Romuald&nbsp;Erenc</b>, perkusista <b>Grzegorz Grzyb</b>, i wielu innych.</p>
+            <b>Krzysztof&nbsp;Woliński, Romuald&nbsp;Erenc</b>, perkusista <b>Grzegorz&nbsp;Grzyb</b> i
+            aktorka&nbsp;<b>Grażyna&nbsp;Błęcka-Kolska</b>.</p>
     </div>
 </div>
 <div id="locations" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60">
@@ -307,7 +310,7 @@
         <h1 class="heading">Muzyka</h1>
         <div class="col-sm-12 col-md-6 column">
             <div class="block" ng-show="categories.length">
-                <div ng-repeat="category in categories.slice(0,2)">
+                <div ng-repeat="category in categories.slice(0, 2)">
                     <h2 ng-show="category.name.length">{{category.name}}</h2>
                     <ul>
                         <li ng-repeat="song in category.songs"

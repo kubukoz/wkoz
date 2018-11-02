@@ -511,6 +511,17 @@ body .ngdialog.ngdialog-theme-default {
   }
 }
 #about_se{
+  position: relative;
+  .background {
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 0;
+    background: url("/images/backgrounds/band.jpg") no-repeat center / cover;
+  }
   background: $blue;
   padding-top: 46px;
   padding-bottom: 42px;
@@ -519,6 +530,7 @@ body .ngdialog.ngdialog-theme-default {
     margin-bottom: 46px;
   }
   .inside{
+    position: relative;
     .sax{
       svg{
         position: relative;
@@ -564,6 +576,9 @@ body .ngdialog.ngdialog-theme-default {
       }
       &.text{
         text-align: center;
+      }
+      &.bigger{
+        font-size: 1.75em;
       }
     }
   }

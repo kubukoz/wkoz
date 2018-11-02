@@ -1,5 +1,17 @@
 [
   {
+    "name": "1",
+    "image": "/images/gallery/jazzclub-1.jpg"
+  },
+  {
+    "name": "2",
+    "image": "/images/gallery/jazzclub-2.jpg"
+  },
+  {
+    "name": "3",
+    "image": "/images/gallery/jazzclub-3.jpg"
+  },
+  {
     "name": "16",
     "image": "/images/gallery/16.jpg"
   },
@@ -42,10 +54,6 @@
   {
     "name": "4",
     "image": "/images/gallery/4.jpg"
-  },
-  {
-    "name": "5",
-    "image": "/images/gallery/5.jpg"
   },
   {
     "name": "6",
