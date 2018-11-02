@@ -48,12 +48,12 @@
     "image": "/images/gallery/3.jpg"
   },
   {
-    "name": "1",
-    "image": "/images/gallery/1.jpg"
-  },
-  {
     "name": "4",
     "image": "/images/gallery/4.jpg"
+  },
+  {
+    "name": "1",
+    "image": "/images/backgrounds/band.jpg"
   },
   {
     "name": "6",
