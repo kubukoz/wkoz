@@ -348,35 +348,32 @@
 </div>
 <div id="gallery" scrollspy-broadcast clickable-hidenav scrollspy-offset="auto|60" ng-controller="GalleryController"
      ng-show="gallery.items">
-    <div class="ninesixzero">
-        <h1 class="heading">Galeria</h1>
-        <div class="wrapper">
-            <div class="arrow left" ng-click="gallery.previous()">
-                <svg
-                        width="20.81px" height="32.384px" viewBox="0 0 20.81 32.384">
-                    <defs>
-                        <g id="arrow">
-                            <path d="M20.433,5.521c0.502-0.502,0.502-1.307,0-1.809l-3.336-3.336c-0.502-0.502-1.307-0.502-1.809,0L0.377,15.288
-        c-0.502,0.502-0.502,1.307,0,1.809l14.912,14.912c0.502,0.502,1.307,0.502,1.809,0l3.336-3.336c0.502-0.502,0.502-1.307,0-1.809
-        L9.762,16.192L20.433,5.521z"/>
-                        </g>
-                    </defs>
-                    <use xlink:href="#arrow"></use>
-                </svg>
-            </div>
-            <div class="arrow right" ng-click="gallery.next()">
-                <svg>
-                    <use xlink:href="#arrow"></use>
-                </svg>
-            </div>
-            <div class="slides">
-                <div ng-repeat="row in []|range:gallery.slideCount" class="slide"
-                     ng-class="{'unselected':gallery.selected!=$index, 'left':gallery.selected>$index, 'right':gallery.selected<$index}">
-                    <div class="item" ng-repeat="item in gallery.items.slice($index*3, ($index+1)*3)">
-                        <div class="image" ng-attr-title="{{item.name}}"
-                             ng-style="{'background-image': 'url('+item.image+')'}" gallery-modal
-                             ng-href="{{item.image}}"></div>
-                    </div>
+    <div class="wrapper">
+        <div class="arrow left" ng-click="gallery.previous()">
+            <svg viewBox="0 0 20.81 32.384">
+                <g>
+                    <path d="M20.433,5.521c0.502-0.502,0.502-1.307,0-1.809l-3.336-3.336c-0.502-0.502-1.307-0.502-1.809,0L0.377,15.288
+c-0.502,0.502-0.502,1.307,0,1.809l14.912,14.912c0.502,0.502,1.307,0.502,1.809,0l3.336-3.336c0.502-0.502,0.502-1.307,0-1.809
+L9.762,16.192L20.433,5.521z"/>
+                </g>
+            </svg>
+        </div>
+        <div class="arrow right" ng-click="gallery.next()">
+            <svg viewBox="0 0 20.81 32.384">
+                <g>
+                    <path d="M20.433,5.521c0.502-0.502,0.502-1.307,0-1.809l-3.336-3.336c-0.502-0.502-1.307-0.502-1.809,0L0.377,15.288
+c-0.502,0.502-0.502,1.307,0,1.809l14.912,14.912c0.502,0.502,1.307,0.502,1.809,0l3.336-3.336c0.502-0.502,0.502-1.307,0-1.809
+L9.762,16.192L20.433,5.521z"/>
+                </g>
+            </svg>
+        </div>
+        <div class="slides">
+            <div ng-repeat="row in []|range:gallery.slideCount" class="slide"
+                 ng-class="{'unselected':gallery.selected!=$index, 'left':gallery.selected>$index, 'right':gallery.selected<$index}">
+                <div class="item" ng-repeat="item in gallery.items.slice($index*3, ($index+1)*3)">
+                    <div class="image" ng-attr-title="{{item.name}}"
+                         ng-style="{'background-image': 'url('+item.image+')'}" gallery-modal
+                         ng-href="{{item.image}}"></div>
                 </div>
             </div>
         </div>

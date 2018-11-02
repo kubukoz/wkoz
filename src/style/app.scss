@@ -513,7 +513,7 @@ body .ngdialog.ngdialog-theme-default {
 #about_se{
   position: relative;
   .background {
-    opacity: 0.1;
+    opacity: 0.2;
     top: 0;
     left: 0;
     right: 0;
@@ -769,100 +769,106 @@ body .ngdialog.ngdialog-theme-default {
   }
 }
 #gallery{
+  padding: 0;
   overflow: auto;
-  .ninesixzero{
-    padding: 67px 0 80px 0;
-    overflow: hidden;
-    h1{
-      color: $dark-brown;
-      margin-bottom: 23px;
+  .wrapper{
+    position: relative;
+    width: 100%;
+    background: black;
+    .arrow.left{
+      left: 0;
     }
-    .wrapper{
-      position: relative;
-      width: 100%;
-      .arrow.left{
-        left: 0;
-      }
-      .arrow.right{
+    .arrow.right{
+      right: 0;
+      svg {
         @include transform(scaleX(-1));
-        right: 0;
       }
-      .arrow{
-        overflow: hidden;
-        svg{
-          fill: $dark-brown;
+    }
+    .arrow{
+      padding: 0 20px;
+      overflow: hidden;
+      svg{
+        fill: #ffffff;
+        height: 50px;
+        width: 31px;
+      }
+      cursor: pointer;
+      @include transitionAll(.2s);
+      &:not(:hover){
+        svg {
+          opacity: .6;
         }
+      }
+      &:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      display: flex;
+      align-items: center;
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+
+    }
+    .slide {
+      width: 100%;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      .item {
+        height: 400px;
         cursor: pointer;
+        display: inline-block;
         @include transitionAll(.2s);
-        &:not(:hover){
-          opacity: .5;
+        width: 33.4%;
+        .image {
+          background: no-repeat center / cover;
+          width: 100%;
+          height: 100%;
         }
-        display: block;
-        content: '';
+        transition: 0.2s;
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      @media screen and (max-width: 580px){
+        height: auto;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        align-items: center;
+        -webkit-align-items: center;
+        .item{
+          width: 100%;
+        }
+      }
+      @include transitionAll(.3s);
+      }
+    .slides{
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      .slide.unselected{
+        &.left{
+          @include transform(translateX(-100%));
+        }
+        &.right{
+          @include transform(translateX(100%));
+        }
+      }
+      .slide:first-of-type{
+        position: relative;
+      }
+      .slide:not(:first-of-type){
         position: absolute;
-        z-index: 1;
         top: 0;
         bottom: 0;
-        margin: auto;
-        height: 33px;
-        width: 21px;
-      }
-      .slide {
-        width: 100%;
-        display: flex;
-        display: -webkit-flex;
-        justify-content: space-between;
-        -webkit-justify-content: space-between;
-        .item {
-          cursor: pointer;
-          display: inline-block;
-          @include transitionAll(.2s);
-          width: 27.5%;
-          .image {
-            background: no-repeat center / cover;
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%;
-          }
-        }
-        @media screen and (max-width: 580px){
-          flex-direction: column;
-          -webkit-flex-direction: column;
-          align-items: center;
-          -webkit-align-items: center;
-          .item{
-            width: 90%;
-            &:not(:last-of-type){
-              margin-bottom: 20px;
-            }
-          }
-        }
-        @include transitionAll(.3s);
-        }
-      .slides{
-        max-width: 800px;
-        width: 90%;
-        margin: 0 auto;
-        overflow: hidden;
-        position: relative;
-        .slide.unselected{
-          &.left{
-            @include transform(translateX(-100%));
-          }
-          &.right{
-            @include transform(translateX(100%));
-          }
-        }
-        .slide:first-of-type{
-          position: relative;
-        }
-        .slide:not(:first-of-type){
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          left: 0;
-        }
+        right: 0;
+        left: 0;
       }
     }
   }
