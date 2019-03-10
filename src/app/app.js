@@ -41,9 +41,9 @@ app.run(['$rootScope', function ($rootScope) {
     return category;
   });
 
-  setTimeout(() => {
-    $rootScope.$broadcast("musicRequested", {id: $rootScope.categories[0].songs[0].id})
-  }, 1000);
+  $rootScope.$on("playerLoaded", function(){
+    $rootScope.$broadcast("musicRequested", {id: $rootScope.categories[0].songs[0].id, playing: false});
+  })
 }]);
 
 app.config(['scrollspyConfigProvider', function (scrollspyConfigProvider) {
@@ -77,7 +77,7 @@ app.controller("NavController", ['$scope', '$window', function ($scope, $window)
 		$scope.hideNav();
 	})
 }]);
-app.controller("GalleryController", ['$scope', '$http', function ($scope, $http) {
+app.controller("GalleryController", ['$scope', function ($scope) {
 	var g = $scope.gallery = {selected: 0};
 	g.next = function () {
 		g.selected += ((g.selected < g.slideCount - 1) ? 1 : -g.selected);
@@ -106,17 +106,23 @@ app.directive("galleryModal", ['ngDialog', function (ngDialog) {
 		}
 	}
 }]);
-app.directive("musicPlayer", function () {
+app.directive("musicPlayer", ['$rootScope', function ($rootScope) {
 	return {
 		restrict: "E",
 		link: function (scope, elem) {
-			var p = scope.$root.player = scope.player = {playing: false, selected: {}, volume: 40, audio: new Audio()};
-			p.audio.preload = "none";
+            const p = $rootScope.player = scope.player = {
+                playing: false,
+                selected: {},
+                volume: 40,
+                audio: new Audio()
+            };
 
-			p.getSongById =
-          id =>
-            flatMap(category => category.songs, scope.categories)
-              .find(song => song.id === id);
+            p.audio.preload = "none";
+
+            p.getSongById = function (id) {
+                return flatMap(category => category.songs, scope.categories)
+                    .find(song => song.id === id);
+            };
 
 			const getCategoryById = id => scope.categories.find(cat => cat.id === id);
 
@@ -131,7 +137,6 @@ app.directive("musicPlayer", function () {
 
 			p.getNextSongAfter = function (song) {
 				var cat = getCategoryById(song.catId);
-				console.log(song)
 				if (song.ordr == cat.songs.length)
 					return p.getNextCategoryAfter(cat).songs[0];
 				else
@@ -159,22 +164,21 @@ app.directive("musicPlayer", function () {
 				if (p.audio)p.audio.volume = v / 100
 			});
 			p.audio.src = "";
-			p.updatePlaying = function (pl) {
-				p.playing = pl;
-				if (pl) {
-					if (p.audio.src.indexOf(p.selected.filename) < 0)
-						p.audio.src = p.selected.filename;
-					p.audio.play();
-				}
-				else {
-					p.audio.pause();
-				}
+			p.updatePlaying = function (shouldPlay) {
+				p.playing = shouldPlay;
+                const isDifferentTrack = p.audio.src.indexOf(p.selected.filename) < 0;
+
+                if(shouldPlay) {
+                    if(isDifferentTrack) {
+                      p.audio.src = p.selected.filename;
+                      p.audio.play()
+                    }
+                } else {
+                    p.audio.pause()
+                }
 			};
-			p.switchPlaying = function (force) {
-				var newPlaying;
-				if (force != null) newPlaying = force;
-				else newPlaying = !p.playing;
-				p.updatePlaying(newPlaying);
+			p.switchPlaying = function () {
+				p.updatePlaying(!p.playing)
 			};
 			p.nextSong = function () {
 				p.selected = p.getNextSongAfter(p.selected);
@@ -191,8 +195,8 @@ app.directive("musicPlayer", function () {
 				p.volume = Math.max(0, p.volume - 10);
 			};
 
-			var scrollbar = elem.children()[0].children[2].children[1];
-			scope.vol = {clicked: false};
+            const scrollbar = elem.children()[0].children[2].children[1];
+            scope.vol = {clicked: false};
 			scrollbar.onmousedown = function (e) {
 				scope.$apply(function () {
 					scope.vol.clicked = true;
@@ -204,18 +208,19 @@ app.directive("musicPlayer", function () {
 					scope.vol.clicked = false;
 				});
 			};
+
 			scrollbar.ontouchmove = scrollbar.onmousemove = function (e) {
-			  let vol;
-				if (scope.vol.clicked) {
-					e.preventDefault();
-					vol = Math.round(100 * Math.min(Math.max((e.offsetX || (e.clientX - scrollbar.getBoundingClientRect().left) || 0), 0) / scrollbar.offsetWidth, 1));
-				}
-				else if (e.type == "touchmove") {
-					e.preventDefault();
-					vol = Math.round(100 * Math.min(Math.max(((e.changedTouches[0].clientX - scrollbar.getBoundingClientRect().left) || 0), 0) / scrollbar.offsetWidth, 1));
-				}
-        if(vol !== undefined) scope.$apply(() => p.volume = vol)
-			};
+                let vol;
+                if (scope.vol.clicked) {
+                    e.preventDefault();
+                    vol = Math.round(100 * Math.min(Math.max((e.offsetX || (e.clientX - scrollbar.getBoundingClientRect().left) || 0), 0) / scrollbar.offsetWidth, 1));
+                } else if (e.type === "touchmove") {
+                    e.preventDefault();
+                    vol = Math.round(100 * Math.min(Math.max(((e.changedTouches[0].clientX - scrollbar.getBoundingClientRect().left) || 0), 0) / scrollbar.offsetWidth, 1));
+                }
+                if (vol !== undefined) scope.$apply(() => p.volume = vol)
+            };
+
 			document.onkeydown = function (e) {
 				scope.$apply(function () {
 					switch (e.keyCode) {
@@ -241,18 +246,20 @@ app.directive("musicPlayer", function () {
 				});
 			};
 			scope.$on("musicRequested", function (obj, val) {
-				scope.$apply(function () {
-					if (!(p.playing && p.selected.id == val.id)) {
-						p.selected = p.getSongById(val.id);
-						p.updatePlaying(true);
-					} else {
-						p.updatePlaying(false);
-					}
-				})
+			    const shouldAutoStart = val.playing === undefined || val.playing;
+
+                const currentlyPlayingSameSong = p.playing && p.selected.id === val.id;
+                if (!currentlyPlayingSameSong) {
+                    p.selected = p.getSongById(val.id);
+                    p.updatePlaying(shouldAutoStart);
+                } else {
+                    p.updatePlaying(false);
+                }
 			})
+            $rootScope.$broadcast("playerLoaded")
 		}
 	}
-});
+}]);
 app.directive("musicPlay", function () {
 	return {
 		scope: {
@@ -260,7 +267,7 @@ app.directive("musicPlay", function () {
 		},
 		link: function (scope, elem) {
 			elem[0].onclick = function () {
-				scope.$root.$broadcast("musicRequested", {id: +scope.musicPlay});
+			    scope.$root.$apply(() => scope.$root.$broadcast("musicRequested", {id: +scope.musicPlay}));
 			}
 		}
 	}
