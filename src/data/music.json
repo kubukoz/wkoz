@@ -3,6 +3,14 @@
     "name": "Trio",
     "songs": [
       {
+        "name": "Mercy, Mercy, Mercy",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/mercy-mercy.mp3?alt=media&token=549f76a2-ff0b-4093-be14-912d1ee1a60f"
+      },
+      {
+        "name": "Child is born",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/child-is-born.mp3?alt=media&token=7de52d15-3a8c-4a7e-a8ae-93b43e2191e4"
+      },
+      {
         "name": "If I should lose you",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-if-i-should-lose-you-skrocone.mp3?alt=media&token=b02e486a-d868-46fc-be00-4de9aaf8e2ef"
       },
@@ -13,6 +21,10 @@
       {
         "name": "There will never be another you",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-terefere.mp3?alt=media&token=e9568e8e-20a2-40ac-94f2-d8910b2392a7"
+      },
+      {
+        "name": "Misty",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/misty.mp3?alt=media&token=d0680744-847a-4ff5-9b3f-dc3cf770d46d"
       },
       {
         "name": "Mix",
