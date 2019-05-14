@@ -113,7 +113,7 @@ app.directive("musicPlayer", ['$rootScope', function ($rootScope) {
       const p = $rootScope.player = scope.player = {
         playing: false,
         selected: {},
-        volume: 40,
+        volume: 80,
         audio: new Audio()
       };
 
