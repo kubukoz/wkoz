@@ -33,15 +33,23 @@
     ]
   },
   {
-    "name": "Kwartet z wokalem",
+    "name": "Zespół z wokalem",
     "songs": [
+      {
+        "name": "Bądź moim natchnieniem",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/badz-moim-natchnieniem-cut.mp3?alt=media&token=63ad085d-8a62-4f4f-b7e8-2341b04c5a42"
+      },
+      {
+        "name": "Fly Me To The Moon",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/agnieszka-nastarowicz-fly-me.mp3?alt=media&token=035e6a1b-9625-4ee7-9baa-07a838f4d204"
+      },
       {
         "name": "Joshua",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/agnieszka-nastarowicz-joshua-skrocone.mp3?alt=media&token=ce7e7bc4-45de-494a-a409-add47f12e03d"
       },
       {
-        "name": "Fly Me To The Moon",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/agnieszka-nastarowicz-fly-me.mp3?alt=media&token=035e6a1b-9625-4ee7-9baa-07a838f4d204"
+        "name": "Georgia on my mind",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/georgia-on-my-mind-cut.mp3?alt=media&token=74c47501-73f3-4a25-8235-af861586542a"
       },
       {
         "name": "Take the \"A\" Train",
