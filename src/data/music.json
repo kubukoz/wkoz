@@ -33,27 +33,15 @@
     ]
   },
   {
-    "name": "Zespoły z wokalem",
+    "name": "Trio swingowe",
     "songs": [
       {
-        "name": "Bądź moim natchnieniem",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/badz-moim-natchnieniem-cut.mp3?alt=media&token=63ad085d-8a62-4f4f-b7e8-2341b04c5a42"
+        "name": "Isn't She Lovely",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/isnt%20she%20lovely%20(1).mp3?alt=media&token=93a0a349-3f0c-40d6-9b24-9d174f113edc"
       },
       {
-        "name": "Fly Me To The Moon",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/agnieszka-nastarowicz-fly-me.mp3?alt=media&token=035e6a1b-9625-4ee7-9baa-07a838f4d204"
-      },
-      {
-        "name": "Joshua",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/agnieszka-nastarowicz-joshua-skrocone.mp3?alt=media&token=ce7e7bc4-45de-494a-a409-add47f12e03d"
-      },
-      {
-        "name": "Georgia on my mind",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/georgia-on-my-mind-cut.mp3?alt=media&token=74c47501-73f3-4a25-8235-af861586542a"
-      },
-      {
-        "name": "Take the \"A\" Train",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/agnieszka-nastarowicz-take-the-a-train-skrocone.mp3?alt=media&token=979741b2-b4ea-4c7b-9a3d-f4d442d1b58e"
+        "name": "Pod papugami",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-swingowe-papugi.mp3?alt=media&token=8d4d6116-68f8-45d3-8a09-ea96e4c614c3"
       }
     ]
   },
@@ -91,19 +79,6 @@
       {
         "name": "I love it",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/I%20love%20it.mp3?alt=media&token=eec5e0e7-af40-4e19-8d21-28cffd6b50ab"
-      }
-    ]
-  },
-  {
-    "name": "Trio swingowe",
-    "songs": [
-      {
-        "name": "Isn't She Lovely",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/isnt%20she%20lovely%20(1).mp3?alt=media&token=93a0a349-3f0c-40d6-9b24-9d174f113edc"
-      },
-      {
-        "name": "Pod papugami",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-swingowe-papugi.mp3?alt=media&token=8d4d6116-68f8-45d3-8a09-ea96e4c614c3"
       }
     ]
   }
