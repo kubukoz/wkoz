@@ -8,4 +8,4 @@ let
   };
   pkgs = import nixpkgs { overlays = [ nixjs-overlay ]; };
 
-in pkgs.mkShell { buildInputs = [ pkgs.nodejs ]; }
+in with pkgs; mkShell { buildInputs = [ nodejs ]; }
