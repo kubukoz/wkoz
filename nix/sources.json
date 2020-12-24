@@ -11,6 +11,18 @@
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixjs": {
+        "branch": "release-20.09",
+        "description": "A nix overlay containing a collection of node versions and associated tools",
+        "homepage": "",
+        "owner": "cprussin",
+        "repo": "nixjs",
+        "rev": "0db73b8ec38f4dc4b03b6f2636849f0c3ab777c5",
+        "sha256": "0y0vyg3dq93vijivcj5pin45a9c4dbgf08h5w739wpd5rnv2dksw",
+        "type": "tarball",
+        "url": "https://github.com/cprussin/nixjs/archive/0db73b8ec38f4dc4b03b6f2636849f0c3ab777c5.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
         "branch": "20.09",
         "description": "Nix Packages collection",
