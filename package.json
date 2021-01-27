@@ -7,7 +7,9 @@
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
-    "start": "npm run server"
+    "start": "npm run server",
+    "deploy": "firebase deploy --token ${FIREBASE_TOKEN}",
+    "login": "firebase login:ci"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,7 @@
     "css-loader": "0.26.1",
     "extract-text-webpack-plugin": "2.0.0-beta.5",
     "file-loader": "^0.9.0",
+    "firebase-tools": "^7.2.2",
     "html-webpack-plugin": "^2.7.1",
     "istanbul-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.3.4",

@@ -7,7 +7,6 @@ branches:
     - master
 install:
   - npm install
-  - npm install -g firebase-tools@7.2.2
 script:
   - npm run build
-  - firebase deploy --token ${FIREBASE_TOKEN}
+  - npm run deploy
