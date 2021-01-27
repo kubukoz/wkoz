@@ -936,14 +936,14 @@ body .ngdialog.ngdialog-theme-default {
         }
       }
       .right{
-        display: block;
+        display: inline-flex;
         padding-left: 32px;
+        align-items: center;
+
         .fb{
-          display: flex;
-          display: -webkit-flex;
+          display: inline-flex;
           align-items: center;
-          -webkit-align-items: center;
-          margin: 0;
+          margin-right: 16px;
           svg{
             width: 40px;
             fill: $blue;
@@ -954,6 +954,12 @@ body .ngdialog.ngdialog-theme-default {
               background: $blue;
               fill: $gray-light;
             }
+          }
+        }
+
+        .wesele-z-klasa {
+          img {
+            width: 32px;
           }
         }
       }
