@@ -12,6 +12,10 @@
     "image": "/images/gallery/chopin_on_strings_koncert_2019_04.jpg"
   },
   {
+    "name": "",
+    "image": "/images/gallery/hotel.jpg"
+  },
+  {
     "name": "2",
     "image": "/images/gallery/jazzclub-4.jpg"
   },
@@ -20,28 +24,20 @@
     "image": "/images/gallery/jazzclub-3.jpg"
   },
   {
-    "name": "16",
-    "image": "/images/gallery/16.jpg"
+    "name": "",
+    "image": "/images/gallery/AS0_7513.JPG"
   },
   {
     "name": "20",
     "image": "/images/gallery/jazzclub-2.jpg"
   },
   {
-    "name": "18",
-    "image": "/images/gallery/18.jpg"
+    "name": "16",
+    "image": "/images/gallery/16.jpg"
   },
   {
     "name": "19",
     "image": "/images/gallery/19.jpg"
-  },
-  {
-    "name": "20",
-    "image": "/images/gallery/20.jpg"
-  },
-  {
-    "name": "21",
-    "image": "/images/gallery/21.jpg"
   },
   {
     "name": "1",
@@ -58,10 +54,6 @@
   {
     "name": "4",
     "image": "/images/gallery/4.jpg"
-  },
-  {
-    "name": "1",
-    "image": "/images/backgrounds/band.jpg"
   },
   {
     "name": "6",
@@ -92,12 +84,12 @@
     "image": "/images/gallery/14.jpg"
   },
   {
-    "name": "13",
-    "image": "/images/gallery/6.jpg"
-  },
-  {
     "name": "20",
     "image": "/images/gallery/sala.jpg"
+  },
+  {
+    "name": "13",
+    "image": "/images/gallery/6.jpg"
   },
   {
     "name": "14",
