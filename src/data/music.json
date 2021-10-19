@@ -1,13 +1,17 @@
 [
   {
-    "name": "Trio",
+    "name": "Live",
     "songs": [
       {
-        "name": "Mercy, Mercy, Mercy",
+        "name": "The girl from Ipanema",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Girl%20From%20Ipanema-1Yf7b7Pkk9s.mp3?alt=media&token=5d2c1c05-a895-49b1-a4ca-205ca7066d7f"
+      },
+      {
+        "name": "Mercy, mercy, mercy",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/mercy-mercy.mp3?alt=media&token=549f76a2-ff0b-4093-be14-912d1ee1a60f"
       },
       {
-        "name": "Child is born",
+        "name": "A child is born",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/child-is-born.mp3?alt=media&token=7de52d15-3a8c-4a7e-a8ae-93b43e2191e4"
       },
       {
@@ -15,16 +19,16 @@
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-if-i-should-lose-you-skrocone.mp3?alt=media&token=b02e486a-d868-46fc-be00-4de9aaf8e2ef"
       },
       {
-        "name": "The Girl from Ipanema",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-the-girl-from-ipanema.mp3?alt=media&token=287bd0ee-faa6-4f5b-8574-2386069802c4"
+        "name": "Isn't she lovely",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/isnt%20she%20lovely%20(1).mp3?alt=media&token=93a0a349-3f0c-40d6-9b24-9d174f113edc"
       },
       {
-        "name": "There will never be another you",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-terefere.mp3?alt=media&token=e9568e8e-20a2-40ac-94f2-d8910b2392a7"
+        "name": "Pod papugami",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-swingowe-papugi.mp3?alt=media&token=8d4d6116-68f8-45d3-8a09-ea96e4c614c3"
       },
       {
-        "name": "Misty",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/misty.mp3?alt=media&token=d0680744-847a-4ff5-9b3f-dc3cf770d46d"
+        "name": "Alice in wonderland",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/alice-in-wonderland.mp3?alt=media&token=9323aa1a-2a48-4f3f-9a75-93090e8c286d"
       },
       {
         "name": "Mix",
@@ -33,52 +37,36 @@
     ]
   },
   {
-    "name": "Trio swingowe",
+    "name": "Studio",
     "songs": [
       {
-        "name": "Isn't She Lovely",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/isnt%20she%20lovely%20(1).mp3?alt=media&token=93a0a349-3f0c-40d6-9b24-9d174f113edc"
+        "name": "Cheek to cheek",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Cheek%20to%20Cheek-VB2fpi2ODg0.mp3?alt=media&token=426ab2d6-18b3-47dc-98dc-ddc7074ca145"
       },
       {
-        "name": "Pod papugami",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-swingowe-papugi.mp3?alt=media&token=8d4d6116-68f8-45d3-8a09-ea96e4c614c3"
+        "name": "Autumn leaves",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Autumn%20Leaves-OvzoO4C1oZ8.mp3?alt=media&token=9d168dbb-9d09-4738-aaa0-1fbfcd71bdf2"
+      },
+      {
+        "name": "As time goes by",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/As%20Time%20Goes%20By-7uZDnK70_GU.mp3?alt=media&token=6388b610-0ae6-484f-8c52-4c1cff3cf05c"
+      },
+      {
+        "name": "Corvovado Bossa Nova",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Corvovado%20Bossa%20Nova-IHnvVeWtSP0.mp3?alt=media&token=117a4e90-486d-4b2b-965f-f28b5319320c"
       }
     ]
   },
   {
-    "name": "Maciej Strzelczyk Band",
+    "name": "Wokal",
     "songs": [
       {
-        "name": "Wave",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-wave.mp3?alt=media&token=b2366352-9c6d-469c-953e-3b361540c81b"
+        "name": "Midnight",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/midnight.mp3?alt=media&token=1d52dea4-8cb3-4688-be20-46f743272003"
       },
       {
-        "name": "Corcovado",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-corcovado.mp3?alt=media&token=50b7768d-2844-4328-a72a-16b78926c9da"
-      },
-      {
-        "name": "O amor en paz",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-o-amor.mp3?alt=media&token=066a09b1-a2d5-4071-9094-a15ef8c7564c"
-      },
-      {
-        "name": "Triste",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-triste.mp3?alt=media&token=49505db4-101f-4575-b61c-410b372ec8ec"
-      },
-      {
-        "name": "Alice in Wonderland",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-alice-in-wonderland.mp3?alt=media&token=f0765cd4-07c8-43fe-9de4-756f05427306"
-      },
-      {
-        "name": "Mr Magic",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/strzelczyk-mr-magic.mp3?alt=media&token=12fde8b6-1863-4a0a-98cf-4ff4823467ca"
-      },
-      {
-        "name": "Stomatology",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Stomatology.mp3?alt=media&token=ed07f227-0e72-4276-a599-c9c482e9714a"
-      },
-      {
-        "name": "I love it",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/I%20love%20it.mp3?alt=media&token=eec5e0e7-af40-4e19-8d21-28cffd6b50ab"
+        "name": "When I fall in love",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/when-i-fall-in-love.mp3?alt=media&token=edc712e0-3353-45ca-b17f-5278e947cc60"
       }
     ]
   }
