@@ -1065,7 +1065,7 @@ music-player {
   right: 0;
   height: 60px;
   background: #ffffff;
-  z-index: 2;
+  z-index: 9;
   -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
@@ -1278,7 +1278,7 @@ music-player {
 }
 #cookie-consent {
   position: fixed;
-  z-index: 9;
+  z-index: 8;
   left: 0;
   right: 0;
   bottom: 60px;
