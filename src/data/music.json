@@ -3,31 +3,31 @@
     "name": "Live",
     "songs": [
       {
-        "name": "The girl from Ipanema",
+        "name": "The Girl From Ipanema",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Girl%20From%20Ipanema-1Yf7b7Pkk9s.mp3?alt=media&token=5d2c1c05-a895-49b1-a4ca-205ca7066d7f"
       },
       {
-        "name": "Mercy, mercy, mercy",
+        "name": "Mercy, Mercy, Mercy",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/mercy-mercy.mp3?alt=media&token=549f76a2-ff0b-4093-be14-912d1ee1a60f"
       },
       {
-        "name": "A child is born",
+        "name": "A Child Is Born",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/child-is-born.mp3?alt=media&token=7de52d15-3a8c-4a7e-a8ae-93b43e2191e4"
       },
       {
-        "name": "If I should lose you",
+        "name": "If I Should Lose You",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-if-i-should-lose-you-skrocone.mp3?alt=media&token=b02e486a-d868-46fc-be00-4de9aaf8e2ef"
       },
       {
-        "name": "Isn't she lovely",
+        "name": "Isn't She Lovely",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/isnt%20she%20lovely%20(1).mp3?alt=media&token=93a0a349-3f0c-40d6-9b24-9d174f113edc"
       },
       {
-        "name": "Pod papugami",
+        "name": "Pod Papugami",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-swingowe-papugi.mp3?alt=media&token=8d4d6116-68f8-45d3-8a09-ea96e4c614c3"
       },
       {
-        "name": "Alice in wonderland",
+        "name": "Alice In Wonderland (Duet)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/alice-in-wonderland.mp3?alt=media&token=9323aa1a-2a48-4f3f-9a75-93090e8c286d"
       },
       {
@@ -40,33 +40,50 @@
     "name": "Studio",
     "songs": [
       {
-        "name": "Cheek to cheek",
+        "name": "Cheek To Cheek",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Cheek%20to%20Cheek-VB2fpi2ODg0.mp3?alt=media&token=426ab2d6-18b3-47dc-98dc-ddc7074ca145"
       },
       {
-        "name": "Autumn leaves",
+        "name": "Autumn Leaves",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Autumn%20Leaves-OvzoO4C1oZ8.mp3?alt=media&token=9d168dbb-9d09-4738-aaa0-1fbfcd71bdf2"
       },
       {
-        "name": "As time goes by",
+        "name": "As Time Goes By",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/As%20Time%20Goes%20By-7uZDnK70_GU.mp3?alt=media&token=6388b610-0ae6-484f-8c52-4c1cff3cf05c"
       },
       {
-        "name": "Corvovado Bossa Nova",
+        "name": "Corvovado",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Corvovado%20Bossa%20Nova-IHnvVeWtSP0.mp3?alt=media&token=117a4e90-486d-4b2b-965f-f28b5319320c"
       }
     ]
   },
   {
-    "name": "Wokal",
+    "name": "Wokalistki",
     "songs": [
       {
         "name": "Midnight",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/midnight.mp3?alt=media&token=1d52dea4-8cb3-4688-be20-46f743272003"
       },
       {
-        "name": "When I fall in love",
+        "name": "When I Fall In Love",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/when-i-fall-in-love.mp3?alt=media&token=edc712e0-3353-45ca-b17f-5278e947cc60"
+      }
+    ]
+  },
+  {
+    "name": "Kolędy",
+    "songs": [
+      {
+        "name": "Santa Claus Is Coming To Town",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Santa%20Claus%20Is%20Coming%20To%20Town%20%20(nagrane%20podczas%20pro%CC%81by)-qPBPt2zSzZk.mp3?alt=media&token=e07cdf06-4a17-4424-a616-c3c2e3af7b5a"
+      },
+      {
+        "name": "Winter Wonderland",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Winter%20Wonderland%20(%20nagrane%20podczas%20pro%CC%81by)-NVDSyZTtGdQ.mp3?alt=media&token=4dafb86b-d1f9-4dfb-880d-06ece748ec2a"
+      },
+      {
+        "name": "Cicha Noc",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Cicha%20Noc%20%20(nagrane%20podczas%20pro%CC%81by)-LbJmQzxrLoE.mp3?alt=media&token=aca1542a-5e88-47ab-81d7-24da7e900377"
       }
     ]
   }

@@ -7,41 +7,42 @@ $blue: #1e3f59;
 $dark-brown: #3e2723;
 $gray-light: #ebebeb;
 
-@mixin withPseudo{
-  &:before, &:after{
+@mixin withPseudo {
+  &:before,
+  &:after {
     display: block;
-    content: '';
+    content: "";
   }
 }
 
-@mixin transitionAll($time){
+@mixin transitionAll($time) {
   -webkit-transition: $time;
   -moz-transition: $time;
   -ms-transition: $time;
   -o-transition: $time;
   transition: $time;
 }
-@mixin transform($property){
+@mixin transform($property) {
   -moz-transform: $property;
   -webkit-transform: $property;
   transform: $property;
 }
 
-.ninesixzero{
+.ninesixzero {
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
 }
-a{
+a {
   text-decoration: inherit !important;
 }
-@media screen and (min-width: 400px){
-  .xxs-only{
+@media screen and (min-width: 400px) {
+  .xxs-only {
     display: none;
   }
 }
 
-h1.heading{
+h1.heading {
   margin: 0;
   font-family: $font-headers;
   font-weight: $light;
@@ -53,7 +54,7 @@ h1.heading{
     font-size: 2em;
   }
 }
-h2.subheading{
+h2.subheading {
   display: inline-block;
   font-family: $font-headers;
   font-weight: $light;
@@ -68,10 +69,10 @@ body .ngdialog.ngdialog-theme-default {
     height: 100%;
     width: 80%;
     max-width: 1000px;
-    .ngdialog-close{
+    .ngdialog-close {
       display: none;
     }
-    div{
+    div {
       position: absolute;
       top: 0;
       left: 0;
@@ -83,7 +84,7 @@ body .ngdialog.ngdialog-theme-default {
     }
   }
 }
-#header{
+#header {
   position: fixed;
   background: #ffffff;
   top: 0;
@@ -93,22 +94,22 @@ body .ngdialog.ngdialog-theme-default {
   -webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
-  .inside{
+  .inside {
     display: flex;
     display: -webkit-flex;
   }
-  #logo_main{
+  #logo_main {
     display: inline-block;
     padding: 31px 54px 5px;
     position: relative;
     background: $blue;
-    svg{
+    svg {
       width: 212px;
       fill: #ffffff;
     }
-    &:after{
+    &:after {
       display: block;
-      content: '';
+      content: "";
       position: absolute;
       top: 100%;
       left: 0;
@@ -117,8 +118,8 @@ body .ngdialog.ngdialog-theme-default {
       background: $blue;
     }
   }
-  @media screen and (min-width: 981px){
-    nav{
+  @media screen and (min-width: 981px) {
+    nav {
       display: inline-flex;
       display: -webkit-inline-flex;
       align-self: stretch;
@@ -127,7 +128,7 @@ body .ngdialog.ngdialog-theme-default {
       -webkit-flex-grow: 1;
       justify-content: center;
       -webkit-justify-content: center;
-      ul{
+      ul {
         flex-grow: 1;
         -webkit-flex-grow: 1;
         margin: 0;
@@ -137,15 +138,15 @@ body .ngdialog.ngdialog-theme-default {
         display: -webkit-flex;
         flex-direction: row;
         -webkit-flex-direction: row;
-        li{
+        li {
           align-self: stretch;
           -webkit-align-self: stretch;
           display: flex;
           display: -webkit-flex;
           align-items: stretch;
           -webkit-align-items: stretch;
-          a{
-            @include transitionAll(.2s);
+          a {
+            @include transitionAll(0.2s);
             padding-left: 18px;
             padding-right: 18px;
             display: flex;
@@ -153,44 +154,45 @@ body .ngdialog.ngdialog-theme-default {
             align-items: center;
             -webkit-align-items: center;
             font-family: $font-main;
-            font-size: .875em;
+            font-size: 0.875em;
             text-transform: uppercase;
             font-weight: $bold;
             color: $blue;
             position: relative;
-            &:before{
-              content: '';
+            &:before {
+              content: "";
               display: block;
               position: absolute;
               bottom: 24px;
               left: 0;
               right: 0;
-              background: url("/images/icons/menu_arrow.svg") no-repeat center / contain;
+              background: url("/images/icons/menu_arrow.svg") no-repeat center /
+                contain;
               width: 11px;
               height: 9px;
               margin: auto;
-              @include transitionAll(.2s);
+              @include transitionAll(0.2s);
             }
           }
-          &:not(.active):not(:hover){
-            a{
-              opacity: .5;
+          &:not(.active):not(:hover) {
+            a {
+              opacity: 0.5;
             }
-            a:before{
+            a:before {
               @include transform(translateY(100%));
               opacity: 0;
             }
           }
         }
       }
-      #drawer{
+      #drawer {
         display: none;
       }
     }
   }
-  @media screen and (max-width: 980px){
+  @media screen and (max-width: 980px) {
     height: 80px;
-    .ninesixzero{
+    .ninesixzero {
       max-width: inherit;
     }
     display: flex;
@@ -198,22 +200,22 @@ body .ngdialog.ngdialog-theme-default {
     align-items: center;
     -webkit-align-items: center;
     background: $blue;
-    #logo_main{
+    #logo_main {
       z-index: 3;
       display: flex;
       display: -webkit-flex;
       align-items: center;
       -webkit-align-items: center;
       padding: 0 0 0 20px;
-      &:after{
+      &:after {
         display: none;
       }
-      svg{
+      svg {
         width: 134px;
       }
     }
-    .inside{
-      #nav{
+    .inside {
+      #nav {
         display: inline-block;
         position: absolute;
         top: 0;
@@ -222,22 +224,22 @@ body .ngdialog.ngdialog-theme-default {
         right: 0;
       }
     }
-    ul{
+    ul {
       position: fixed;
       top: 80px;
       left: 0;
       right: 0;
       bottom: 50px;
       overflow: auto;
-      @include transitionAll(.3s ease-out);
-      li{
+      @include transitionAll(0.3s ease-out);
+      li {
         background: #ffffff;
         display: block;
         position: relative;
-        &:last-of-type:before{
+        &:last-of-type:before {
           z-index: -1;
           display: block;
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           bottom: 0;
@@ -247,10 +249,10 @@ body .ngdialog.ngdialog-theme-default {
           -moz-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
         }
-        @include transitionAll(.1s);
-        &:not(:last-of-type) a:after{
+        @include transitionAll(0.1s);
+        &:not(:last-of-type) a:after {
           display: block;
-          content: '';
+          content: "";
           position: absolute;
           bottom: -1px;
           left: 20px;
@@ -258,9 +260,9 @@ body .ngdialog.ngdialog-theme-default {
           z-index: 2;
           background: $blue;
           height: 1px;
-          opacity: .2;
+          opacity: 0.2;
         }
-        a{
+        a {
           display: block;
           padding: 21px 20px 19px 20px;
           font-family: $font-headers;
@@ -268,23 +270,23 @@ body .ngdialog.ngdialog-theme-default {
           font-size: 1.15em;
           color: $blue;
           position: relative;
-          @include transitionAll(.1s);
+          @include transitionAll(0.1s);
         }
-        &.active{
+        &.active {
           background: $blue;
-          a{
+          a {
             color: #ffffff;
-            &:after{
+            &:after {
               display: none;
             }
           }
         }
       }
-      &:not(.active){
+      &:not(.active) {
         @include transform(translateX(100%));
       }
     }
-    #drawer{
+    #drawer {
       position: absolute;
       right: 15px;
       top: 0;
@@ -293,7 +295,7 @@ body .ngdialog.ngdialog-theme-default {
       padding-left: 5px;
       padding-right: 5px;
       height: 42px;
-      @include transitionAll(.2s);
+      @include transitionAll(0.2s);
       display: flex;
       display: -webkit-flex;
       flex-direction: column;
@@ -301,34 +303,36 @@ body .ngdialog.ngdialog-theme-default {
       justify-content: center;
       -webkit-justify-content: center;
       width: 42px;
-      .line{
-        @include transitionAll(.2s);
+      .line {
+        @include transitionAll(0.2s);
         display: block;
         flex-grow: 1;
         -webkit-flex-grow: 1;
         background: #ffffff;
         height: 2px;
-        &:not(:last-of-type){
+        &:not(:last-of-type) {
           margin-bottom: 8px;
         }
       }
-      &:hover, &.active{
+      &:hover,
+      &.active {
         background: #ffffff;
-        .line{
+        .line {
           background: $blue;
         }
       }
     }
   }
 }
-#about{
+#about {
   overflow: auto;
-  background: url("/images/backgrounds/bass.jpg") no-repeat center / cover $dark-brown;
-  #about_inside{
+  background: url("/images/backgrounds/bass.jpg") no-repeat center / cover
+    $dark-brown;
+  #about_inside {
     padding-top: 100px;
     padding-bottom: 100px;
-    .image{
-      .inside{
+    .image {
+      .inside {
         margin: 0 auto;
         border-radius: 20px;
         background: url("/images/icons/wlod.jpg") no-repeat center / contain;
@@ -339,72 +343,72 @@ body .ngdialog.ngdialog-theme-default {
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
       }
     }
-    .text{
+    .text {
       color: #ffffff;
-      h1{
+      h1 {
         margin-top: -4px;
         font-size: 1.5em;
         font-family: $font-main;
         font-weight: $bold;
       }
-      hr{
+      hr {
         margin: 10px 0;
         border: 0;
         height: 2px;
-        background: rgba(255, 255, 255, .1);
+        background: rgba(255, 255, 255, 0.1);
       }
-      p{
-        font-size: .975em;
+      p {
+        font-size: 0.975em;
         line-height: 1.8em;
         font-family: $font-main;
         font-weight: $regular;
       }
     }
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 768px) {
       padding-top: 50px;
       padding-bottom: 50px;
-      .image{
+      .image {
         margin-bottom: 40px;
       }
-      .text{
-        h1{
+      .text {
+        h1 {
           font-size: 2em;
           text-align: center;
         }
-        p{
+        p {
           text-align: justify;
         }
       }
     }
   }
-  @media screen and (min-width: 981px){
+  @media screen and (min-width: 981px) {
     margin-top: 120px;
   }
-  @media screen and (max-width:980px){
+  @media screen and (max-width: 980px) {
     margin-top: 80px;
   }
 }
-#repertoire{
-  .inside{
+#repertoire {
+  .inside {
     padding: 47px 0 77px;
-    h1.heading{
+    h1.heading {
       color: $dark-brown;
       margin-top: 20px;
       margin-bottom: 34px;
     }
-    .block{
-      h2{
+    .block {
+      h2 {
         margin-left: 20px;
         margin-right: 20px;
         margin-bottom: 0;
         background: $dark-brown;
         color: #ffffff;
       }
-      .columns{
+      .columns {
         padding-top: 33px;
         padding-bottom: 33px;
       }
-      .text{
+      .text {
         text-align: center;
         padding-left: 20px;
         padding-right: 20px;
@@ -414,10 +418,10 @@ body .ngdialog.ngdialog-theme-default {
         font-weight: $regular;
         color: $blue;
         line-height: 1.9em;
-        b{
+        b {
           font-weight: $bold;
         }
-        a{
+        a {
           margin-top: 16px;
           position: relative;
           left: 20px;
@@ -429,8 +433,8 @@ body .ngdialog.ngdialog-theme-default {
           align-items: center;
           -webkit-align-items: center;
           color: #ffffff;
-          @include transitionAll(.1s);
-          i{
+          @include transitionAll(0.1s);
+          i {
             position: absolute;
             right: 100%;
             display: flex;
@@ -443,47 +447,47 @@ body .ngdialog.ngdialog-theme-default {
             width: 40px;
             height: 40px;
             background: rgba(30, 63, 89, 0.5);
-            @include transitionAll(.1s);
-            svg{
+            @include transitionAll(0.1s);
+            svg {
               width: 18px;
               height: 18px;
               fill: white;
-              @include transitionAll(.1s);
+              @include transitionAll(0.1s);
             }
           }
-          &:hover{
+          &:hover {
             background: $dark-brown;
-            i{
+            i {
               background: rgba(62, 39, 35, 0.5);
             }
           }
         }
       }
-      hr{
+      hr {
         margin: -2px 0 0;
         border: 0;
         height: 2px;
         background: $blue;
-        opacity: .2;
+        opacity: 0.2;
       }
     }
   }
-  @media screen and (max-width: 768px){
-    .inside{
+  @media screen and (max-width: 768px) {
+    .inside {
       padding-bottom: 10px;
       .block {
         display: flex;
         display: -webkit-flex;
         flex-direction: column;
         -webkit-flex-direction: column;
-        h2{
+        h2 {
           width: 50%;
           margin: 0 auto;
           padding: 12px 0 13px;
         }
-        .text{
+        .text {
           text-align: justify;
-          a{
+          a {
             padding: 0 42px 0 0;
             text-align: center;
             display: flex;
@@ -498,19 +502,19 @@ body .ngdialog.ngdialog-theme-default {
     }
   }
   @media screen and (max-width: 460px) {
-    .inside{
-      .block{
-        h2{
+    .inside {
+      .block {
+        h2 {
           width: 90%;
         }
-        .text{
+        .text {
           font-size: 1em;
         }
       }
     }
   }
 }
-#about_se{
+#about_se {
   position: relative;
   .background {
     opacity: 0.2;
@@ -529,16 +533,16 @@ body .ngdialog.ngdialog-theme-default {
     color: #ffffff;
     margin-bottom: 46px;
   }
-  .inside{
+  .inside {
     position: relative;
-    .sax{
-      svg{
+    .sax {
+      svg {
         position: relative;
         top: 8px;
         left: 9px;
         width: 100%;
         max-width: 225px;
-        fill:white;
+        fill: white;
       }
     }
     .right {
@@ -555,7 +559,7 @@ body .ngdialog.ngdialog-theme-default {
       margin-bottom: 25px;
       overflow: hidden;
     }
-    hr{
+    hr {
       width: 100%;
       margin-top: 0;
       margin-bottom: 25px;
@@ -563,38 +567,38 @@ body .ngdialog.ngdialog-theme-default {
       height: 2px;
       display: inline-block;
       background: #ffffff;
-      opacity: .1;
+      opacity: 0.1;
     }
-    p{
+    p {
       font-family: $font-main;
       color: #ffffff;
       font-size: 1.125em;
       font-weight: $regular;
       line-height: 1.9em;
-      &:not(:last-of-type){
+      &:not(:last-of-type) {
         margin-bottom: 26px;
       }
-      &.text{
+      &.text {
         text-align: center;
       }
-      &.bigger{
+      &.bigger {
         font-size: 1.75em;
       }
     }
   }
-  @media screen and (max-width: 768px){
-    .inside{
-      .sax{
+  @media screen and (max-width: 768px) {
+    .inside {
+      .sax {
         display: flex;
         display: -webkit-flex;
         flex-direction: column;
         -webkit-flex-direction: column;
         align-items: center;
         -webkit-align-items: center;
-        width:90%;
+        width: 90%;
         margin: 0 auto;
       }
-      .right{
+      .right {
         margin-top: 50px;
         padding-left: 20px;
         padding-right: 20px;
@@ -604,14 +608,14 @@ body .ngdialog.ngdialog-theme-default {
         -webkit-flex-direction: column;
         align-items: center;
         -webkit-align-items: center;
-        h2{
+        h2 {
           width: 100%;
         }
       }
-      hr{
+      hr {
         margin-top: 23px;
       }
-      .text{
+      .text {
         padding-left: 20px;
         padding-right: 20px;
         text-align: justify;
@@ -619,22 +623,22 @@ body .ngdialog.ngdialog-theme-default {
     }
   }
 }
-#locations{
+#locations {
   overflow: auto;
   padding-bottom: 61px;
-  .inside{
-    h1{
+  .inside {
+    h1 {
       margin-top: 47px;
     }
-    hr{
+    hr {
       height: 2px;
       border: 0;
       background: $blue;
-      opacity: .2;
+      opacity: 0.2;
       margin-top: 33px;
       margin-bottom: 31px;
     }
-    p{
+    p {
       padding-left: 20px;
       padding-right: 20px;
       font-family: $font-main;
@@ -643,20 +647,20 @@ body .ngdialog.ngdialog-theme-default {
       color: $blue;
       text-align: center;
     }
-    ul{
+    ul {
       overflow: hidden;
       margin-top: 35px;
       margin-bottom: 36px;
       padding-right: 20px;
       padding-left: 20px;
       text-align: center;
-      li{
-        span{
+      li {
+        span {
           display: inline;
           position: relative;
-          &:before{
+          &:before {
             display: block;
-            content: '';
+            content: "";
             width: 7px;
             height: 7px;
             border-radius: 50%;
@@ -667,7 +671,7 @@ body .ngdialog.ngdialog-theme-default {
             bottom: 0;
             margin: auto;
             transform: translateY(15%);
-            opacity: .5;
+            opacity: 0.5;
           }
         }
         padding-left: 21px;
@@ -675,27 +679,27 @@ body .ngdialog.ngdialog-theme-default {
         font-size: 1.125em;
         color: $blue;
         font-weight: $bold;
-        &:not(:last-of-type){
+        &:not(:last-of-type) {
           margin-bottom: 7px;
         }
       }
     }
   }
 }
-#music{
+#music {
   overflow: auto;
   padding-bottom: 28px;
   color: #ffffff;
   background: url("/images/backgrounds/music.jpg") no-repeat center / cover;
-  h1{
+  h1 {
     margin-top: 46px;
   }
-  .column{
+  .column {
     padding: 0;
     margin-top: 28px;
-    .block{
+    .block {
       overflow: auto;
-      h2{
+      h2 {
         margin-top: 0;
         text-align: center;
         font-size: 2.1em;
@@ -703,100 +707,100 @@ body .ngdialog.ngdialog-theme-default {
         font-family: $font-headers;
         font-weight: $light;
         position: relative;
-        &:after{
+        &:after {
           display: block;
           margin-top: 14px;
-          content: '';
+          content: "";
           background: #ffffff;
-          opacity: .2;
+          opacity: 0.2;
           height: 2px;
         }
       }
-      ul{
+      ul {
         margin-top: 30px;
         margin-bottom: 44px;
-        li{
+        li {
           padding-left: 67px;
-          padding-right: 70px;
           text-indent: -67px;
           position: relative;
           cursor: pointer;
           font-family: $font-headers;
           font-weight: $light;
           font-size: 1.71em;
-          &.playing .button .play, &:not(.playing) .button .pause{
+          &.playing .button .play,
+          &:not(.playing) .button .pause {
             display: none;
           }
-          .button{
+          .button {
             position: relative;
             margin-left: 20px;
             margin-right: 27px;
             top: 2px;
-            @include transitionAll(.1s);
-            svg{
+            @include transitionAll(0.1s);
+            svg {
               width: 20px;
               fill: white;
             }
           }
-          &:not(:hover):not(.playing){
-            .button{
-              opacity: .5;
+          &:not(:hover):not(.playing) {
+            .button {
+              opacity: 0.5;
             }
           }
-          &:not(:last-of-type){
+          &:not(:last-of-type) {
             margin-bottom: 2px;
           }
         }
       }
     }
     @media screen and (max-width: 500px) {
-      .block{
-        ul{
-          li{
+      .block {
+        ul {
+          li {
             font-size: 1.3em !important;
           }
         }
       }
     }
-    @media screen and (min-width: 992px){
-      &:nth-of-type(1){
+    @media screen and (min-width: 992px) {
+      &:nth-of-type(1) {
         padding-right: 20px;
       }
-      &:nth-of-type(2){
+      &:nth-of-type(2) {
         padding-left: 20px;
       }
     }
   }
 }
-#gallery{
+#gallery {
   padding: 0;
   overflow: auto;
-  .wrapper{
+  .wrapper {
     position: relative;
     width: 100%;
     background: black;
-    .arrow.left{
+    .arrow.left {
       left: 0;
     }
-    .arrow.right{
+    .arrow.right {
       right: 0;
       svg {
         @include transform(scaleX(-1));
       }
     }
-    .arrow{
+    .arrow {
       padding: 0 20px;
       overflow: hidden;
-      svg{
+      svg {
         fill: #ffffff;
         height: 50px;
         width: 31px;
       }
       cursor: pointer;
-      @include transitionAll(.2s);
-      &:not(:hover){
+      @include transitionAll(0.2s);
+      &:not(:hover) {
         svg {
-          opacity: .6;
+          opacity: 0.6;
         }
       }
       &:hover {
@@ -804,13 +808,12 @@ body .ngdialog.ngdialog-theme-default {
       }
       display: flex;
       align-items: center;
-      content: '';
+      content: "";
       position: absolute;
       z-index: 1;
       top: 0;
       bottom: 0;
       margin: auto;
-
     }
     .slide {
       width: 100%;
@@ -822,7 +825,7 @@ body .ngdialog.ngdialog-theme-default {
         height: 400px;
         cursor: pointer;
         display: inline-block;
-        @include transitionAll(.2s);
+        @include transitionAll(0.2s);
         width: 33.4%;
         .image {
           background: no-repeat center / cover;
@@ -835,35 +838,35 @@ body .ngdialog.ngdialog-theme-default {
           opacity: 1;
         }
       }
-      @media screen and (max-width: 580px){
+      @media screen and (max-width: 580px) {
         height: auto;
         flex-direction: column;
         -webkit-flex-direction: column;
         align-items: center;
         -webkit-align-items: center;
-        .item{
+        .item {
           width: 100%;
         }
       }
-      @include transitionAll(.3s);
-      }
-    .slides{
+      @include transitionAll(0.3s);
+    }
+    .slides {
       width: 100%;
       margin: 0 auto;
       overflow: hidden;
       position: relative;
-      .slide.unselected{
-        &.left{
+      .slide.unselected {
+        &.left {
           @include transform(translateX(-100%));
         }
-        &.right{
+        &.right {
           @include transform(translateX(100%));
         }
       }
-      .slide:first-of-type{
+      .slide:first-of-type {
         position: relative;
       }
-      .slide:not(:first-of-type){
+      .slide:not(:first-of-type) {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -873,24 +876,24 @@ body .ngdialog.ngdialog-theme-default {
     }
   }
 }
-#contact{
+#contact {
   overflow: auto;
   background: $gray-light;
-  .inside{
+  .inside {
     max-width: 980px;
     padding: 29px 10px 32px 10px;
     display: flex;
     display: -webkit-flex;
     align-items: center;
     -webkit-align-items: center;
-    .tag{
+    .tag {
       padding: 0;
-      h1{
+      h1 {
         text-align: left;
         color: $dark-brown;
       }
     }
-    .data{
+    .data {
       display: inline-flex;
       display: -webkit-inline-flex;
       align-items: center;
@@ -900,57 +903,58 @@ body .ngdialog.ngdialog-theme-default {
       text-align: right;
       padding: 0;
       overflow: hidden;
-      .left{
+      .left {
         color: $dark-brown;
         position: relative;
         text-align: right;
         display: inline-block;
         padding-right: 27px;
-        .name{
+        .name {
           font-family: $font-main;
           font-size: 1.5em;
           font-weight: $bold;
         }
-        a{
+        a {
           font-family: $font-main;
           font-size: 1.125em;
           font-weight: $regular;
-          i{
+          i {
             margin-right: 14px;
           }
         }
-        .name, a{
+        .name,
+        a {
           color: inherit;
           display: block;
         }
-        &:before{
+        &:before {
           display: block;
-          content: '';
+          content: "";
           width: 2px;
           background: $blue;
-          opacity: .2;
+          opacity: 0.2;
           position: absolute;
           top: 2px;
           bottom: 0;
           right: -2px;
         }
       }
-      .right{
+      .right {
         display: inline-flex;
         padding-left: 32px;
         align-items: center;
 
-        .fb{
+        .fb {
           display: inline-flex;
           align-items: center;
           margin-right: 16px;
-          svg{
+          svg {
             width: 40px;
             fill: $blue;
-            @include transitionAll(.2s);
+            @include transitionAll(0.2s);
           }
-          &:hover{
-            svg{
+          &:hover {
+            svg {
               background: $blue;
               fill: $gray-light;
             }
@@ -965,37 +969,37 @@ body .ngdialog.ngdialog-theme-default {
       }
     }
   }
-  @media screen and (max-width: 768px){
-    .inside{
+  @media screen and (max-width: 768px) {
+    .inside {
       flex-direction: column;
       -webkit-flex-direction: column;
-      .tag{
-        h1{
+      .tag {
+        h1 {
           text-align: center;
         }
       }
-      .data{
+      .data {
         justify-content: center;
         -webkit-justify-content: center;
         flex-direction: column;
         -webkit-flex-direction: column;
         text-align: center;
-        .left{
+        .left {
           margin-top: 20px;
           margin-bottom: 20px;
           text-align: left;
-          &:before{
+          &:before {
             display: none;
           }
         }
-        .right{
+        .right {
           padding-left: 0;
         }
       }
     }
   }
 }
-footer{
+footer {
   overflow: auto;
   margin-bottom: 60px;
   background: $blue;
@@ -1017,7 +1021,8 @@ footer{
       font-weight: $regular;
       margin-top: 0;
       margin-bottom: 0;
-      b, a {
+      b,
+      a {
         font-weight: $bold;
         color: inherit;
       }
@@ -1025,7 +1030,9 @@ footer{
         margin-bottom: 9px;
       }
     }
-    .copyright, .logo, .authors {
+    .copyright,
+    .logo,
+    .authors {
       padding-top: 20px;
       padding-bottom: 20px;
     }
@@ -1039,17 +1046,19 @@ footer{
       text-align: right;
     }
   }
-  @media screen and (max-width: 768px){
-    .ninesixzero{
+  @media screen and (max-width: 768px) {
+    .ninesixzero {
       flex-direction: column;
       -webkit-flex-direction: column;
-      .copyright, .logo, .authors{
+      .copyright,
+      .logo,
+      .authors {
         text-align: center;
       }
     }
   }
 }
-music-player{
+music-player {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -1060,7 +1069,7 @@ music-player{
   -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
-  .ninesixzero{
+  .ninesixzero {
     position: relative;
     max-width: 980px;
     height: 100%;
@@ -1071,11 +1080,11 @@ music-player{
     -webkit-align-items: center;
     justify-content: space-between;
     -webkit-justify-content: space-between;
-    .section{
+    .section {
       padding: 0;
     }
   }
-  #now_playing{
+  #now_playing {
     padding-left: 10px;
     margin-bottom: 5px;
     display: flex;
@@ -1084,14 +1093,14 @@ music-player{
     -webkit-flex-direction: column;
     justify-content: flex-start;
     -webkit-justify-content: flex-start;
-    span{
+    span {
       font-family: $font-headers;
       font-size: 1.125em;
       font-weight: $light;
       color: #a6a6a6;
       line-height: 1.4em;
     }
-    b{
+    b {
       line-height: 0.9em;
       font-family: $font-headers;
       font-size: 1.5em;
@@ -1099,7 +1108,7 @@ music-player{
       color: $blue;
     }
   }
-  #controls{
+  #controls {
     position: absolute;
     top: 0;
     left: 0;
@@ -1114,17 +1123,17 @@ music-player{
     width: 160px;
     justify-content: space-between;
     -webkit-justify-content: space-between;
-    .control{
+    .control {
       cursor: pointer;
       width: 40px;
       height: 40px;
       background: #ffffff;
-      svg{
+      svg {
         fill: $blue;
       }
-      &.playing{
+      &.playing {
         position: relative;
-        .pause{
+        .pause {
           position: absolute !important;
           top: 0;
           left: 0;
@@ -1132,18 +1141,18 @@ music-player{
           bottom: 0;
           visibility: hidden;
         }
-        &:not(.paused){
-          .play{
+        &:not(.paused) {
+          .play {
             visibility: hidden;
           }
-          .pause{
+          .pause {
             visibility: visible;
           }
         }
       }
     }
   }
-  #volume{
+  #volume {
     display: flex;
     display: -webkit-flex;
     padding-right: 10px;
@@ -1154,7 +1163,7 @@ music-player{
     height: 100%;
     overflow: visible;
     position: relative;
-    i{
+    i {
       display: flex;
       display: -webkit-flex;
       align-items: center;
@@ -1166,7 +1175,7 @@ music-player{
       left: 0;
       bottom: 0;
     }
-    .progressbar{
+    .progressbar {
       cursor: pointer;
       margin-left: 33px;
       z-index: 99999;
@@ -1179,20 +1188,20 @@ music-player{
       width: 100px;
       height: 100%;
       overflow: visible;
-      .line{
+      .line {
         height: 4px;
         width: 100%;
         background: #cccccc;
         cursor: pointer;
         overflow: visible;
-        .inside{
+        .inside {
           overflow: visible;
           position: relative;
           background: $blue;
           height: 100%;
           &:before {
             display: block;
-            content: '';
+            content: "";
             position: absolute;
             border-radius: 50%;
             top: -10px;
@@ -1200,16 +1209,17 @@ music-player{
             width: 24px;
             height: 24px;
             background: $blue;
-            @include transitionAll(.1s);
+            @include transitionAll(0.1s);
             @include transform(scale(0.67));
           }
-          &:hover:before, &.clicked:before{
-            opacity: .5;
-            @include transform(scale(1))
+          &:hover:before,
+          &.clicked:before {
+            opacity: 0.5;
+            @include transform(scale(1));
           }
           &:after {
             display: block;
-            content: '';
+            content: "";
             position: absolute;
             border-radius: 50%;
             top: -1px;
@@ -1222,45 +1232,45 @@ music-player{
       }
     }
   }
-  @media screen and (max-width: 520px){
-    #now_playing{
-      span{
+  @media screen and (max-width: 520px) {
+    #now_playing {
+      span {
         font-size: 1.2em;
       }
-      b{
+      b {
         font-size: 1.2em;
       }
     }
-    #controls{
+    #controls {
       width: 110px;
-      .control{
+      .control {
         width: 30px;
         height: 30px;
       }
     }
-    #volume{
-      i{
+    #volume {
+      i {
         font-size: 1.3em;
       }
-      .progressbar{
+      .progressbar {
         margin-left: 18px;
         width: 80px;
       }
     }
   }
-  @media screen and (max-width:400px){
-    #now_playing{
-      span{
+  @media screen and (max-width: 400px) {
+    #now_playing {
+      span {
         font-size: 1em;
       }
-      b{
+      b {
         font-size: 1em;
       }
     }
   }
   @media screen and (max-width: 350px) {
-    #volume{
-      .progressbar{
+    #volume {
+      .progressbar {
         width: 50px;
       }
     }
@@ -1273,7 +1283,7 @@ music-player{
   right: 0;
   bottom: 0;
   transform: translateY(100%);
-  transition: .2s;
+  transition: 0.2s;
   background: #000000;
   &.visible {
     transform: translateY(0);
@@ -1288,7 +1298,7 @@ music-player{
     font-weight: $light;
     a {
       cursor: pointer;
-      transition: .2s;
+      transition: 0.2s;
       font-weight: $regular;
       color: #0282d6;
     }
