@@ -37,7 +37,20 @@
     ]
   },
   {
-    "name": "Studio",
+    "name": "Wokalistki",
+    "songs": [
+      {
+        "name": "Midnight",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/midnight.mp3?alt=media&token=1d52dea4-8cb3-4688-be20-46f743272003"
+      },
+      {
+        "name": "When I Fall In Love",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/when-i-fall-in-love.mp3?alt=media&token=edc712e0-3353-45ca-b17f-5278e947cc60"
+      }
+    ]
+  },
+  {
+    "name": "Inne",
     "songs": [
       {
         "name": "Cheek To Cheek",
@@ -54,19 +67,6 @@
       {
         "name": "Corvovado",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Corvovado%20Bossa%20Nova-IHnvVeWtSP0.mp3?alt=media&token=117a4e90-486d-4b2b-965f-f28b5319320c"
-      }
-    ]
-  },
-  {
-    "name": "Wokalistki",
-    "songs": [
-      {
-        "name": "Midnight",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/midnight.mp3?alt=media&token=1d52dea4-8cb3-4688-be20-46f743272003"
-      },
-      {
-        "name": "When I Fall In Love",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/when-i-fall-in-love.mp3?alt=media&token=edc712e0-3353-45ca-b17f-5278e947cc60"
       }
     ]
   },
