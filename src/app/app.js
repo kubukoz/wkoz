@@ -1,7 +1,4 @@
 import angular from 'angular';
-import ngCookies from 'angular-cookies'
-import duScroll from 'angular-scroll'
-import ngDialog from 'ng-dialog'
 
 //custom styles
 import '../style/reset.css'
