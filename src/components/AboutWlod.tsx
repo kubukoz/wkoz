@@ -1,4 +1,4 @@
-export const About = () => {
+export const AboutWlod = () => {
   const description = `Muzyka w moim życiu odgrywa ogromną rolę.
   Kiedyś, jako słuchacz, obecny byłem zarówno na wielu
   festiwalach,

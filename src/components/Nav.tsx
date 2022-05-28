@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 export const Nav: FC = () => {
   const [visible, setVisible] = useState(false);
 
+  // todo: scroll stuff
   return (
     <nav id="nav" ng-controller="NavController">
       <ul className={visible ? "active" : ""} onClick={() => setVisible(false)}>

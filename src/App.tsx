@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { About } from "./components/About";
+import { AboutWlod as AboutWlod } from "./components/AboutWlod";
 import { Nav } from "./components/Nav";
 import { ReactComponent as Logo } from "./logo.svg";
 import { Repertoire } from "./components/Repertoire";
+import { AboutSE } from './components/AboutSE';
 
 export const Header: FC = () => {
   // todo
@@ -23,8 +24,9 @@ export const Header: FC = () => {
 const App = () => (
   <>
     <Header />
-    <About />
+    <AboutWlod />
     <Repertoire />
+    <AboutSE />
   </>
 );
 
