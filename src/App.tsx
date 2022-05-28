@@ -7,7 +7,8 @@ import { AboutSE } from "./components/AboutSE";
 import { Locations } from "./components/Locations";
 import { Contact } from "./components/Contact";
 import { MusicPlayer } from "./components/MusicPlayer";
-import { Gallery } from './components/Gallery';
+import { Gallery } from "./components/Gallery";
+import { Music } from './components/Music';
 
 const Header: FC = () => {
   // todo
@@ -101,7 +102,7 @@ const App = () => (
     <Repertoire />
     <AboutSE />
     <Locations />
-    <div>todo: music</div>
+    <Music />
     <Gallery />
     <Contact />
     <Footer />
