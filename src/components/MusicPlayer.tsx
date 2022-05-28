@@ -14,8 +14,8 @@ export const usePlayer = ({ categories }: PlayerProps) => {
   return { state };
 };
 
-export const MusicPlayer: FC<{ state: PlayerState }> = ({
-  state: { selected },
+export const MusicPlayer: FC<{ player: PlayerState }> = ({
+  player: { selected, playing },
 }) => {
   // todo: condition on categories being non-empty
   // todo: all the logic, classes, bidir connection with music gallery component
@@ -39,9 +39,14 @@ export const MusicPlayer: FC<{ state: PlayerState }> = ({
             </svg>
           </div>
           <div
-            className="control playing"
+            className={(() => {
+              const base = "control playing";
+
+              const extra = playing ? "" : " paused";
+
+              return base + extra;
+            })()}
             ng-click="player.switchPlaying()"
-            ng-className="{'paused':!player.playing}"
           >
             <div className="play">
               <svg viewBox="0 0 40 40">

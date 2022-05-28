@@ -24,25 +24,6 @@ const flatMap = (f, arr) => arr.reduce((x, y) => [...x, ...f(y)], []);
 const app = angular.module("wkoz", ["ngScrollSpy", "ngCookies", "duScroll", "ngDialog"]);
 app.run(['$rootScope', function ($rootScope) {
   $rootScope.duOffset = 120;
-  $rootScope.currentYear = new Date().getFullYear();
-
-  let songId = 0;
-  $rootScope.categories = musicCategories.map((category, catIndex) => {
-    category.id = catIndex;
-    category.ordr = catIndex + 1;
-    category.songs = category.songs.map((song, songIndex) => {
-      song.id = (++songId);
-      song.ordr = songIndex + 1;
-      song.catId = catIndex;
-      return song;
-    });
-
-    return category;
-  });
-
-  $rootScope.$on("playerLoaded", function () {
-    $rootScope.$broadcast("musicRequested", { id: $rootScope.categories[0].songs[0].id, playing: false });
-  })
 }]);
 
 app.config(['scrollspyConfigProvider', function (scrollspyConfigProvider) {
@@ -52,16 +33,6 @@ app.config(['scrollspyConfigProvider', function (scrollspyConfigProvider) {
 }]);
 app.controller("NavController", ['$scope', '$window', function ($scope, $window) {
   app.scope = $scope;
-  $scope.nav = { visible: false };
-  $scope.toggleNav = function () {
-    $scope.nav.visible = !$scope.nav.visible;
-  };
-  $scope.showNav = function () {
-    $scope.nav.visible = true;
-  };
-  $scope.hideNav = function () {
-    $scope.nav.visible = false;
-  };
   angular.element($window).bind("resize", function () {
     if (this.innerWidth > 980) {
       $scope.$apply(function () {

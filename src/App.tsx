@@ -127,7 +127,7 @@ const App = () => {
       <Gallery />
       <Contact />
       <Footer />
-      <MusicPlayer state={player.state} />
+      <MusicPlayer player={player.state} />
       <CookieConsent />
     </>
   );
