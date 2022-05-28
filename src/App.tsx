@@ -9,6 +9,7 @@ import { Contact } from "./components/Contact";
 import { MusicPlayer, usePlayer } from "./components/MusicPlayer";
 import { Gallery } from "./components/Gallery";
 import { Music } from "./components/Music";
+import musicCategories from "./data/music.json";
 
 const Header: FC = () => {
   // todo
@@ -95,8 +96,25 @@ const CookieConsent = () => {
   );
 };
 
+const getCategories = () => {
+  let songId = 0;
+  return musicCategories.map((category, catIndex) => ({
+    ...category,
+    id: catIndex,
+    ordr: catIndex + 1,
+    songs: category.songs.map((song, songIndex) => ({
+      ...song,
+      id: ++songId,
+      ordr: songIndex + 1,
+      catId: catIndex,
+    })),
+  }));
+};
+
 const App = () => {
-  const player = usePlayer();
+  const categories = getCategories();
+
+  const player = usePlayer({ categories });
 
   return (
     <>
@@ -105,7 +123,7 @@ const App = () => {
       <Repertoire />
       <AboutSE />
       <Locations />
-      <Music />
+      <Music categories={categories} player={player.state} />
       <Gallery />
       <Contact />
       <Footer />

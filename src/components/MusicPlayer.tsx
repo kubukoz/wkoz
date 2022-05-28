@@ -1,15 +1,22 @@
 import { FC, useState } from "react";
+import { Category, Track } from "./types";
 
-type Track = { name: string };
-type State = { selected: Track };
+export type PlayerState = { selected: Track; playing: boolean };
 
-export const usePlayer = () => {
-  const [state, setState] = useState<State>({ selected: { name: "test" } });
+type PlayerProps = { categories: readonly Category[] };
+
+export const usePlayer = ({ categories }: PlayerProps) => {
+  const [state, setState] = useState<PlayerState>({
+    selected: categories[0].songs[0],
+    playing: false,
+  });
 
   return { state };
 };
 
-export const MusicPlayer: FC<{ state: State }> = ({ state: { selected } }) => {
+export const MusicPlayer: FC<{ state: PlayerState }> = ({
+  state: { selected },
+}) => {
   // todo: condition on categories being non-empty
   // todo: all the logic, classes, bidir connection with music gallery component
   return (

@@ -18,7 +18,6 @@ import 'ng-dialog/css/ngDialog.css'
 
 //data
 import galleryItems from '../data/gallery'
-import musicCategories from '../data/music'
 
 const flatMap = (f, arr) => arr.reduce((x, y) => [...x, ...f(y)], []);
 
