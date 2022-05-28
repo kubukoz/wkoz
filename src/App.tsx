@@ -6,6 +6,7 @@ import { Repertoire } from "./components/Repertoire";
 import { AboutSE } from "./components/AboutSE";
 import { Locations } from "./components/Locations";
 import { Contact } from "./components/Contact";
+import { MusicPlayer } from './MusicPlayer';
 
 const Header: FC = () => {
   // todo
@@ -36,7 +37,7 @@ const Footer = () => {
     >
       <div className="ninesixzero">
         <div className="copyright">
-          <h2>Copyright &copy; { currentYear }</h2>
+          <h2>Copyright &copy; {currentYear}</h2>
           <h2>
             <b>Standard Express</b>
           </h2>
@@ -65,6 +66,11 @@ const Footer = () => {
   );
 };
 
+type Track = { name: string };
+type Props = {
+  selected: Track;
+};
+
 const App = () => (
   <>
     <Header />
@@ -76,6 +82,7 @@ const App = () => (
     <div>todo: gallery</div>
     <Contact />
     <Footer />
+    <MusicPlayer />
   </>
 );
 
