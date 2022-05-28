@@ -1,4 +1,4 @@
-import { ReactComponent as Sax } from "./sax.svg";
+import { ReactComponent as Sax } from "../sax.svg";
 
 export const AboutSE = () => (
   // todo scroll stuff
