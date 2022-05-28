@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html>
+<head>
+    <meta charset="UTF-8">
     <base href="/">
-    <!-- <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" /> -->
     <title>Standard Express</title>
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-  </head>
-  <body>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Open Sans:300,400,700|Roboto:300&amp;subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Standard Express" />
+    <meta property="og:title" content="Standard Express" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Standard Express" />
+    <meta property="og:image" content="https://standardexpress.pl/images/og_image.png" />
+    <meta property="og:description"
+        content="Standard Express to grupa muzyków zajmująca się standardami muzyki amerykańskiej." />
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-55943015-3', 'auto');
+        ga('send', 'pageview');
+
+
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-  </body>
+</head>
 </html>
