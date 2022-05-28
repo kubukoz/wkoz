@@ -6,9 +6,9 @@ import { Repertoire } from "./components/Repertoire";
 import { AboutSE } from "./components/AboutSE";
 import { Locations } from "./components/Locations";
 import { Contact } from "./components/Contact";
-import { MusicPlayer } from "./components/MusicPlayer";
+import { MusicPlayer, usePlayer } from "./components/MusicPlayer";
 import { Gallery } from "./components/Gallery";
-import { Music } from './components/Music';
+import { Music } from "./components/Music";
 
 const Header: FC = () => {
   // todo
@@ -95,20 +95,24 @@ const CookieConsent = () => {
   );
 };
 
-const App = () => (
-  <>
-    <Header />
-    <AboutWlod />
-    <Repertoire />
-    <AboutSE />
-    <Locations />
-    <Music />
-    <Gallery />
-    <Contact />
-    <Footer />
-    <MusicPlayer />
-    <CookieConsent />
-  </>
-);
+const App = () => {
+  const player = usePlayer();
+
+  return (
+    <>
+      <Header />
+      <AboutWlod />
+      <Repertoire />
+      <AboutSE />
+      <Locations />
+      <Music />
+      <Gallery />
+      <Contact />
+      <Footer />
+      <MusicPlayer state={player.state} />
+      <CookieConsent />
+    </>
+  );
+};
 
 export default App;
