@@ -38,7 +38,7 @@ export const AboutSE = () => (
       <hr />
       <p className="text">
         Artyści, z którymi miałem i mam przyjemność współpracować, to m.in.:
-        wybitny skrzypek jazzowy
+        wybitny skrzypek jazzowy{" "}
         <b>Maciej&nbsp;Strzelczyk</b>, pianiści{" "}
         <b>Jarosław&nbsp;Małys, Witold&nbsp;Janiak</b>, gitarzyści{" "}
         <b>Krzysztof&nbsp;Woliński, Romuald&nbsp;Erenc</b>, perkusista{" "}
