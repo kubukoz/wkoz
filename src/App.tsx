@@ -6,7 +6,7 @@ import { Repertoire } from "./components/Repertoire";
 import { AboutSE } from "./components/AboutSE";
 import { Locations } from "./components/Locations";
 import { Contact } from "./components/Contact";
-import { MusicPlayer } from './MusicPlayer';
+import { MusicPlayer } from "./MusicPlayer";
 
 const Header: FC = () => {
   // todo
@@ -66,9 +66,31 @@ const Footer = () => {
   );
 };
 
-type Track = { name: string };
-type Props = {
-  selected: Track;
+const CookieConsent = () => {
+  // todo: cookies logic
+  const cookiesAccepted = false;
+
+  return (
+    <div
+      cookie-consent
+      id="cookie-consent"
+      className={cookiesAccepted ? "" : "visible"}
+    >
+      <div className="ninesixzero">
+        Strona korzysta z plików cookie w celach statystycznych.{" "}
+        <a
+          target="_blank"
+          href="https://support.google.com/analytics/answer/6004245?hl=en"
+        >
+          Dowiedz się więcej
+        </a>{" "}
+        lub{" "}
+        <a className="closer" ng-click="acceptCookies()">
+          Zamknij
+        </a>
+      </div>
+    </div>
+  );
 };
 
 const App = () => (
@@ -83,6 +105,7 @@ const App = () => (
     <Contact />
     <Footer />
     <MusicPlayer />
+    <CookieConsent />
   </>
 );
 
