@@ -3,7 +3,8 @@ import { AboutWlod as AboutWlod } from "./components/AboutWlod";
 import { Nav } from "./components/Nav";
 import { ReactComponent as Logo } from "./logo.svg";
 import { Repertoire } from "./components/Repertoire";
-import { AboutSE } from './components/AboutSE';
+import { AboutSE } from "./components/AboutSE";
+import { Locations } from './components/Locations';
 
 export const Header: FC = () => {
   // todo
@@ -27,6 +28,7 @@ const App = () => (
     <AboutWlod />
     <Repertoire />
     <AboutSE />
+    <Locations />
   </>
 );
 
