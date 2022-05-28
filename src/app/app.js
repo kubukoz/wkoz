@@ -223,22 +223,22 @@ app.directive("musicPlayer", ['$rootScope', function ($rootScope) {
 
       document.onkeydown = function (e) {
         scope.$apply(function () {
-          switch (e.keyCode) {
-            case 37:
+          switch (e.key) {
+            case "ArrowLeft":
               p.previousSong();
               break;
-            case 39:
+            case "ArrowRight":
               p.nextSong();
               break;
-            case 38:
+            case "ArrowUp":
               if (e.shiftKey)
                 p.volumeUp();
               break;
-            case 40:
+            case "ArrowDown":
               if (e.shiftKey)
                 p.volumeDown();
               break;
-            case 32:
+            case " ":
               e.preventDefault();
               p.switchPlaying();
               break;
