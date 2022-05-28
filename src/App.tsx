@@ -4,7 +4,8 @@ import { Nav } from "./components/Nav";
 import { ReactComponent as Logo } from "./logo.svg";
 import { Repertoire } from "./components/Repertoire";
 import { AboutSE } from "./components/AboutSE";
-import { Locations } from './components/Locations';
+import { Locations } from "./components/Locations";
+import { Contact } from './components/Contact';
 
 export const Header: FC = () => {
   // todo
@@ -29,6 +30,9 @@ const App = () => (
     <Repertoire />
     <AboutSE />
     <Locations />
+    <div>todo: music</div>
+    <div>todo: gallery</div>
+    <Contact />
   </>
 );
 

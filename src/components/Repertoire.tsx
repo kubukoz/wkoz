@@ -24,7 +24,7 @@ export const Repertoire = () => {
                   Ella&nbsp;Fitzgerald, Louis&nbsp;Armstrong, Diana&nbsp;Krall,
                   Michael&nbsp;Buble, Miles&nbsp;Davis, Pat&nbsp;Metheny,
                   John&nbsp;Coltrane, Antônio&nbsp;Carlos&nbsp;Jobim,
-                  Keith&nbsp;Jarrett
+                  Keith&nbsp;Jarrett{" "}
                 </b>
                 i&nbsp;wielu&nbsp;innych.
               </div>

@@ -40,7 +40,7 @@ export const AboutSE = () => (
         Artyści, z którymi miałem i mam przyjemność współpracować, to m.in.:
         wybitny skrzypek jazzowy
         <b>Maciej&nbsp;Strzelczyk</b>, pianiści{" "}
-        <b>Jarosław&nbsp;Małys, Witold&nbsp;Janiak</b>, gitarzyści
+        <b>Jarosław&nbsp;Małys, Witold&nbsp;Janiak</b>, gitarzyści{" "}
         <b>Krzysztof&nbsp;Woliński, Romuald&nbsp;Erenc</b>, perkusista{" "}
         <b>Grzegorz&nbsp;Grzyb</b> i aktorka&nbsp;
         <b>Grażyna&nbsp;Błęcka-Kolska</b>.
