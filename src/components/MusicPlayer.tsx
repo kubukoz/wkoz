@@ -1,18 +1,24 @@
 import { FC, useEffect, useState } from "react";
 import { Category, Track } from "./types";
+import { VolumeBar } from "./VolumeBar";
 
 export type PlayerState = {
   selected: Track;
   playing: boolean;
+  volume: number;
 };
 
 type Player = {
   state: PlayerState;
-  switchPlaying: () => void;
   play: {
-    previous: () => void;
-    next: () => void;
-    song: (songId: number) => void;
+    previous(): void;
+    next(): void;
+    song(songId: number): void;
+    switch(): void;
+  };
+  volumeControl: {
+    volumeUp(): void;
+    volumeDown(): void;
   };
 };
 
@@ -21,12 +27,18 @@ type PlayerArgs = { categories: readonly Category[] };
 //stolen from https://medium.com/nerd-for-tech/using-custom-hooks-to-handle-keyboard-shortcuts-in-react-a91649a81c87
 function useKeyPress(
   callback: (event: KeyboardEvent) => void,
-  keys: string[]
+  keys: string[],
+  options: readonly ("NEEDS_SHIFT" | "PREVENT_DEFAULT")[] = []
 ): void {
-  const handler = (event: KeyboardEvent) => {
-    const { key } = event;
+  const checkShift = ({ shiftKey }: KeyboardEvent) =>
+    shiftKey || !options.includes("NEEDS_SHIFT");
 
-    if (keys.includes(key)) {
+  const handler = (event: KeyboardEvent) => {
+    const { key, shiftKey } = event;
+
+    if (keys.includes(key) && checkShift(event)) {
+      if (options.includes("PREVENT_DEFAULT")) event.preventDefault();
+
       callback(event);
     }
   };
@@ -43,12 +55,21 @@ export const usePlayer = ({ categories }: PlayerArgs): Player => {
   const [state, setState] = useState<PlayerState>({
     selected: categories[0].songs[0],
     playing: false,
+    volume: 80,
   });
+
+  const setVolume = (volume: number) =>
+    setState((s) => ({
+      ...s,
+      volume: Math.min(100, Math.max(0, volume)),
+    }));
+
   const allSongs = categories.flatMap((c) => c.songs);
   const songIndex = allSongs.findIndex((t) => t.id === state.selected.id);
 
-  const setSong = (s: Track) =>
-    setState({ ...state, selected: s, playing: true });
+  const setSong = (s: Track) => {
+    setState((state) => ({ ...state, selected: s, playing: true }));
+  };
 
   const playPrevious = () => {
     const previousSong =
@@ -71,34 +92,44 @@ export const usePlayer = ({ categories }: PlayerArgs): Player => {
 
   const switchPlaying = () => setState({ ...state, playing: !state.playing });
 
-  useKeyPress(playPrevious, ["ArrowLeft"]);
-  useKeyPress(playNext, ["ArrowRight"]);
-  useKeyPress(
-    (e) => {
-      e.preventDefault();
-      switchPlaying();
-    },
-    [" "]
-  );
-
   return {
     state,
-    switchPlaying,
     play: {
       previous: playPrevious,
       next: playNext,
       song: playSong,
+      switch: switchPlaying,
+    },
+    volumeControl: {
+      volumeDown() {
+        setVolume(state.volume - 10);
+      },
+      volumeUp() {
+        setVolume(state.volume + 10);
+      },
     },
   };
 };
 
+const useKeyboardControl = ({
+  play,
+  volumeControl,
+}: Pick<Player, "play" | "volumeControl">) => {
+  useKeyPress(play.previous, ["ArrowLeft"]);
+  useKeyPress(play.next, ["ArrowRight"]);
+  useKeyPress(play.switch, [" "], ["PREVENT_DEFAULT"]);
+  useKeyPress(volumeControl.volumeUp, ["ArrowUp"], ["NEEDS_SHIFT"]);
+  useKeyPress(volumeControl.volumeDown, ["ArrowDown"], ["NEEDS_SHIFT"]);
+};
 export const MusicPlayer: FC<{ player: Player }> = ({
   player: {
-    state: { selected, playing },
-    switchPlaying,
+    state: { selected, playing, volume },
     play,
+    volumeControl,
   },
 }) => {
+  useKeyboardControl({ play, volumeControl });
+
   // todo: condition on categories being non-empty
   // todo: all the logic, classes, bidir connection with music gallery component
 
@@ -125,7 +156,7 @@ C3.98,29.038,11.145,36.201,19.981,36.201z M17.75,13v14l-10.5-7L17.75,13z M29.75,
 
         return base + extra;
       })()}
-      onClick={() => switchPlaying()}
+      onClick={() => play.switch()}
     >
       <div className="play">
         <svg viewBox="0 0 40 40">
@@ -186,21 +217,7 @@ C36.02,10.962,28.855,3.799,20.019,3.799z M22.25,27V13l10.5,7L22.25,27z M10.25,13
           {mainButton}
           {rightArrow}
         </div>
-        <div className="section" id="volume">
-          <i
-            className="fa"
-            ng-className="{'fa-volume-off': player.volume<20, 'fa-volume-down':player.volume>=20 && player.volume<70, 'fa-volume-up': player.volume>=70}"
-          ></i>
-          <div className="progressbar">
-            <div className="line">
-              <div
-                className="inside"
-                ng-attr-style="width: {{player.volume}}%"
-                ng-className="{'clicked':vol.clicked}"
-              ></div>
-            </div>
-          </div>
-        </div>
+        <VolumeBar volume={volume} />
       </div>
     </div>
   );
