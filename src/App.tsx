@@ -123,7 +123,11 @@ const App = () => {
       <Repertoire />
       <AboutSE />
       <Locations />
-      <Music categories={categories} player={player.state} />
+      <Music
+        categories={categories}
+        player={player.state}
+        playSong={(id) => player.play.song(id)}
+      />
       <Gallery />
       <Contact />
       <Footer />

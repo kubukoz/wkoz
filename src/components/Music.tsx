@@ -2,7 +2,11 @@ import { FC } from "react";
 import { PlayerState } from "./MusicPlayer";
 import { Category, Track } from "./types";
 
-type Props = { categories: readonly Category[]; player: PlayerState };
+type Props = {
+  categories: readonly Category[];
+  player: PlayerState;
+  playSong: (songId: number) => void;
+};
 
 const TrackComp: FC<{
   trackName: string;
@@ -22,10 +26,11 @@ const TrackComp: FC<{
   );
 };
 
-const CategoryComp: FC<{ category: Category; player: PlayerState }> = ({
-  category,
-  player,
-}) => {
+const CategoryComp: FC<{
+  category: Category;
+  player: PlayerState;
+  playSong: (songId: number) => void;
+}> = ({ category, player, playSong }) => {
   return (
     <div>
       <h2>{category.name}</h2>
@@ -36,7 +41,7 @@ const CategoryComp: FC<{ category: Category; player: PlayerState }> = ({
             <TrackComp
               trackName={track.name}
               playing={playing}
-              play={() => /* todo */ {}}
+              play={() => playSong(track.id)}
               key={track.id}
             />
           );
@@ -46,7 +51,7 @@ const CategoryComp: FC<{ category: Category; player: PlayerState }> = ({
   );
 };
 
-export const Music: FC<Props> = ({ categories, player }) => {
+export const Music: FC<Props> = ({ categories, player, playSong }) => {
   // todo logic, scroll
   return categories.length ? (
     <div
@@ -64,6 +69,7 @@ export const Music: FC<Props> = ({ categories, player }) => {
                 category={category}
                 player={player}
                 key={category.id}
+                playSong={playSong}
               />
             ))}
           </div>
@@ -75,6 +81,7 @@ export const Music: FC<Props> = ({ categories, player }) => {
                 category={category}
                 player={player}
                 key={category.id}
+                playSong={playSong}
               />
             ))}
           </div>

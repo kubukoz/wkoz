@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Category, Track } from "./types";
 
 export type PlayerState = {
@@ -12,10 +12,32 @@ type Player = {
   play: {
     previous: () => void;
     next: () => void;
+    song: (songId: number) => void;
   };
 };
 
 type PlayerArgs = { categories: readonly Category[] };
+
+//stolen from https://medium.com/nerd-for-tech/using-custom-hooks-to-handle-keyboard-shortcuts-in-react-a91649a81c87
+function useKeyPress(
+  callback: (event: KeyboardEvent) => void,
+  keys: string[]
+): void {
+  const handler = (event: KeyboardEvent) => {
+    const { key } = event;
+
+    if (keys.includes(key)) {
+      callback(event);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handler);
+    return () => {
+      window.removeEventListener("keydown", handler);
+    };
+  }, [callback]);
+}
 
 export const usePlayer = ({ categories }: PlayerArgs): Player => {
   const [state, setState] = useState<PlayerState>({
@@ -25,26 +47,47 @@ export const usePlayer = ({ categories }: PlayerArgs): Player => {
   const allSongs = categories.flatMap((c) => c.songs);
   const songIndex = allSongs.findIndex((t) => t.id === state.selected.id);
 
+  const setSong = (s: Track) =>
+    setState({ ...state, selected: s, playing: true });
+
   const playPrevious = () => {
     const previousSong =
       allSongs[(songIndex + allSongs.length - 1) % allSongs.length];
 
-    setState({ ...state, selected: previousSong });
+    setSong(previousSong);
   };
 
   const playNext = () => {
     const nextSong = allSongs[(songIndex + 1) % allSongs.length];
-    setState({ ...state, selected: nextSong });
+    setSong(nextSong);
   };
+
+  const playSong = (songId: number) => {
+    const theSong = allSongs.find((s) => s.id === songId);
+    if (!theSong) throw new Error("No such song!");
+
+    setSong(theSong);
+  };
+
+  const switchPlaying = () => setState({ ...state, playing: !state.playing });
+
+  useKeyPress(playPrevious, ["ArrowLeft"]);
+  useKeyPress(playNext, ["ArrowRight"]);
+  useKeyPress(
+    (e) => {
+      e.preventDefault();
+      switchPlaying();
+    },
+    [" "]
+  );
 
   return {
     state,
-    switchPlaying() {
-      setState({ ...state, playing: !state.playing });
-    },
+    switchPlaying,
     play: {
       previous: playPrevious,
       next: playNext,
+      song: playSong,
     },
   };
 };
