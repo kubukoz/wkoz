@@ -6,6 +6,6 @@
   outputs = { nixpkgs, ... }:
     let pkgs = import nixpkgs { system = "aarch64-darwin"; }; in
     {
-      devShells.aarch64-darwin.default = pkgs.mkShell { buildInputs = [ pkgs.yarn ]; };
+      devShells.aarch64-darwin.default = pkgs.mkShell { buildInputs = [ pkgs.yarn pkgs.nodejs ]; };
     };
 }
