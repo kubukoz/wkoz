@@ -78,15 +78,6 @@ const useDrag = (onDrag: (percent: number) => void, clicked: boolean) => {
     return 100 * Math.min(Math.max(0, horizontalOffsetPx) / bar.offsetWidth, 1);
   };
 
-  const onmove = (element: HTMLElement) => (e: VolumeTrigger) => {
-    if (e.kind == "touch") {
-      e.e.preventDefault();
-      onDrag(getDrag(e, element));
-    } else if (clicked) {
-      onDrag(getDrag(e, element));
-    }
-  };
-
   useEffect(() => {
     const bar = draggable.current;
     if (!bar) return;
