@@ -32,11 +32,10 @@ const VolumeBarControlled: FC<{
         ref={dragRef}
         onMouseDown={(e) => {
           setClicked(true);
-          if (dragRef.current) {
+          dragRef.current &&
             setVolume(
               getDrag({ kind: "mouse", e: e.nativeEvent }, dragRef.current)
             );
-          }
         }}
         onMouseUp={() => setClicked(false)}
       >
