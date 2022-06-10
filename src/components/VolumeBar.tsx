@@ -5,11 +5,7 @@ type Props = {
   setVolume(vol: number): void;
 };
 
-export const VolumeBar: FC<Props> = ({ volume, setVolume }) => {
-  return <VolumeBarControlled volume={volume} setVolume={setVolume} />;
-};
-
-const VolumeBarControlled: FC<{
+export const VolumeBar: FC<{
   volume: number;
   setVolume(vol: number): void;
 }> = ({ volume, setVolume }) => {
