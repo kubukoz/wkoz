@@ -19,6 +19,7 @@ type Player = {
   volumeControl: {
     volumeUp(): void;
     volumeDown(): void;
+    setVolume(vol: number): void;
   };
 };
 
@@ -34,7 +35,7 @@ function useKeyPress(
     shiftKey || !options.includes("NEEDS_SHIFT");
 
   const handler = (event: KeyboardEvent) => {
-    const { key, shiftKey } = event;
+    const { key } = event;
 
     if (keys.includes(key) && checkShift(event)) {
       if (options.includes("PREVENT_DEFAULT")) event.preventDefault();
@@ -51,7 +52,7 @@ function useKeyPress(
   }, [callback]);
 }
 
-export const usePlayer = ({ categories }: PlayerArgs): Player => {
+export const usePlayerState = ({ categories }: PlayerArgs): Player => {
   const [state, setState] = useState<PlayerState>({
     selected: categories[0].songs[0],
     playing: false,
@@ -107,6 +108,7 @@ export const usePlayer = ({ categories }: PlayerArgs): Player => {
       volumeUp() {
         setVolume(state.volume + 10);
       },
+      setVolume,
     },
   };
 };
@@ -217,7 +219,7 @@ C36.02,10.962,28.855,3.799,20.019,3.799z M22.25,27V13l10.5,7L22.25,27z M10.25,13
           {mainButton}
           {rightArrow}
         </div>
-        <VolumeBar volume={volume} />
+        <VolumeBar volume={volume} setVolume={volumeControl.setVolume} />
       </div>
     </div>
   );

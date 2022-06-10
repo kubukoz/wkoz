@@ -6,7 +6,7 @@ import { Repertoire } from "./components/Repertoire";
 import { AboutSE } from "./components/AboutSE";
 import { Locations } from "./components/Locations";
 import { Contact } from "./components/Contact";
-import { MusicPlayer, usePlayer } from "./components/MusicPlayer";
+import { MusicPlayer, usePlayerState } from "./components/MusicPlayer";
 import { Gallery } from "./components/Gallery";
 import { Music } from "./components/Music";
 import musicCategories from "./data/music.json";
@@ -114,7 +114,7 @@ const getCategories = () => {
 const App = () => {
   const categories = getCategories();
 
-  const player = usePlayer({ categories });
+  const player = usePlayerState({ categories });
 
   return (
     <>
