@@ -1,3 +1,4 @@
+import { useUserAgent } from "@oieduardorabelo/use-user-agent";
 import { FC, useEffect, useRef, useState } from "react";
 
 type Props = {
@@ -9,6 +10,10 @@ export const VolumeBar: FC<{
   volume: number;
   setVolume(vol: number): void;
 }> = ({ volume, setVolume }) => {
+  const ua = useUserAgent();
+
+  const isIOS = ua?.os?.name === "iOS";
+
   const [clicked, setClicked] = useState(false);
 
   const iconClass =
@@ -20,7 +25,7 @@ export const VolumeBar: FC<{
 
   const { dragRef, getDrag } = useDrag((p) => setVolume(p), clicked);
 
-  return (
+  return isIOS ? null : (
     <div className="section" id="volume">
       <i className={`fa ${iconClass}`}></i>
       <div

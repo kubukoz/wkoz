@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
+import ReactAudioPlayer from "react-audio-player";
 import { Category, Track } from "./types";
 import { VolumeBar } from "./VolumeBar";
 
@@ -123,13 +124,36 @@ const useKeyboardControl = ({
   useKeyPress(volumeControl.volumeUp, ["ArrowUp"], ["NEEDS_SHIFT"]);
   useKeyPress(volumeControl.volumeDown, ["ArrowDown"], ["NEEDS_SHIFT"]);
 };
-export const MusicPlayer: FC<{ player: Player }> = ({
-  player: {
-    state: { selected, playing, volume },
-    play,
-    volumeControl,
-  },
+
+const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
+  play,
+  state: { playing, volume, selected },
 }) => {
+  const audioRef = useRef<ReactAudioPlayer | null>();
+
+  const currentAudioEl = audioRef.current?.audioEl.current;
+
+  if (currentAudioEl) {
+    if (playing) currentAudioEl.play();
+    else currentAudioEl.pause();
+  }
+
+  return (
+    <ReactAudioPlayer
+      src={selected.filename}
+      autoPlay={playing}
+      onEnded={() => play.next()}
+      preload="none"
+      volume={volume / 100.0}
+      ref={(a) => (audioRef.current = a)}
+    ></ReactAudioPlayer>
+  );
+};
+
+export const MusicPlayer: FC<{ player: Player }> = ({
+  player: { state, play, volumeControl },
+}) => {
+  const { selected, playing, volume } = state;
   useKeyboardControl({ play, volumeControl });
 
   // todo: condition on categories being non-empty
@@ -217,6 +241,7 @@ C36.02,10.962,28.855,3.799,20.019,3.799z M22.25,27V13l10.5,7L22.25,27z M10.25,13
         <div className="section" id="controls">
           {leftArrow}
           {mainButton}
+          <AudioPlayer play={play} state={state} />
           {rightArrow}
         </div>
         <VolumeBar volume={volume} setVolume={volumeControl.setVolume} />
