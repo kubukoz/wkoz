@@ -53,11 +53,11 @@
     "name": "Saksofon",
     "songs": [
       {
-        "name": "Ipanema/Isn't She Lovely (mix)",
+        "name": "Ipanema/Isn't She Lovely (live mix)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Ipanema%20Isn't%20She%20Lovely%20(mix).mp3?alt=media&token=dbe24b1c-3bed-47b5-8363-14e5d84cfe10"
       },
       {
-        "name": "All of me (trio)",
+        "name": "All of me (live)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/All%20Of%20Me%20(%20Sax%20Jazz%20Trio).mp3?alt=media&token=56a52867-2a43-4a45-983b-23c006a44792"
       }
     ]
@@ -66,24 +66,28 @@
     "name": "Inne",
     "songs": [
       {
-        "name": "Cheek To Cheek",
+        "name": "Cheek To Cheek (trio)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Cheek%20to%20Cheek-VB2fpi2ODg0.mp3?alt=media&token=426ab2d6-18b3-47dc-98dc-ddc7074ca145"
       },
       {
-        "name": "Autumn Leaves",
+        "name": "Autumn Leaves (trio)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Autumn%20Leaves-OvzoO4C1oZ8.mp3?alt=media&token=9d168dbb-9d09-4738-aaa0-1fbfcd71bdf2"
       },
       {
-        "name": "As Time Goes By",
+        "name": "As Time Goes By (trio)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/As%20Time%20Goes%20By-7uZDnK70_GU.mp3?alt=media&token=6388b610-0ae6-484f-8c52-4c1cff3cf05c"
       },
       {
-        "name": "Corvovado",
+        "name": "Corvovado (trio)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Corvovado%20Bossa%20Nova-IHnvVeWtSP0.mp3?alt=media&token=117a4e90-486d-4b2b-965f-f28b5319320c"
       },
       {
         "name": "Killing Me Softly (sax)",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Killing%20Me%20Softly%20-%20saxofon%20(demo).mp3?alt=media&token=bf70a984-19be-41da-85b1-696fc3b2bc19"
+      },
+      {
+        "name": "Duet piano/bass",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/pianobass.mp3?alt=media&token=599294ee-7eac-414b-924f-003d126cc81f"
       }
     ]
   },
