@@ -10,6 +10,7 @@ import { MusicPlayer, usePlayerState } from "./components/MusicPlayer";
 import { Gallery } from "./components/Gallery";
 import { Music } from "./components/Music";
 import musicCategories from "./data/music.json";
+import { useCookies } from "react-cookie";
 
 const Header: FC = () => {
   // todo
@@ -70,8 +71,14 @@ const Footer = () => {
 };
 
 const CookieConsent = () => {
-  // todo: cookies logic
-  const cookiesAccepted = false;
+  const [cookies, setCookie] = useCookies<
+    "cookie-consent",
+    { "cookie-consent": boolean }
+  >(["cookie-consent"]);
+  const cookiesAccepted: boolean = cookies["cookie-consent"];
+  const acceptCookies = () => {
+    setCookie("cookie-consent", true);
+  };
 
   return (
     <div
@@ -88,7 +95,7 @@ const CookieConsent = () => {
           Dowiedz się więcej
         </a>{" "}
         lub{" "}
-        <a className="closer" ng-click="acceptCookies()">
+        <a className="closer" onClick={acceptCookies}>
           Zamknij
         </a>
       </div>
