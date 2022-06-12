@@ -1,10 +1,6 @@
 import { useUserAgent } from "@oieduardorabelo/use-user-agent";
 import { FC, useEffect, useRef, useState } from "react";
 
-type Props = {
-  volume: number;
-  setVolume(vol: number): void;
-};
 
 export const VolumeBar: FC<{
   volume: number;

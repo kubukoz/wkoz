@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { PlayerState } from "./MusicPlayer";
-import { Category, Track } from "./types";
+import { Category } from "./types";
 
 type Props = {
   categories: readonly Category[];
