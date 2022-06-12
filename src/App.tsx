@@ -71,7 +71,11 @@ const CookieConsent = () => {
   >(["cookie-consent"]);
   const cookiesAccepted: boolean = cookies["cookie-consent"];
   const acceptCookies = () => {
-    setCookie("cookie-consent", true);
+    const MILLIS_PER_YEAR = 1000 * 3600 * 24 * 365;
+
+    const expires = new Date(new Date().valueOf() + MILLIS_PER_YEAR);
+
+    setCookie("cookie-consent", true, { expires });
   };
 
   return (
