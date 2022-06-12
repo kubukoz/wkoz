@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export const SmoothLink = ({
   href,
   children,
@@ -7,20 +5,24 @@ export const SmoothLink = ({
   href: string;
   children: string | JSX.Element | JSX.Element[];
 }) => {
-  const target = document.querySelector(href);
-
   return (
     <a
       href={href}
       onClick={(e) => {
-        e.preventDefault();
+        const target = document.querySelector(href);
         if (!target) return;
 
+        e.preventDefault();
+
+        const top =
+          target.getBoundingClientRect().top +
+          document.documentElement.scrollTop -
+          (document.getElementById("header")?.offsetHeight || 0) +
+          // Adding 1 because browsers hate me
+          1;
+
         window.scrollTo({
-          top:
-            target.getBoundingClientRect().top +
-            document.documentElement.scrollTop -
-            (document.getElementById("header")?.offsetHeight || 0),
+          top,
           left: 0,
           behavior: "smooth",
         });

@@ -52,9 +52,8 @@ const CategoryComp: FC<{
 };
 
 export const Music: FC<Props> = ({ categories, player, playSong }) => {
-  // todo scroll
   return categories.length ? (
-    <div id="music" scrollspy-broadcast scrollspy-offset="auto|60">
+    <div id="music">
       <div className="ninesixzero">
         <h1 className="heading">Muzyka</h1>
         <div className="col-sm-12 col-md-6 column">

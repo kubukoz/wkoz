@@ -8,7 +8,7 @@ export const AboutWlod = () => {
   odbiorcami.`;
 
   return (
-    <div id="about" scrollspy-broadcast scrollspy-offset="auto|60">
+    <div id="about">
       <div id="about_inside" className="ninesixzero clearfix">
         <div className="image col-xs-12 col-sm-4">
           <div className="inside"></div>

@@ -1,5 +1,5 @@
 export const Locations = () => (
-  <div id="locations" scrollspy-broadcast scrollspy-offset="auto|60">
+  <div id="locations">
     <div className="inside ninesixzero clearfix">
       <h1 className="heading">Miejsca</h1>
       <hr />

@@ -1,8 +1,7 @@
 import { ReactComponent as Sax } from "../sax.svg";
 
 export const AboutSE = () => (
-  // todo scroll stuff
-  <div id="about_se" scrollspy-broadcast scrollspy-offset="auto|60">
+  <div id="about_se">
     <div className="background"></div>
     <div className="inside ninesixzero clearfix">
       <h1 className="heading">O Standard Express</h1>

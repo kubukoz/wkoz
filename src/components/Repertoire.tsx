@@ -1,7 +1,6 @@
 export const Repertoire = () => {
-  // todo: scrollspy stuff
   return (
-    <div id="repertoire" scrollspy-broadcast scrollspy-offset="auto|60">
+    <div id="repertoire">
       <div className="ninesixzero inside clearfix">
         <h1 className="heading">Repertuar</h1>
         <div className="block">

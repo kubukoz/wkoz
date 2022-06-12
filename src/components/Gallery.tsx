@@ -111,7 +111,6 @@ export const Gallery: FC<Props> = ({
   modalSelectedImage: selectedImage,
   setModalSelectedImage: selectImage,
 }) => {
-  // todo: scroll
   if (!images.length) return null;
   const slideSize = 3;
 
@@ -155,7 +154,7 @@ export const Gallery: FC<Props> = ({
   );
 
   return (
-    <div id="gallery" scrollspy-broadcast scrollspy-offset="auto|60">
+    <div id="gallery">
       {modal}
       <div className="wrapper">
         <div className="arrow left" onClick={previous}>

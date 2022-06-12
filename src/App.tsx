@@ -15,31 +15,24 @@ import { useCookies } from "react-cookie";
 import { Image } from "./components/types";
 import { SmoothLink } from "./SmoothLink";
 
-const Header: FC = () => {
-  // todo
-  return (
-    <header id="header" scrollspy-broadcast scrollspy-offset="auto">
-      <div className="inside ninesixzero clearfix">
-        <SmoothLink href="#about">
-          <div id="logo_main">
-            <Logo />
-          </div>
-        </SmoothLink>
-        <Nav
-          hasMusic={!!musicCategories.length}
-          hasGallery={!!gallery.length}
-        />
-      </div>
-    </header>
-  );
-};
+const Header: FC = () => (
+  <header id="header">
+    <div className="inside ninesixzero clearfix">
+      <SmoothLink href="#about">
+        <div id="logo_main">
+          <Logo />
+        </div>
+      </SmoothLink>
+      <Nav hasMusic={!!musicCategories.length} hasGallery={!!gallery.length} />
+    </div>
+  </header>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // todo scroll
   return (
-    <footer scrollspy-broadcast id="footer" scrollspy-offset="auto|60">
+    <footer id="footer">
       <div className="ninesixzero">
         <div className="copyright">
           <h2>Copyright &copy; {currentYear}</h2>
