@@ -23,6 +23,7 @@ jobs:
     - uses: borales/actions-yarn@v3.0.0
       with:
         cmd: deploy
+      env:
         FIREBASE_TOKEN: "${{ secrets.FIREBASE_TOKEN}}"
 
 
