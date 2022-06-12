@@ -13,17 +13,18 @@ import musicCategories from "./data/music.json";
 import gallery from "./data/gallery.json";
 import { useCookies } from "react-cookie";
 import { Image } from "./components/types";
+import { SmoothLink } from "./SmoothLink";
 
 const Header: FC = () => {
   // todo
   return (
     <header id="header" scrollspy-broadcast scrollspy-offset="auto">
       <div className="inside ninesixzero clearfix">
-        <a href="#about" du-smooth-scroll /* offset="{{duOffset}}" */>
+        <SmoothLink href="#about">
           <div id="logo_main">
             <Logo />
           </div>
-        </a>
+        </SmoothLink>
         <Nav
           hasMusic={!!musicCategories.length}
           hasGallery={!!gallery.length}

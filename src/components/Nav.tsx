@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { SmoothLink } from "../SmoothLink";
 
 type Props = { hasMusic: boolean; hasGallery: boolean };
 
@@ -7,17 +8,13 @@ export const Nav: FC<Props> = ({ hasMusic, hasGallery }) => {
 
   const music = hasMusic && (
     <li scrollspy-listen="music" ng-show="categories.length">
-      <a href="#music" clickable-hidenav du-smooth-scroll>
-        Muzyka
-      </a>
+      <SmoothLink href="#music">Muzyka</SmoothLink>
     </li>
   );
 
   const gallery = hasGallery && (
     <li scrollspy-listen="gallery">
-      <a href="#gallery" clickable-hidenav du-smooth-scroll>
-        Galeria
-      </a>
+      <SmoothLink href="#gallery">Galeria</SmoothLink>
     </li>
   );
 
@@ -26,26 +23,18 @@ export const Nav: FC<Props> = ({ hasMusic, hasGallery }) => {
     <nav id="nav">
       <ul className={visible ? "active" : ""} onClick={() => setVisible(false)}>
         <li scrollspy-listen="about">
-          <a href="#about" clickable-hidenav du-smooth-scroll>
-            O mnie
-          </a>
+          <SmoothLink href="#about">O mnie</SmoothLink>
         </li>
         <li scrollspy-listen="repertoire">
-          <a href="#repertoire" clickable-hidenav du-smooth-scroll>
-            Repertuar
-          </a>
+          <SmoothLink href="#repertoire">Repertuar</SmoothLink>
         </li>
         <li scrollspy-listen="about_se|locations">
-          <a href="#about_se" clickable-hidenav du-smooth-scroll>
-            O Standard Express
-          </a>
+          <SmoothLink href="#about_se">O Standard Express</SmoothLink>
         </li>
         {music}
         {gallery}
         <li scrollspy-listen="contact|footer">
-          <a href="#contact" clickable-hidenav du-smooth-scroll>
-            Kontakt
-          </a>
+          <SmoothLink href="#contact">Kontakt</SmoothLink>
         </li>
       </ul>
       <div
