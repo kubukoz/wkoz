@@ -116,9 +116,10 @@ const useKeyboardControl = ({
   );
 };
 
-const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
+const AudioPlayer: FC<Player> = ({
   play,
   state: { playing, volume, selected },
+  volumeControl,
 }) => {
   const audioRef = useRef<ReactAudioPlayer | null>();
 
@@ -136,6 +137,9 @@ const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
       onEnded={() => play.next()}
       preload="auto"
       volume={volume / 100.0}
+      onVolumeChanged={() =>
+        currentAudioEl && volumeControl.setVolume(currentAudioEl.volume * 100)
+      }
       ref={(a) => (audioRef.current = a)}
       onPlay={() => play.start()}
       onPause={() => play.pause()}
@@ -232,7 +236,11 @@ C36.02,10.962,28.855,3.799,20.019,3.799z M22.25,27V13l10.5,7L22.25,27z M10.25,13
         <div className="section" id="controls">
           {leftArrow}
           {mainButton}
-          <AudioPlayer play={play} state={state} />
+          <AudioPlayer
+            play={play}
+            state={state}
+            volumeControl={volumeControl}
+          />
           {rightArrow}
         </div>
         <VolumeBar volume={volume} setVolume={volumeControl.setVolume} />

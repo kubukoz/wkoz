@@ -52,13 +52,15 @@ const CategoryComp: FC<{
 };
 
 export const Music: FC<Props> = ({ categories, player, playSong }) => {
+  const leftColumnSize = 2;
+
   return categories.length ? (
     <div id="music">
       <div className="ninesixzero">
         <h1 className="heading">Muzyka</h1>
         <div className="col-sm-12 col-md-6 column">
           <div className="block">
-            {categories.slice(0, 2).map((category) => (
+            {categories.slice(0, leftColumnSize).map((category) => (
               <CategoryComp
                 category={category}
                 player={player}
@@ -70,7 +72,7 @@ export const Music: FC<Props> = ({ categories, player, playSong }) => {
         </div>
         <div className="col-sm-12 col-md-6 column">
           <div className="block">
-            {categories.slice(2).map((category) => (
+            {categories.slice(leftColumnSize).map((category) => (
               <CategoryComp
                 category={category}
                 player={player}
