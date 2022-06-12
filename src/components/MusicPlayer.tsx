@@ -1,9 +1,10 @@
 import { FC, useRef, useState } from "react";
-import ReactAudioPlayer from "react-audio-player";
 import { Category, Track } from "./types";
 import { useKeyPress } from "../hooks/useKeyPress";
-import { VolumeBar } from "./VolumeBar";
 import { clampOrJump } from "./Gallery";
+import { VolumeBar } from "./VolumeBar";
+import ReactAudioPlayer from "react-audio-player";
+import { ReactAudioPlayerComponent } from "./ReactAudioPlayerComponent";
 
 export type PlayerState = {
   selected: Track;
@@ -129,7 +130,7 @@ const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
   }
 
   return (
-    <ReactAudioPlayer
+    <ReactAudioPlayerComponent
       src={selected.filename}
       autoPlay={playing}
       onEnded={() => play.next()}
@@ -138,7 +139,7 @@ const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
       ref={(a) => (audioRef.current = a)}
       onPlay={() => play.start()}
       onPause={() => play.pause()}
-    ></ReactAudioPlayer>
+    />
   );
 };
 
