@@ -112,7 +112,6 @@ export const Gallery: FC<Props> = ({
   setModalSelectedImage: selectImage,
 }) => {
   // todo: scroll
-  // todo: implement clickable-hidenav
   if (!images.length) return null;
   const slideSize = 3;
 
@@ -156,12 +155,7 @@ export const Gallery: FC<Props> = ({
   );
 
   return (
-    <div
-      id="gallery"
-      scrollspy-broadcast
-      clickable-hidenav
-      scrollspy-offset="auto|60"
-    >
+    <div id="gallery" scrollspy-broadcast scrollspy-offset="auto|60">
       {modal}
       <div className="wrapper">
         <div className="arrow left" onClick={previous}>

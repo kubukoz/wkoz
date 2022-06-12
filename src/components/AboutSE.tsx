@@ -2,12 +2,7 @@ import { ReactComponent as Sax } from "../sax.svg";
 
 export const AboutSE = () => (
   // todo scroll stuff
-  <div
-    id="about_se"
-    scrollspy-broadcast
-    clickable-hidenav
-    scrollspy-offset="auto|60"
-  >
+  <div id="about_se" scrollspy-broadcast scrollspy-offset="auto|60">
     <div className="background"></div>
     <div className="inside ninesixzero clearfix">
       <h1 className="heading">O Standard Express</h1>
@@ -38,8 +33,7 @@ export const AboutSE = () => (
       <hr />
       <p className="text">
         Artyści, z którymi miałem i mam przyjemność współpracować, to m.in.:
-        wybitny skrzypek jazzowy{" "}
-        <b>Maciej&nbsp;Strzelczyk</b>, pianiści{" "}
+        wybitny skrzypek jazzowy <b>Maciej&nbsp;Strzelczyk</b>, pianiści{" "}
         <b>Jarosław&nbsp;Małys, Witold&nbsp;Janiak</b>, gitarzyści{" "}
         <b>Krzysztof&nbsp;Woliński, Romuald&nbsp;Erenc</b>, perkusista{" "}
         <b>Grzegorz&nbsp;Grzyb</b> i aktorka&nbsp;

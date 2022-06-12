@@ -6,12 +6,7 @@ export const Contact = () => {
 
   // todo: scroll
   return (
-    <div
-      id="contact"
-      scrollspy-broadcast
-      clickable-hidenav
-      scrollspy-offset="auto|60"
-    >
+    <div id="contact" scrollspy-broadcast scrollspy-offset="auto|60">
       <div className="inside ninesixzero">
         <div className="col-xs-12 col-sm-6 tag">
           <h1 className="heading">Kontakt</h1>

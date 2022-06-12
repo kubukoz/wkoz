@@ -150,9 +150,6 @@ export const MusicPlayer: FC<{ player: Player; controllable: boolean }> = ({
   const { selected, playing, volume } = state;
   useKeyboardControl({ play, volumeControl, enabled: controllable });
 
-  // todo: condition on categories being non-empty
-  // todo: all the logic, classes, bidir connection with music gallery component
-
   const leftArrow = (
     <div className="control left" onClick={() => play.previous()}>
       <svg viewBox="0 0 40 40">

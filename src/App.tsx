@@ -38,12 +38,7 @@ const Footer = () => {
 
   // todo scroll
   return (
-    <footer
-      scrollspy-broadcast
-      id="footer"
-      clickable-hidenav
-      scrollspy-offset="auto|60"
-    >
+    <footer scrollspy-broadcast id="footer" scrollspy-offset="auto|60">
       <div className="ninesixzero">
         <div className="copyright">
           <h2>Copyright &copy; {currentYear}</h2>
