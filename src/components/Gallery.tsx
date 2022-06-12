@@ -43,7 +43,7 @@ const Slide: FC<Props & { selectedSlideIndex: number; index: number }> = ({
 export const Gallery: FC<Props> = ({ images }) => {
   // todo: scroll
   // todo: implement clickable-hidenav
-  // if (!images.length) return null;
+  if (!images.length) return null;
 
   const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
 
