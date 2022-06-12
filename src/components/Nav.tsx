@@ -1,11 +1,20 @@
 import { FC, useState } from "react";
 
-export const Nav: FC = () => {
+type Props = { hasMusic: boolean };
+export const Nav: FC<Props> = ({ hasMusic }) => {
   const [visible, setVisible] = useState(false);
+
+  const music = hasMusic ? (
+    <li scrollspy-listen="music" ng-show="categories.length">
+      <a href="#music" clickable-hidenav du-smooth-scroll>
+        Muzyka
+      </a>
+    </li>
+  ) : null;
 
   // todo: scroll stuff
   return (
-    <nav id="nav" ng-controller="NavController">
+    <nav id="nav">
       <ul className={visible ? "active" : ""} onClick={() => setVisible(false)}>
         <li scrollspy-listen="about">
           <a href="#about" clickable-hidenav du-smooth-scroll>
@@ -22,11 +31,7 @@ export const Nav: FC = () => {
             O Standard Express
           </a>
         </li>
-        <li scrollspy-listen="music" ng-show="categories.length">
-          <a href="#music" clickable-hidenav du-smooth-scroll>
-            Muzyka
-          </a>
-        </li>
+        {music}
         <li scrollspy-listen="gallery">
           <a href="#gallery" clickable-hidenav du-smooth-scroll>
             Galeria

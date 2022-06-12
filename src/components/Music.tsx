@@ -52,7 +52,7 @@ const CategoryComp: FC<{
 };
 
 export const Music: FC<Props> = ({ categories, player, playSong }) => {
-  // todo logic, scroll
+  // todo scroll
   return categories.length ? (
     <div
       id="music"

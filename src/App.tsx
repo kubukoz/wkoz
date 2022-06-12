@@ -22,7 +22,7 @@ const Header: FC = () => {
             <Logo />
           </div>
         </a>
-        <Nav />
+        <Nav hasMusic={musicCategories.length} />
       </div>
     </header>
   );
