@@ -4,6 +4,25 @@ import { SmoothLink } from "../SmoothLink";
 
 type Props = { hasMusic: boolean; hasGallery: boolean };
 
+const useWindowWidth = () => {
+  const [size, setSize] = useState(0);
+
+  const onScroll = () => setSize(window.innerWidth);
+
+  useEffect(() => {
+    setSize(window.innerWidth);
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  return size;
+};
+
 const useIsInViewport = (target: readonly string[]) => {
   const [inViewport, setInViewport] = useState(false);
 
@@ -56,7 +75,10 @@ const NavLink = ({
 };
 
 export const Nav: FC<Props> = ({ hasMusic, hasGallery }) => {
-  const [visible, setVisible] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const windowWidth = useWindowWidth();
+
+  if (windowWidth > 980 && expanded) setExpanded(false);
 
   const music = hasMusic && (
     <NavLink target={["#music"]}>
@@ -72,7 +94,10 @@ export const Nav: FC<Props> = ({ hasMusic, hasGallery }) => {
 
   return (
     <nav id="nav">
-      <ul className={visible ? "active" : ""} onClick={() => setVisible(false)}>
+      <ul
+        className={expanded ? "active" : ""}
+        onClick={() => setExpanded(false)}
+      >
         <NavLink target={["#about"]}>
           <SmoothLink href="#about">O mnie</SmoothLink>
         </NavLink>
@@ -90,8 +115,8 @@ export const Nav: FC<Props> = ({ hasMusic, hasGallery }) => {
       </ul>
       <div
         id="drawer"
-        onClick={() => setVisible(!visible)}
-        className={visible ? "active" : ""}
+        onClick={() => setExpanded(!expanded)}
+        className={expanded ? "active" : ""}
       >
         <div className="lines">
           <div className="line" />
