@@ -16,6 +16,8 @@ type Player = {
     next(): void;
     song(songId: number): void;
     switch(): void;
+    start(): void;
+    pause(): void;
   };
   volumeControl: {
     volumeUp(): void;
@@ -93,6 +95,7 @@ export const usePlayerState = ({ categories }: PlayerArgs): Player => {
   };
 
   const switchPlaying = () => setState({ ...state, playing: !state.playing });
+  const setPlaying = (playing: boolean) => setState({ ...state, playing });
 
   return {
     state,
@@ -101,6 +104,12 @@ export const usePlayerState = ({ categories }: PlayerArgs): Player => {
       next: playNext,
       song: playSong,
       switch: switchPlaying,
+      start() {
+        setPlaying(true);
+      },
+      pause() {
+        setPlaying(false);
+      },
     },
     volumeControl: {
       volumeDown() {
@@ -143,9 +152,11 @@ const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
       src={selected.filename}
       autoPlay={playing}
       onEnded={() => play.next()}
-      preload="none"
+      preload="auto"
       volume={volume / 100.0}
       ref={(a) => (audioRef.current = a)}
+      onPlay={() => play.start()}
+      onPause={() => play.pause()}
     ></ReactAudioPlayer>
   );
 };
