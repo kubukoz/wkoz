@@ -1,16 +1,25 @@
 import { FC, useState } from "react";
 
-type Props = { hasMusic: boolean };
-export const Nav: FC<Props> = ({ hasMusic }) => {
+type Props = { hasMusic: boolean; hasGallery: boolean };
+
+export const Nav: FC<Props> = ({ hasMusic, hasGallery }) => {
   const [visible, setVisible] = useState(false);
 
-  const music = hasMusic ? (
+  const music = hasMusic && (
     <li scrollspy-listen="music" ng-show="categories.length">
       <a href="#music" clickable-hidenav du-smooth-scroll>
         Muzyka
       </a>
     </li>
-  ) : null;
+  );
+
+  const gallery = hasGallery && (
+    <li scrollspy-listen="gallery">
+      <a href="#gallery" clickable-hidenav du-smooth-scroll>
+        Galeria
+      </a>
+    </li>
+  );
 
   // todo: scroll stuff
   return (
@@ -32,11 +41,7 @@ export const Nav: FC<Props> = ({ hasMusic }) => {
           </a>
         </li>
         {music}
-        <li scrollspy-listen="gallery">
-          <a href="#gallery" clickable-hidenav du-smooth-scroll>
-            Galeria
-          </a>
-        </li>
+        {gallery}
         <li scrollspy-listen="contact|footer">
           <a href="#contact" clickable-hidenav du-smooth-scroll>
             Kontakt

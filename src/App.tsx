@@ -10,6 +10,7 @@ import { MusicPlayer, usePlayerState } from "./components/MusicPlayer";
 import { Gallery } from "./components/Gallery";
 import { Music } from "./components/Music";
 import musicCategories from "./data/music.json";
+import gallery from "./data/gallery.json";
 import { useCookies } from "react-cookie";
 
 const Header: FC = () => {
@@ -22,7 +23,10 @@ const Header: FC = () => {
             <Logo />
           </div>
         </a>
-        <Nav hasMusic={musicCategories.length} />
+        <Nav
+          hasMusic={!!musicCategories.length}
+          hasGallery={!!gallery.length}
+        />
       </div>
     </header>
   );
@@ -81,11 +85,7 @@ const CookieConsent = () => {
   };
 
   return (
-    <div
-      cookie-consent
-      id="cookie-consent"
-      className={cookiesAccepted ? "" : "visible"}
-    >
+    <div id="cookie-consent" className={cookiesAccepted ? "" : "visible"}>
       <div className="ninesixzero">
         Strona korzysta z plików cookie w celach statystycznych.{" "}
         <a
@@ -118,8 +118,11 @@ const getCategories = () => {
   }));
 };
 
+const getImages = () => gallery.map((image, i) => ({ ...image, id: i }));
+
 const App = () => {
   const categories = getCategories();
+  const images = getImages();
 
   const player = usePlayerState({ categories });
 
@@ -135,7 +138,7 @@ const App = () => {
         player={player.state}
         playSong={(id) => player.play.song(id)}
       />
-      <Gallery />
+      <Gallery images={images} />
       <Contact />
       <Footer />
       <MusicPlayer player={player} />

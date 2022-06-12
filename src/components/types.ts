@@ -12,3 +12,9 @@ export type Category = {
   songs: readonly Track[];
   name: string;
 };
+
+export type Image = {
+  id: number;
+  name: string;
+  image: string;
+};
