@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { AboutWlod as AboutWlod } from "./components/AboutWlod";
 import { Nav } from "./components/Nav";
 import { ReactComponent as Logo } from "./logo.svg";
@@ -12,6 +12,7 @@ import { Music } from "./components/Music";
 import musicCategories from "./data/music.json";
 import gallery from "./data/gallery.json";
 import { useCookies } from "react-cookie";
+import { Image } from "./components/types";
 
 const Header: FC = () => {
   // todo
@@ -124,7 +125,11 @@ const App = () => {
   const categories = getCategories();
   const images = getImages();
 
-  const player = usePlayerState({ categories });
+  const [modalSelectedImage, setModalSelectedImage] = useState<Image>();
+
+  const player = usePlayerState({
+    categories,
+  });
 
   return (
     <>
@@ -138,10 +143,14 @@ const App = () => {
         player={player.state}
         playSong={(id) => player.play.song(id)}
       />
-      <Gallery images={images} />
+      <Gallery
+        images={images}
+        modalSelectedImage={modalSelectedImage}
+        setModalSelectedImage={setModalSelectedImage}
+      />
       <Contact />
       <Footer />
-      <MusicPlayer player={player} />
+      <MusicPlayer player={player} controllable={!modalSelectedImage} />
       <CookieConsent />
     </>
   );

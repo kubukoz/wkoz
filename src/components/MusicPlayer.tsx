@@ -1,7 +1,9 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import ReactAudioPlayer from "react-audio-player";
 import { Category, Track } from "./types";
+import { useKeyPress } from "../hooks/useKeyPress";
 import { VolumeBar } from "./VolumeBar";
+import { clampOrJump } from "./Gallery";
 
 export type PlayerState = {
   selected: Track;
@@ -28,33 +30,6 @@ type Player = {
 
 type PlayerArgs = { categories: readonly Category[] };
 
-//stolen from https://medium.com/nerd-for-tech/using-custom-hooks-to-handle-keyboard-shortcuts-in-react-a91649a81c87
-function useKeyPress(
-  callback: (event: KeyboardEvent) => void,
-  keys: string[],
-  options: readonly ("NEEDS_SHIFT" | "PREVENT_DEFAULT")[] = []
-): void {
-  const checkShift = ({ shiftKey }: KeyboardEvent) =>
-    shiftKey || !options.includes("NEEDS_SHIFT");
-
-  const handler = (event: KeyboardEvent) => {
-    const { key } = event;
-
-    if (keys.includes(key) && checkShift(event)) {
-      if (options.includes("PREVENT_DEFAULT")) event.preventDefault();
-
-      callback(event);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("keydown", handler);
-    return () => {
-      window.removeEventListener("keydown", handler);
-    };
-  }, [callback]);
-}
-
 export const usePlayerState = ({ categories }: PlayerArgs): Player => {
   const [state, setState] = useState<PlayerState>({
     selected: categories[0].songs[0],
@@ -76,14 +51,13 @@ export const usePlayerState = ({ categories }: PlayerArgs): Player => {
   };
 
   const playPrevious = () => {
-    const previousSong =
-      allSongs[(songIndex + allSongs.length - 1) % allSongs.length];
+    const previousSong = clampOrJump(songIndex - 1, allSongs);
 
     setSong(previousSong);
   };
 
   const playNext = () => {
-    const nextSong = allSongs[(songIndex + 1) % allSongs.length];
+    const nextSong = clampOrJump(songIndex + 1, allSongs);
     setSong(nextSong);
   };
 
@@ -126,12 +100,19 @@ export const usePlayerState = ({ categories }: PlayerArgs): Player => {
 const useKeyboardControl = ({
   play,
   volumeControl,
-}: Pick<Player, "play" | "volumeControl">) => {
-  useKeyPress(play.previous, ["ArrowLeft"]);
-  useKeyPress(play.next, ["ArrowRight"]);
-  useKeyPress(play.switch, [" "], ["PREVENT_DEFAULT"]);
-  useKeyPress(volumeControl.volumeUp, ["ArrowUp"], ["NEEDS_SHIFT"]);
-  useKeyPress(volumeControl.volumeDown, ["ArrowDown"], ["NEEDS_SHIFT"]);
+  enabled,
+}: Pick<Player, "play" | "volumeControl"> & { enabled: boolean }) => {
+  const ifEnabled = (f: () => void) => () => enabled ? f() : {};
+
+  useKeyPress(ifEnabled(play.previous), ["ArrowLeft"]);
+  useKeyPress(ifEnabled(play.next), ["ArrowRight"]);
+  useKeyPress(ifEnabled(play.switch), [" "], ["PREVENT_DEFAULT"]);
+  useKeyPress(ifEnabled(volumeControl.volumeUp), ["ArrowUp"], ["NEEDS_SHIFT"]);
+  useKeyPress(
+    ifEnabled(volumeControl.volumeDown),
+    ["ArrowDown"],
+    ["NEEDS_SHIFT"]
+  );
 };
 
 const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
@@ -161,11 +142,12 @@ const AudioPlayer: FC<Pick<Player, "play" | "state">> = ({
   );
 };
 
-export const MusicPlayer: FC<{ player: Player }> = ({
+export const MusicPlayer: FC<{ player: Player; controllable: boolean }> = ({
   player: { state, play, volumeControl },
+  controllable,
 }) => {
   const { selected, playing, volume } = state;
-  useKeyboardControl({ play, volumeControl });
+  useKeyboardControl({ play, volumeControl, enabled: controllable });
 
   // todo: condition on categories being non-empty
   // todo: all the logic, classes, bidir connection with music gallery component
