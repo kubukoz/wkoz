@@ -5,6 +5,7 @@ import { clampOrJump } from "./Gallery";
 import { VolumeBar } from "./VolumeBar";
 import ReactAudioPlayer from "react-audio-player";
 import { ReactAudioPlayerComponent } from "./ReactAudioPlayerComponent";
+import { Slider } from "./Slider";
 
 export type PlayerState = {
   selected: Track;

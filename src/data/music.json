@@ -1,6 +1,6 @@
 [
   {
-    "name": "Trio Live",
+    "name": "TRIO (live)",
     "songs": [
       {
         "name": "The Girl From Ipanema",
@@ -15,10 +15,6 @@
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/child-is-born.mp3?alt=media&token=7de52d15-3a8c-4a7e-a8ae-93b43e2191e4"
       },
       {
-        "name": "If I Should Lose You",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/trio-if-i-should-lose-you-skrocone.mp3?alt=media&token=b02e486a-d868-46fc-be00-4de9aaf8e2ef"
-      },
-      {
         "name": "Isn't She Lovely",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/isnt%20she%20lovely%20(1).mp3?alt=media&token=93a0a349-3f0c-40d6-9b24-9d174f113edc"
       },
@@ -31,17 +27,85 @@
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/alice-in-wonderland.mp3?alt=media&token=9323aa1a-2a48-4f3f-9a75-93090e8c286d"
       },
       {
-        "name": "Mix",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/columna-medica-live-mix.mp3?alt=media&token=651a76f7-37fc-4c3d-a5cb-8d896ad17064"
+        "name": "Take 5",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Take%20Five%20(D.Brubeck)%20%20jazz%20cover.mp3?alt=media&token=5f4bb722-dd5e-4f0e-847d-b5a6a28356df"
+      },
+      {
+        "name": "Looking up",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Looking%20Up%20(M.Petrucciani)%20%20jazz%20cover.mp3?alt=media&token=b66dafd4-b599-4c4c-a1e9-2fbbc376f3c0"
       }
     ]
   },
   {
-    "name": "Wokalistki",
+    "name": "SAKSOFON (live)",
     "songs": [
       {
-        "name": "Midnight",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/midnight.mp3?alt=media&token=1d52dea4-8cb3-4688-be20-46f743272003"
+        "name": "Ipanema/Isn't She Lovely (mix)",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Ipanema%20Isn't%20She%20Lovely%20(mix).mp3?alt=media&token=dbe24b1c-3bed-47b5-8363-14e5d84cfe10"
+      },
+      {
+        "name": "All of me",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/All%20Of%20Me%20(%20Sax%20Jazz%20Trio).mp3?alt=media&token=88413808-9296-4723-9ff2-b55b57aacaff"
+      }
+    ]
+  },
+
+  {
+    "name": "KOLĘDY (live)",
+    "songs": [
+      {
+        "name": "Santa Claus Is Coming To Town",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Santa%20Claus%20Is%20Coming%20To%20Town.mp3?alt=media&token=a84f11d1-0d12-4558-b45b-106140b70471"
+      },
+      {
+        "name": "Winter Wonderland",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Winter%20Wonderland.mp3?alt=media&token=ae5e7fa4-a86e-4b58-b20e-e3fdfe911f23"
+      },
+      {
+        "name": "Cicha Noc",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Cicha%20Noc.mp3?alt=media&token=01aba168-019b-481d-9646-caddda7a1b0a"
+      }
+    ]
+  },
+  {
+    "name": "WOKAL (kwartet, live)",
+    "songs": [
+      {
+        "name": "Moje Serce To Jest Muzyk",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/1.%20Moje%20SerceTo%20Jest%20Muzyk.mp3?alt=media&token=f50e0547-86d7-4891-b7e8-888506911ad3"
+      },
+      {
+        "name": "If I Ain't Got You",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/2.%20If%20I%20Ain_t%20Got%20You.mp3?alt=media&token=d2b95b53-b518-4cbc-a9da-55b7acbfb81e"
+      },
+      {
+        "name": "Blue Bossa",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/3.%20Blue%20Bossa.mp3?alt=media&token=b31f9849-d1f0-4b68-8788-31e3e92900fb"
+      },
+      {
+        "name": "Almost Like Being In Love",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/4.%20Almost%20Like%20Being%20In%20Love.mp3?alt=media&token=1183c9ae-337f-43fc-93c4-12d60c28b9c8"
+      },
+      {
+        "name": "Pod Papugami",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/5.%20Pod%20Papugami.mp3?alt=media&token=d7313f04-f95f-44cb-8f83-4bb06601c2dc"
+      },
+      {
+        "name": "Sunny",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/6.%20Sunny.mp3?alt=media&token=a0cc38dd-2813-4a5d-849e-8a669443a449"
+      }
+    ]
+  },
+  {
+    "name": "WOKAL (trio, live)",
+    "songs": [
+      {
+        "name": "Moje Serce To Jest Muzyk",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/8.%20Moje%20Serce%20To%20Jest%20Muzyk%20trio.mp3?alt=media&token=76456a54-dd1a-4961-89e6-5da983feb889"
+      },
+      {
+        "name": "Isn't She Lovely",
+        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/7.%20Isn_t%20She%20Lovely.mp3?alt=media&token=0465aab0-c7b5-4148-894d-bc8334788bf9"
       },
       {
         "name": "When I Fall In Love",
@@ -49,21 +113,9 @@
       }
     ]
   },
+
   {
-    "name": "Saksofon",
-    "songs": [
-      {
-        "name": "Ipanema/Isn't She Lovely (live mix)",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Ipanema%20Isn't%20She%20Lovely%20(mix).mp3?alt=media&token=dbe24b1c-3bed-47b5-8363-14e5d84cfe10"
-      },
-      {
-        "name": "All of me (live)",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/All%20Of%20Me%20(%20Sax%20Jazz%20Trio).mp3?alt=media&token=56a52867-2a43-4a45-983b-23c006a44792"
-      }
-    ]
-  },
-  {
-    "name": "Inne",
+    "name": "INNE",
     "songs": [
       {
         "name": "Cheek To Cheek (trio)",
@@ -88,23 +140,6 @@
       {
         "name": "Duet piano/bass",
         "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/pianobass.mp3?alt=media&token=599294ee-7eac-414b-924f-003d126cc81f"
-      }
-    ]
-  },
-  {
-    "name": "Kolędy",
-    "songs": [
-      {
-        "name": "Santa Claus Is Coming To Town",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Santa%20Claus%20Is%20Coming%20To%20Town%20%20(nagrane%20podczas%20pro%CC%81by)-qPBPt2zSzZk.mp3?alt=media&token=e07cdf06-4a17-4424-a616-c3c2e3af7b5a"
-      },
-      {
-        "name": "Winter Wonderland",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Winter%20Wonderland%20(%20nagrane%20podczas%20pro%CC%81by)-NVDSyZTtGdQ.mp3?alt=media&token=4dafb86b-d1f9-4dfb-880d-06ece748ec2a"
-      },
-      {
-        "name": "Cicha Noc",
-        "filename": "https://firebasestorage.googleapis.com/v0/b/standardexpress-97140.appspot.com/o/Cicha%20Noc%20%20(nagrane%20podczas%20pro%CC%81by)-LbJmQzxrLoE.mp3?alt=media&token=aca1542a-5e88-47ab-81d7-24da7e900377"
       }
     ]
   }

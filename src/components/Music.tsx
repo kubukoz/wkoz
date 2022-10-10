@@ -52,7 +52,7 @@ const CategoryComp: FC<{
 };
 
 export const Music: FC<Props> = ({ categories, player, playSong }) => {
-  const leftColumnSize = 2;
+  const leftColumnSize = 3;
 
   return categories.length ? (
     <div id="music">
