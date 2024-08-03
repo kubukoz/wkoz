@@ -1,19 +1,22 @@
 import { FC, useState } from "react";
-import { AboutWlod as AboutWlod } from "./components/AboutWlod";
-import { Nav } from "./components/Nav";
-import { ReactComponent as Logo } from "./logo.svg";
-import { Repertoire } from "./components/Repertoire";
-import { AboutSE } from "./components/AboutSE";
-import { Locations } from "./components/Locations";
-import { Contact } from "./components/Contact";
-import { MusicPlayer, usePlayerState } from "./components/MusicPlayer";
-import { Gallery } from "./components/Gallery";
-import { Music } from "./components/Music";
-import musicCategories from "./data/music.json";
-import gallery from "./data/gallery.json";
 import { useCookies } from "react-cookie";
+import { AboutSE } from "./components/AboutSE";
+import { AboutWlod } from "./components/AboutWlod";
+import { Contact } from "./components/Contact";
+import { Gallery } from "./components/Gallery";
+import { Locations } from "./components/Locations";
+import { Music } from "./components/Music";
+import { MusicPlayer, usePlayerState } from "./components/MusicPlayer";
+import { Nav } from "./components/Nav";
+import { Repertoire } from "./components/Repertoire";
 import { Image } from "./components/types";
+import { Videos } from "./components/Videos";
+import gallery from "./data/gallery.json";
+import musicCategories from "./data/music.json";
+import videos from "./data/videos.json";
+import { ReactComponent as Logo } from "./logo.svg";
 import { SmoothLink } from "./SmoothLink";
+import { useVideoPlayback } from "./hooks/useVideos";
 
 const Header: FC = () => (
   <header id="header">
@@ -120,21 +123,32 @@ const App = () => {
 
   const [modalSelectedImage, setModalSelectedImage] = useState<Image>();
 
-  const player = usePlayerState({
+  const videoPlayback = useVideoPlayback({
+    videos,
+    onPlay() {
+      musicPlayback.play.pause();
+    },
+  });
+
+  const musicPlayback = usePlayerState({
     categories,
+    onPlay() {
+      videoPlayback.pauseAll();
+    },
   });
 
   return (
     <>
       <Header />
       <AboutWlod />
+      <Videos videos={videos} playback={videoPlayback} />
       <Repertoire />
       <AboutSE />
       <Locations />
       <Music
         categories={categories}
-        player={player.state}
-        playSong={(id) => player.play.song(id)}
+        player={musicPlayback.state}
+        playSong={(id) => musicPlayback.play.song(id)}
       />
       <Gallery
         images={images}
@@ -143,7 +157,7 @@ const App = () => {
       />
       <Contact />
       <Footer />
-      <MusicPlayer player={player} controllable={!modalSelectedImage} />
+      <MusicPlayer player={musicPlayback} controllable={!modalSelectedImage} />
       <CookieConsent />
     </>
   );

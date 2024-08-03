@@ -5,13 +5,13 @@ import { Category } from "./types";
 type Props = {
   categories: readonly Category[];
   player: PlayerState;
-  playSong: (songId: number) => void;
+  playSong(songId: number): void;
 };
 
 const TrackComp: FC<{
   trackName: string;
   playing: boolean;
-  play: () => void;
+  play(): void;
 }> = ({ trackName, playing, play }) => {
   return (
     <li className={playing ? "playing" : ""} onClick={() => play()}>
@@ -29,7 +29,7 @@ const TrackComp: FC<{
 const CategoryComp: FC<{
   category: Category;
   player: PlayerState;
-  playSong: (songId: number) => void;
+  playSong(songId: number): void;
 }> = ({ category, player, playSong }) => {
   return (
     <div>

@@ -30,9 +30,12 @@ type Player = {
   };
 };
 
-type PlayerArgs = { categories: readonly Category[] };
+type PlayerArgs = {
+  categories: readonly Category[];
+  onPlay(): void;
+};
 
-export const usePlayerState = ({ categories }: PlayerArgs): Player => {
+export const usePlayerState = ({ categories, onPlay }: PlayerArgs): Player => {
   const [state, setState] = useState<PlayerState>({
     selected: categories[0].songs[0],
     playing: false,
@@ -49,6 +52,7 @@ export const usePlayerState = ({ categories }: PlayerArgs): Player => {
   const songIndex = allSongs.findIndex((t) => t.id === state.selected.id);
 
   const setSong = (s: Track) => {
+    onPlay();
     setState((state) => ({ ...state, selected: s, playing: true }));
   };
 
@@ -70,8 +74,14 @@ export const usePlayerState = ({ categories }: PlayerArgs): Player => {
     setSong(theSong);
   };
 
-  const switchPlaying = () => setState({ ...state, playing: !state.playing });
-  const setPlaying = (playing: boolean) => setState({ ...state, playing });
+  const setPlaying = (playing: boolean) => {
+    if (playing) onPlay();
+    setState({ ...state, playing });
+  };
+
+  const switchPlaying = () => {
+    setPlaying(!state.playing);
+  };
 
   return {
     state,
