@@ -14,6 +14,8 @@ import gallery from "./data/gallery.json";
 import { useCookies } from "react-cookie";
 import { Image } from "./components/types";
 import { SmoothLink } from "./SmoothLink";
+import { FaYoutube } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 const Header: FC = () => (
   <header id="header">
@@ -114,6 +116,68 @@ const getCategories = () => {
 
 const getImages = () => gallery.map((image, i) => ({ ...image, id: i }));
 
+type VideoProps = {
+  videoId: string;
+  title: string;
+};
+
+const videos: readonly VideoProps[] = [
+  {
+    videoId: "ZXsSxSDmTyo",
+    title: "Sunny, cover (fragment)",
+  },
+  {
+    videoId: "WUmWJioAUsE",
+    title: "Moje Serce To Jest Muzyk",
+  },
+  {
+    videoId: "ElD5Jz6qfjQ",
+    title: "Blue Bossa",
+  },
+];
+
+const VideoItem = (props: VideoProps) => {
+  const { title, videoId } = props;
+  return (
+    <div className="video">
+      <iframe
+        width="480"
+        height="270"
+        src={`https://www.youtube.com/embed/${videoId}`}
+        title={title}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      ></iframe>
+    </div>
+  );
+};
+
+const Videos = () => {
+  return (
+    <div id="videos">
+      <div className="inside clearfix">
+        <h1 className="heading">Nagrania</h1>
+
+        <div className="vidlist">
+          {videos.map((vid) => (
+            <VideoItem key={vid.videoId} {...vid} />
+          ))}
+        </div>
+        <h2>
+          <a
+            className="seemore"
+            href="https://www.youtube.com/playlist?list=PLO5u_Y0J5MPkVCNXe_QXqTlSmUYy0RZMw"
+          >
+            <FaYoutube className="yt" /> Zobacz więcej
+          </a>
+        </h2>
+      </div>
+    </div>
+  );
+};
+
 const App = () => {
   const categories = getCategories();
   const images = getImages();
@@ -128,6 +192,7 @@ const App = () => {
     <>
       <Header />
       <AboutWlod />
+      <Videos />
       <Repertoire />
       <AboutSE />
       <Locations />

@@ -388,6 +388,50 @@ body .ngdialog.ngdialog-theme-default {
     margin-top: 80px;
   }
 }
+
+#videos {
+  background: $blue;
+  color: $gray-light;
+  text-align: center;
+
+  .inside {
+    padding-top: 47px;
+    padding-bottom: 60px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .vidlist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+
+  .video {
+    margin: 0 20px;
+  }
+
+  a.seemore {
+    display: inline-block;
+    background: $gray-light;
+    color: $blue;
+    padding: 15px 25px;
+    @include transitionAll(0.1s);
+    &:hover {
+      color: $gray-light;
+      background: $blue;
+    }
+    .yt {
+      vertical-align: bottom;
+      margin-bottom: 1px;
+    }
+  }
+}
+
 #repertoire {
   .inside {
     padding: 47px 0 77px;
