@@ -167,6 +167,7 @@ const Videos = () => {
           <a
             className="seemore"
             href="https://www.youtube.com/playlist?list=PLO5u_Y0J5MPkVCNXe_QXqTlSmUYy0RZMw"
+            target="_blank"
           >
             <FaYoutube className="yt" /> Zobacz więcej
           </a>
