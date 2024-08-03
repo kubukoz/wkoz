@@ -16,6 +16,7 @@ import musicCategories from "./data/music.json";
 import videos from "./data/videos.json";
 import { ReactComponent as Logo } from "./logo.svg";
 import { SmoothLink } from "./SmoothLink";
+import { useVideoPlayback } from "./hooks/useVideos";
 
 const Header: FC = () => (
   <header id="header">
@@ -126,11 +127,13 @@ const App = () => {
     categories,
   });
 
+  const videoPlayback = useVideoPlayback(videos);
+
   return (
     <>
       <Header />
       <AboutWlod />
-      <Videos videos={videos} />
+      <Videos videos={videos} playback={videoPlayback} />
       <Repertoire />
       <AboutSE />
       <Locations />

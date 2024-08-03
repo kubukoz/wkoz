@@ -1,20 +1,18 @@
 import { FaYoutube } from "react-icons/fa";
 import YouTube from "react-youtube";
-import { useVideoPlayback } from "../hooks/useVideos";
+import { useVideoPlayback, VideoPlayback } from "../hooks/useVideos";
 
-type VideoProps = {
+export type VideoParams = {
   videoId: string;
   title: string;
 };
 
-const VideoItem = (
-  props: VideoProps & {
-    setRef: (yt: YouTube) => void;
-    onPlay: () => void;
-  }
-) => {
-  const { title, videoId, setRef } = props;
+export type VideoItemProps = VideoParams & {
+  setRef: (yt: YouTube) => void;
+  onPlay: () => void;
+};
 
+const VideoItem = ({ title, videoId, setRef, onPlay }: VideoItemProps) => {
   return (
     <YouTube
       videoId={videoId}
@@ -25,22 +23,24 @@ const VideoItem = (
         width: "auto",
       }}
       ref={setRef}
-      onPlay={() => props.onPlay()}
+      onPlay={() => onPlay()}
     />
   );
 };
 
-export const Videos = (props: { videos: readonly VideoProps[] }) => {
-  const { videos } = props;
-  const playback = useVideoPlayback(videos);
+export type VideosProps = {
+  videos: readonly VideoParams[];
+  playback: VideoPlayback;
+};
 
+export const Videos = ({ videos, playback }: VideosProps) => {
   return (
     <div id="videos">
       <div className="inside clearfix">
         <h1 className="heading">Nagrania</h1>
 
         <div className="vidlist">
-          {props.videos.map((vid, i) => (
+          {videos.map((vid, i) => (
             <VideoItem
               key={vid.videoId}
               setRef={(yt) => {
