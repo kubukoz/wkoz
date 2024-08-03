@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
 import { FaYoutube } from "react-icons/fa";
 import YouTube from "react-youtube";
+import { useVideoPlayback } from "../hooks/useVideos";
 
 type VideoProps = {
   videoId: string;
@@ -32,20 +32,7 @@ const VideoItem = (
 
 export const Videos = (props: { videos: readonly VideoProps[] }) => {
   const { videos } = props;
-
-  const refs = useRef<YouTube[]>([]);
-
-  if (refs.current.length !== videos.length) {
-    refs.current = Array(videos.length)
-      .fill(null)
-      .map((_, i) => refs.current[i] || React.createRef());
-  }
-
-  function onPlay(itemThatPlays: YouTube) {
-    refs.current.forEach((item) => {
-      if (item !== itemThatPlays) item.getInternalPlayer()?.pauseVideo();
-    });
-  }
+  const playback = useVideoPlayback(videos);
 
   return (
     <div id="videos">
@@ -56,8 +43,10 @@ export const Videos = (props: { videos: readonly VideoProps[] }) => {
           {props.videos.map((vid, i) => (
             <VideoItem
               key={vid.videoId}
-              setRef={(yt) => (refs.current[i] = yt)}
-              onPlay={() => onPlay(refs.current[i])}
+              setRef={(yt) => {
+                playback.setRef(yt, i);
+              }}
+              onPlay={() => playback.pauseExcept(playback.getPlayer(i))}
               {...vid}
             />
           ))}
