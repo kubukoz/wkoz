@@ -123,11 +123,19 @@ const App = () => {
 
   const [modalSelectedImage, setModalSelectedImage] = useState<Image>();
 
-  const player = usePlayerState({
-    categories,
+  const videoPlayback = useVideoPlayback({
+    videos,
+    onPlay() {
+      musicPlayback.play.pause();
+    },
   });
 
-  const videoPlayback = useVideoPlayback(videos);
+  const musicPlayback = usePlayerState({
+    categories,
+    onPlay() {
+      videoPlayback.pauseAll();
+    },
+  });
 
   return (
     <>
@@ -139,8 +147,8 @@ const App = () => {
       <Locations />
       <Music
         categories={categories}
-        player={player.state}
-        playSong={(id) => player.play.song(id)}
+        player={musicPlayback.state}
+        playSong={(id) => musicPlayback.play.song(id)}
       />
       <Gallery
         images={images}
@@ -149,7 +157,7 @@ const App = () => {
       />
       <Contact />
       <Footer />
-      <MusicPlayer player={player} controllable={!modalSelectedImage} />
+      <MusicPlayer player={musicPlayback} controllable={!modalSelectedImage} />
       <CookieConsent />
     </>
   );

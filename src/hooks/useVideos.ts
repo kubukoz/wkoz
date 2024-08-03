@@ -8,7 +8,12 @@ export type VideoPlayback = {
   getPlayer(index: number): YouTube;
 };
 
-export const useVideoPlayback = (videos: readonly unknown[]): VideoPlayback => {
+type Args = {
+  videos: readonly unknown[];
+  onPlay(): void;
+};
+
+export const useVideoPlayback = ({ videos, onPlay }: Args): VideoPlayback => {
   const refs = useRef<YouTube[]>([]);
 
   if (refs.current.length !== videos.length) {
@@ -17,7 +22,8 @@ export const useVideoPlayback = (videos: readonly unknown[]): VideoPlayback => {
       .map((_, i) => refs.current[i] || React.createRef());
   }
 
-  function onPlay(itemThatPlays: YouTube | undefined) {
+  function onPlayInternal(itemThatPlays: YouTube | undefined) {
+    onPlay();
     refs.current.forEach((item) => {
       if (item !== itemThatPlays) item.getInternalPlayer()?.pauseVideo();
     });
@@ -25,10 +31,10 @@ export const useVideoPlayback = (videos: readonly unknown[]): VideoPlayback => {
 
   return {
     pauseAll() {
-      return onPlay(undefined);
+      return onPlayInternal(undefined);
     },
     pauseExcept(vid) {
-      return onPlay(vid);
+      return onPlayInternal(vid);
     },
     setRef(vid, index) {
       refs.current[index] = vid;
