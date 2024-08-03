@@ -11,6 +11,7 @@ import { Gallery } from "./components/Gallery";
 import { Music } from "./components/Music";
 import musicCategories from "./data/music.json";
 import gallery from "./data/gallery.json";
+import videos from "./data/videos.json";
 import { useCookies } from "react-cookie";
 import { Image } from "./components/types";
 import { SmoothLink } from "./SmoothLink";
@@ -121,21 +122,6 @@ type VideoProps = {
   title: string;
 };
 
-const videos: readonly VideoProps[] = [
-  {
-    videoId: "ZXsSxSDmTyo",
-    title: "Sunny, cover (fragment)",
-  },
-  {
-    videoId: "WUmWJioAUsE",
-    title: "Moje Serce To Jest Muzyk",
-  },
-  {
-    videoId: "ElD5Jz6qfjQ",
-    title: "Blue Bossa",
-  },
-];
-
 const VideoItem = (props: VideoProps) => {
   const { title, videoId } = props;
   return (
@@ -152,14 +138,14 @@ const VideoItem = (props: VideoProps) => {
   );
 };
 
-const Videos = () => {
+const Videos = (props: { videos: readonly VideoProps[] }) => {
   return (
     <div id="videos">
       <div className="inside clearfix">
         <h1 className="heading">Nagrania</h1>
 
         <div className="vidlist">
-          {videos.map((vid) => (
+          {props.videos.map((vid) => (
             <VideoItem key={vid.videoId} {...vid} />
           ))}
         </div>
@@ -191,7 +177,7 @@ const App = () => {
     <>
       <Header />
       <AboutWlod />
-      <Videos />
+      <Videos videos={videos} />
       <Repertoire />
       <AboutSE />
       <Locations />
