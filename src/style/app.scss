@@ -192,14 +192,14 @@ body .ngdialog.ngdialog-theme-default {
   }
   @media screen and (max-width: 980px) {
     height: 80px;
-    .ninesixzero {
-      max-width: inherit;
-    }
     display: flex;
     display: -webkit-flex;
     align-items: center;
     -webkit-align-items: center;
     background: $blue;
+    .ninesixzero {
+      max-width: inherit;
+    }
     #logo_main {
       z-index: 3;
       display: flex;
@@ -236,6 +236,7 @@ body .ngdialog.ngdialog-theme-default {
         background: #ffffff;
         display: block;
         position: relative;
+        @include transitionAll(0.1s);
         &:last-of-type:before {
           z-index: -1;
           display: block;
@@ -249,7 +250,6 @@ body .ngdialog.ngdialog-theme-default {
           -moz-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
         }
-        @include transitionAll(0.1s);
         &:not(:last-of-type) a:after {
           display: block;
           content: "";
@@ -516,6 +516,9 @@ body .ngdialog.ngdialog-theme-default {
 }
 #about_se {
   position: relative;
+  background: $blue;
+  padding-top: 46px;
+  padding-bottom: 42px;
   .background {
     opacity: 0.2;
     top: 0;
@@ -526,9 +529,6 @@ body .ngdialog.ngdialog-theme-default {
     z-index: 0;
     background: url("/images/backgrounds/band.jpg") no-repeat center / cover;
   }
-  background: $blue;
-  padding-top: 46px;
-  padding-bottom: 42px;
   h1 {
     color: #ffffff;
     margin-bottom: 46px;
@@ -655,6 +655,11 @@ body .ngdialog.ngdialog-theme-default {
       padding-left: 20px;
       text-align: center;
       li {
+        padding-left: 21px;
+        font-family: $font-main;
+        font-size: 1.125em;
+        color: $blue;
+        font-weight: $bold;
         span {
           display: inline;
           position: relative;
@@ -674,11 +679,6 @@ body .ngdialog.ngdialog-theme-default {
             opacity: 0.5;
           }
         }
-        padding-left: 21px;
-        font-family: $font-main;
-        font-size: 1.125em;
-        color: $blue;
-        font-weight: $bold;
         &:not(:last-of-type) {
           margin-bottom: 7px;
         }
@@ -791,21 +791,8 @@ body .ngdialog.ngdialog-theme-default {
     .arrow {
       padding: 0 20px;
       overflow: hidden;
-      svg {
-        fill: #ffffff;
-        height: 50px;
-        width: 31px;
-      }
       cursor: pointer;
       @include transitionAll(0.2s);
-      &:not(:hover) {
-        svg {
-          opacity: 0.6;
-        }
-      }
-      &:hover {
-        background: rgba(0, 0, 0, 0.7);
-      }
       display: flex;
       align-items: center;
       content: "";
@@ -814,6 +801,20 @@ body .ngdialog.ngdialog-theme-default {
       top: 0;
       bottom: 0;
       margin: auto;
+
+      svg {
+        fill: #ffffff;
+        height: 50px;
+        width: 31px;
+      }
+      &:not(:hover) {
+        svg {
+          opacity: 0.6;
+        }
+      }
+      &:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
     }
     .slide {
       width: 100%;
@@ -821,19 +822,20 @@ body .ngdialog.ngdialog-theme-default {
       display: -webkit-flex;
       justify-content: space-between;
       -webkit-justify-content: space-between;
+      @include transitionAll(0.3s);
       .item {
         height: 400px;
         cursor: pointer;
         display: inline-block;
         @include transitionAll(0.2s);
         width: 33.4%;
+        transition: 0.2s;
+        opacity: 0.7;
         .image {
           background: no-repeat center / cover;
           width: 100%;
           height: 100%;
         }
-        transition: 0.2s;
-        opacity: 0.7;
         &:hover {
           opacity: 1;
         }
@@ -848,7 +850,6 @@ body .ngdialog.ngdialog-theme-default {
           width: 100%;
         }
       }
-      @include transitionAll(0.3s);
     }
     .slides {
       width: 100%;
