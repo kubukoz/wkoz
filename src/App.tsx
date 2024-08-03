@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import { AboutWlod as AboutWlod } from "./components/AboutWlod";
 import { Nav } from "./components/Nav";
 import { ReactComponent as Logo } from "./logo.svg";
@@ -17,6 +17,7 @@ import { Image } from "./components/types";
 import { SmoothLink } from "./SmoothLink";
 import { FaYoutube } from "react-icons/fa";
 import { IconContext } from "react-icons";
+import YouTube from "react-youtube";
 
 const Header: FC = () => (
   <header id="header">
@@ -122,31 +123,57 @@ type VideoProps = {
   title: string;
 };
 
-const VideoItem = (props: VideoProps) => {
-  const { title, videoId } = props;
+const VideoItem = (
+  props: VideoProps & {
+    setRef: (yt: YouTube) => void;
+    onPlay: () => void;
+  }
+) => {
+  const { title, videoId, setRef } = props;
+
   return (
-    <div className="video">
-      <iframe
-        src={`https://www.youtube.com/embed/${videoId}`}
-        title={title}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      ></iframe>
-    </div>
+    <YouTube
+      videoId={videoId}
+      title={title}
+      className="video"
+      opts={{
+        height: "auto",
+        width: "auto",
+      }}
+      ref={setRef}
+      onPlay={() => props.onPlay()}
+    />
   );
 };
 
 const Videos = (props: { videos: readonly VideoProps[] }) => {
+  const refs = useRef<YouTube[]>([]);
+
+  if (refs.current.length !== videos.length) {
+    refs.current = Array(videos.length)
+      .fill(null)
+      .map((_, i) => refs.current[i] || React.createRef());
+  }
+
+  function onPlay(itemThatPlays: YouTube) {
+    refs.current.forEach((item) => {
+      if (item !== itemThatPlays) item.getInternalPlayer()?.pauseVideo();
+    });
+  }
+
   return (
     <div id="videos">
       <div className="inside clearfix">
         <h1 className="heading">Nagrania</h1>
 
         <div className="vidlist">
-          {props.videos.map((vid) => (
-            <VideoItem key={vid.videoId} {...vid} />
+          {props.videos.map((vid, i) => (
+            <VideoItem
+              key={vid.videoId}
+              setRef={(yt) => (refs.current[i] = yt)}
+              onPlay={() => onPlay(refs.current[i])}
+              {...vid}
+            />
           ))}
         </div>
         <h2>
