@@ -101,11 +101,14 @@ export const Nav: FC<Props> = ({ hasMusic, hasGallery }) => {
         <NavLink target={["#about"]}>
           <SmoothLink href="#about">O mnie</SmoothLink>
         </NavLink>
+        <NavLink target={["#videos"]}>
+          <SmoothLink href="#videos">Nagrania</SmoothLink>
+        </NavLink>
         <NavLink target={["#repertoire"]}>
           <SmoothLink href="#repertoire">Repertuar</SmoothLink>
         </NavLink>
         <NavLink target={["#about_se", "#locations"]}>
-          <SmoothLink href="#about_se">O Standard Express</SmoothLink>
+          <SmoothLink href="#about_se">O nas</SmoothLink>
         </NavLink>
         {music}
         {gallery}
