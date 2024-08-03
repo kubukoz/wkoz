@@ -397,8 +397,8 @@ body .ngdialog.ngdialog-theme-default {
   .inside {
     padding-top: 47px;
     padding-bottom: 60px;
-    padding-left: 0;
-    padding-right: 0;
+    max-width: 1600px;
+    margin: 0 auto;
   }
 
   .vidlist {
@@ -406,13 +406,19 @@ body .ngdialog.ngdialog-theme-default {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 60px;
+    gap: 20px;
   }
 
   .video {
-    margin: 0 20px;
+    flex: 1 1 400px;
+    iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
   }
 
   a.seemore {

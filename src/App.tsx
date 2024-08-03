@@ -141,8 +141,6 @@ const VideoItem = (props: VideoProps) => {
   return (
     <div className="video">
       <iframe
-        width="480"
-        height="270"
         src={`https://www.youtube.com/embed/${videoId}`}
         title={title}
         frameBorder="0"
